@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // button1
@@ -40,19 +41,29 @@
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(357, 197);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 1;
+            // 
             // WorkerHomePage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(textBox1);
             Controls.Add(button1);
             Name = "WorkerHomePage";
             Text = "WorkerHomePage";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
+        private TextBox textBox1;
     }
 }
