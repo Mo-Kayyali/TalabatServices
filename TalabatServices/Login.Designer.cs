@@ -81,11 +81,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(41, 128, 185);
-            label1.Location = new Point(195, 9);
+            label1.Location = new Point(361, 9);
             label1.Name = "label1";
-            label1.Size = new Size(568, 40);
+            label1.Size = new Size(238, 40);
             label1.TabIndex = 3;
-            label1.Text = "Welcome To Talabat Services";
+            label1.Text = "Login Panel";
             // 
             // label4
             // 
@@ -121,6 +121,7 @@
             Sign_Up_Button.TabIndex = 9;
             Sign_Up_Button.Text = "Sign Up";
             Sign_Up_Button.UseVisualStyleBackColor = false;
+            Sign_Up_Button.Click += Sign_Up_Button_Click;
             // 
             // pictureBox1
             // 
@@ -170,7 +171,9 @@
             Controls.Add(Email_Textbox);
             Controls.Add(Login_Button);
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
