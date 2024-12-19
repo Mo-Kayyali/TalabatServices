@@ -14,6 +14,7 @@ namespace TalabatServices
 {
     public partial class SignUp : Form
     {
+        //SqlConnection conn = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
         public SignUp()
         {
             InitializeComponent();
@@ -55,6 +56,10 @@ namespace TalabatServices
 
         private void Create_Account_Button_Click(object sender, EventArgs e)
         {
+            if (User_Checkbox.Checked) 
+            {
+                //
+            }
 
         }
 
