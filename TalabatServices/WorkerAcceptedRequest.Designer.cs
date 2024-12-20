@@ -195,9 +195,9 @@
             button1.BackColor = SystemColors.ButtonFace;
             button1.Font = new Font("Showcard Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(347, 595);
+            button1.Location = new Point(337, 588);
             button1.Name = "button1";
-            button1.Size = new Size(179, 60);
+            button1.Size = new Size(179, 67);
             button1.TabIndex = 19;
             button1.Text = "Arrived";
             button1.UseVisualStyleBackColor = false;
@@ -207,6 +207,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BackgroundImage = Properties.Resources.Proj_pic;
+            BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(538, 667);
             Controls.Add(button1);
             Controls.Add(textBox6);
