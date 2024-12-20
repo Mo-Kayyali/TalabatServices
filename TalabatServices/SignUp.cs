@@ -56,7 +56,7 @@ namespace TalabatServices
 
         private void Create_Account_Button_Click(object sender, EventArgs e)
         {
-            if (User_Checkbox.Checked) 
+            if (User_Checkbox.Checked)
             {
                 //
             }
@@ -187,6 +187,11 @@ namespace TalabatServices
             this.Hide();
             Login log = new Login();
             log.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
