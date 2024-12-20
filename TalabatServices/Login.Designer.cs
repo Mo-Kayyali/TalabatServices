@@ -48,6 +48,7 @@
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
+            button10 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -247,12 +248,27 @@
             button9.Text = "button9";
             button9.UseVisualStyleBackColor = true;
             // 
+            // button10
+            // 
+            button10.BackColor = Color.FromArgb(192, 0, 0);
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button10.ForeColor = Color.Black;
+            button10.Location = new Point(785, 483);
+            button10.Name = "button10";
+            button10.Size = new Size(121, 45);
+            button10.TabIndex = 22;
+            button10.Text = "Exit";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(914, 533);
+            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -304,5 +320,6 @@
         private Button button7;
         private Button button8;
         private Button button9;
+        private Button button10;
     }
 }
