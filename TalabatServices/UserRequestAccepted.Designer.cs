@@ -48,7 +48,7 @@
             // 
             textBox1.BackColor = SystemColors.ButtonFace;
             textBox1.Location = new Point(177, 50);
-            textBox1.Margin = new Padding(4, 4, 4, 4);
+            textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(277, 34);
             textBox1.TabIndex = 1;
@@ -58,13 +58,13 @@
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            //BackgroundImage = Properties.Resources.Proj_pic;
+            BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1200, 630);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "UserRequestAccepted";
             Text = "UserRequestAccepted";
             ResumeLayout(false);
