@@ -36,6 +36,7 @@
             textBox2 = new TextBox();
             label4 = new Label();
             textBox3 = new TextBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -116,6 +117,16 @@
             textBox3.Size = new Size(277, 34);
             textBox3.TabIndex = 6;
             // 
+            // button1
+            // 
+            button1.Location = new Point(416, 399);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 43);
+            button1.TabIndex = 7;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // UserRequestAccepted
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
@@ -124,6 +135,8 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(522, 454);
+            ControlBox = false;
+            Controls.Add(button1);
             Controls.Add(textBox3);
             Controls.Add(label4);
             Controls.Add(textBox2);
@@ -132,9 +145,12 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "UserRequestAccepted";
-            Text = "UserRequestAccepted";
+            StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -148,5 +164,6 @@
         private TextBox textBox2;
         private Label label4;
         private TextBox textBox3;
+        private Button button1;
     }
 }
