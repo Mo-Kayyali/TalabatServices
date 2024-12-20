@@ -28,12 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "ProfileSettings";
+            button1 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(192, 0, 0);
+            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(694, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 59);
+            button1.TabIndex = 8;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // ProfileSettings
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(800, 450);
+            Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            Name = "ProfileSettings";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "ProfileSettings";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button1;
     }
 }
