@@ -28,12 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "CheckOut";
+            button1 = new Button();
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(192, 0, 0);
+            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(684, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(104, 60);
+            button1.TabIndex = 9;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // CheckOut
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(800, 450);
+            ControlBox = false;
+            Controls.Add(button1);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            Name = "CheckOut";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "CheckOut";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button button1;
     }
 }
