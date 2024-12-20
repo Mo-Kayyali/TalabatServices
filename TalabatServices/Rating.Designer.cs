@@ -42,7 +42,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.NotStar;
             pictureBox1.Location = new Point(159, 197);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(70, 70);
@@ -52,7 +51,6 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources.NotStar;
             pictureBox2.Location = new Point(249, 197);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(70, 70);
@@ -62,7 +60,6 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Image = Properties.Resources.NotStar;
             pictureBox3.Location = new Point(339, 197);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(70, 70);
@@ -72,7 +69,6 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Image = Properties.Resources.NotStar;
             pictureBox4.Location = new Point(429, 197);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(70, 70);
@@ -82,7 +78,6 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Image = Properties.Resources.NotStar;
             pictureBox5.Location = new Point(519, 197);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(70, 70);
