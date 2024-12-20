@@ -57,7 +57,7 @@
             checkBox7 = new CheckBox();
             label7 = new Label();
             checkBox8 = new CheckBox();
-            textBox7 = new TextBox();
+            Floor_Text = new TextBox();
             Building_Text = new TextBox();
             Street_Text = new TextBox();
             Apartment_Text = new TextBox();
@@ -346,7 +346,7 @@
             AddDistrict_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddDistrict_Text.Location = new Point(712, 337);
             AddDistrict_Text.Name = "AddDistrict_Text";
-            AddDistrict_Text.Size = new Size(200, 34);
+            AddDistrict_Text.Size = new Size(251, 34);
             AddDistrict_Text.TabIndex = 54;
             // 
             // checkBox6
@@ -396,15 +396,15 @@
             checkBox8.Text = "Add";
             checkBox8.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // Floor_Text
             // 
-            textBox7.BackColor = SystemColors.ButtonFace;
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox7.Location = new Point(712, 565);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(200, 34);
-            textBox7.TabIndex = 56;
+            Floor_Text.BackColor = SystemColors.ButtonFace;
+            Floor_Text.BorderStyle = BorderStyle.FixedSingle;
+            Floor_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Floor_Text.Location = new Point(712, 565);
+            Floor_Text.Name = "Floor_Text";
+            Floor_Text.Size = new Size(200, 34);
+            Floor_Text.TabIndex = 56;
             // 
             // Building_Text
             // 
@@ -413,7 +413,7 @@
             Building_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Building_Text.Location = new Point(712, 451);
             Building_Text.Name = "Building_Text";
-            Building_Text.Size = new Size(200, 34);
+            Building_Text.Size = new Size(251, 34);
             Building_Text.TabIndex = 57;
             // 
             // Street_Text
@@ -423,7 +423,7 @@
             Street_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Street_Text.Location = new Point(712, 394);
             Street_Text.Name = "Street_Text";
-            Street_Text.Size = new Size(200, 34);
+            Street_Text.Size = new Size(251, 34);
             Street_Text.TabIndex = 58;
             // 
             // Apartment_Text
@@ -433,7 +433,7 @@
             Apartment_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Apartment_Text.Location = new Point(712, 508);
             Apartment_Text.Name = "Apartment_Text";
-            Apartment_Text.Size = new Size(200, 34);
+            Apartment_Text.Size = new Size(251, 34);
             Apartment_Text.TabIndex = 59;
             // 
             // label8
@@ -507,7 +507,7 @@
             Controls.Add(Apartment_Text);
             Controls.Add(Street_Text);
             Controls.Add(Building_Text);
-            Controls.Add(textBox7);
+            Controls.Add(Floor_Text);
             Controls.Add(Address_Combo);
             Controls.Add(AddDistrict_Text);
             Controls.Add(checkBox6);
@@ -578,7 +578,7 @@
         private CheckBox checkBox7;
         private Label label7;
         private CheckBox checkBox8;
-        private TextBox textBox7;
+        private TextBox Floor_Text;
         private TextBox Building_Text;
         private TextBox Street_Text;
         private TextBox Apartment_Text;
