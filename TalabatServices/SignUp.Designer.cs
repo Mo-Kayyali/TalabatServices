@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
-            pictureBox3 = new PictureBox();
             Create_Account_Button = new Button();
             label5 = new Label();
             label4 = new Label();
@@ -60,18 +58,7 @@
             label14 = new Label();
             Login_Button = new Button();
             button10 = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(1096, 454);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(462, 220);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 21;
-            pictureBox3.TabStop = false;
             // 
             // Create_Account_Button
             // 
@@ -417,6 +404,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+            BackgroundImage = Properties.Resources.Proj_pic;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1570, 686);
             ControlBox = false;
             Controls.Add(button10);
@@ -443,7 +432,6 @@
             Controls.Add(Worker_Checkbox);
             Controls.Add(label2);
             Controls.Add(User_Checkbox);
-            Controls.Add(pictureBox3);
             Controls.Add(Create_Account_Button);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -456,14 +444,11 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SignUp";
             Load += SignUp_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox3;
         private Button Create_Account_Button;
         private Label label5;
         private Label label4;
