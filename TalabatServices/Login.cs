@@ -26,5 +26,19 @@ namespace TalabatServices
             SignUp Sign = new SignUp();
             Sign.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Rating Rate = new Rating();
+            Rate.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserRequestAccepted UR = new UserRequestAccepted();
+            UR.Show();
+        }
     }
 }
