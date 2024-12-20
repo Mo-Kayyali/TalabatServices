@@ -41,7 +41,16 @@ namespace TalabatServices
 
         private void ProfileSettings_Load(object sender, EventArgs e)
         {
-
+            Phone_Text.Hide();
+            AddDistrict_Text.Hide();
+            Street_Text.Hide();
+            Building_Text.Hide();
+            Apartment_Text.Hide();
+            Floor_Text.Hide();
+            District_Text.Hide();
+            District_Combo.Hide();
+            Address_Combo.Hide();
+            Phone_Combo.Hide();
         }
     }
 }
