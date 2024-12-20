@@ -147,10 +147,9 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
+            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "UserRequestAccepted";
             StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);

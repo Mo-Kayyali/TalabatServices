@@ -42,6 +42,7 @@
             textBox6 = new TextBox();
             label7 = new Label();
             button1 = new Button();
+            button10 = new Button();
             SuspendLayout();
             // 
             // label2
@@ -202,6 +203,20 @@
             button1.Text = "Arrived";
             button1.UseVisualStyleBackColor = false;
             // 
+            // button10
+            // 
+            button10.BackColor = Color.FromArgb(192, 0, 0);
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button10.ForeColor = Color.Black;
+            button10.Location = new Point(12, 611);
+            button10.Name = "button10";
+            button10.Size = new Size(72, 44);
+            button10.TabIndex = 48;
+            button10.Text = "Exit";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
+            // 
             // WorkerAcceptedRequest
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -210,6 +225,8 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(538, 667);
+            ControlBox = false;
+            Controls.Add(button10);
             Controls.Add(button1);
             Controls.Add(textBox6);
             Controls.Add(label7);
@@ -224,7 +241,10 @@
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(label2);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
             Name = "WorkerAcceptedRequest";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "WorkerAcceptedRequest";
             ResumeLayout(false);
             PerformLayout();
@@ -246,5 +266,6 @@
         private TextBox textBox6;
         private Label label7;
         private Button button1;
+        private Button button10;
     }
 }
