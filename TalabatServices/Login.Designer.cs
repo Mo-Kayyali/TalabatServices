@@ -166,7 +166,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(705, 52);
+            button1.Location = new Point(705, 63);
             button1.Name = "button1";
             button1.Size = new Size(179, 29);
             button1.TabIndex = 13;
@@ -254,7 +254,7 @@
             button10.FlatStyle = FlatStyle.Flat;
             button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button10.ForeColor = Color.Black;
-            button10.Location = new Point(785, 483);
+            button10.Location = new Point(781, 4);
             button10.Name = "button10";
             button10.Size = new Size(121, 45);
             button10.TabIndex = 22;
@@ -268,6 +268,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(914, 533);
+            ControlBox = false;
             Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -288,7 +289,10 @@
             Controls.Add(Password_Textbox);
             Controls.Add(Email_Textbox);
             Controls.Add(Login_Button);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
             Name = "Login";
+            RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             Load += Login_Load;
