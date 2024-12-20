@@ -61,6 +61,7 @@
             // Comment_Textbox
             // 
             Comment_Textbox.BackColor = SystemColors.ButtonFace;
+            Comment_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Comment_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Comment_Textbox.Location = new Point(200, 70);
             Comment_Textbox.Multiline = true;

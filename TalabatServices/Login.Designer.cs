@@ -70,6 +70,7 @@
             // Email_Textbox
             // 
             Email_Textbox.BackColor = SystemColors.ButtonFace;
+            Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Email_Textbox.Location = new Point(323, 252);
             Email_Textbox.Name = "Email_Textbox";
@@ -79,6 +80,7 @@
             // Password_Textbox
             // 
             Password_Textbox.BackColor = SystemColors.ButtonFace;
+            Password_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Password_Textbox.Location = new Point(323, 332);
             Password_Textbox.Name = "Password_Textbox";
@@ -200,8 +202,9 @@
             button4.Name = "button4";
             button4.Size = new Size(179, 29);
             button4.TabIndex = 16;
-            button4.Text = "button4";
+            button4.Text = "Test Checkout";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button5
             // 
@@ -209,8 +212,9 @@
             button5.Name = "button5";
             button5.Size = new Size(179, 29);
             button5.TabIndex = 17;
-            button5.Text = "button5";
+            button5.Text = "Test Profile Settings";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button6
             // 
@@ -218,8 +222,9 @@
             button6.Name = "button6";
             button6.Size = new Size(179, 29);
             button6.TabIndex = 18;
-            button6.Text = "button6";
+            button6.Text = "Test Addtocart";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // button7
             // 
@@ -227,8 +232,9 @@
             button7.Name = "button7";
             button7.Size = new Size(179, 29);
             button7.TabIndex = 19;
-            button7.Text = "button7";
+            button7.Text = "Test User Home Page";
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // button8
             // 
@@ -236,8 +242,9 @@
             button8.Name = "button8";
             button8.Size = new Size(179, 29);
             button8.TabIndex = 20;
-            button8.Text = "button8";
+            button8.Text = "Test User Making Req";
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // button9
             // 
@@ -245,8 +252,9 @@
             button9.Name = "button9";
             button9.Size = new Size(179, 29);
             button9.TabIndex = 21;
-            button9.Text = "button9";
+            button9.Text = "Test Worker HomePage";
             button9.UseVisualStyleBackColor = true;
+            button9.Click += button9_Click;
             // 
             // button10
             // 

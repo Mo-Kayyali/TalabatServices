@@ -123,6 +123,7 @@
             // Password_Textbox
             // 
             Password_Textbox.BackColor = SystemColors.ButtonFace;
+            Password_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Password_Textbox.Location = new Point(427, 250);
             Password_Textbox.Name = "Password_Textbox";
@@ -133,6 +134,7 @@
             // Email_Textbox
             // 
             Email_Textbox.BackColor = SystemColors.ButtonFace;
+            Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Email_Textbox.Location = new Point(427, 190);
             Email_Textbox.Name = "Email_Textbox";
@@ -188,6 +190,7 @@
             // Name_Textbox
             // 
             Name_Textbox.BackColor = SystemColors.ButtonFace;
+            Name_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Name_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name_Textbox.Location = new Point(427, 130);
             Name_Textbox.Name = "Name_Textbox";
@@ -208,6 +211,7 @@
             // Phonenumber2_Textbox
             // 
             Phonenumber2_Textbox.BackColor = SystemColors.ButtonFace;
+            Phonenumber2_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Phonenumber2_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Phonenumber2_Textbox.Location = new Point(427, 365);
             Phonenumber2_Textbox.Name = "Phonenumber2_Textbox";
@@ -229,6 +233,7 @@
             // Phonenumber_Textbox
             // 
             Phonenumber_Textbox.BackColor = SystemColors.ButtonFace;
+            Phonenumber_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Phonenumber_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Phonenumber_Textbox.Location = new Point(427, 307);
             Phonenumber_Textbox.Name = "Phonenumber_Textbox";
@@ -250,6 +255,7 @@
             // Apartment_Textbox
             // 
             Apartment_Textbox.BackColor = SystemColors.ButtonFace;
+            Apartment_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Apartment_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Apartment_Textbox.Location = new Point(1182, 369);
             Apartment_Textbox.Name = "Apartment_Textbox";
@@ -271,6 +277,7 @@
             // Floor_Textbox
             // 
             Floor_Textbox.BackColor = SystemColors.ButtonFace;
+            Floor_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Floor_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Floor_Textbox.Location = new Point(1182, 308);
             Floor_Textbox.Name = "Floor_Textbox";
@@ -292,6 +299,7 @@
             // Building_Textbox
             // 
             Building_Textbox.BackColor = SystemColors.ButtonFace;
+            Building_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Building_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Building_Textbox.Location = new Point(1182, 248);
             Building_Textbox.Name = "Building_Textbox";
@@ -313,6 +321,7 @@
             // District2_StreetName_Textbox
             // 
             District2_StreetName_Textbox.BackColor = SystemColors.ButtonFace;
+            District2_StreetName_Textbox.BorderStyle = BorderStyle.FixedSingle;
             District2_StreetName_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             District2_StreetName_Textbox.Location = new Point(1182, 188);
             District2_StreetName_Textbox.Name = "District2_StreetName_Textbox";
@@ -334,6 +343,7 @@
             // District_Textbox
             // 
             District_Textbox.BackColor = SystemColors.ButtonFace;
+            District_Textbox.BorderStyle = BorderStyle.FixedSingle;
             District_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             District_Textbox.Location = new Point(1182, 128);
             District_Textbox.Name = "District_Textbox";

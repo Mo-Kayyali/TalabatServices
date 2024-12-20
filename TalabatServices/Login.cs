@@ -52,5 +52,47 @@ namespace TalabatServices
         {
             Application.Exit();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CheckOut CO = new CheckOut();
+            CO.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ProfileSettings PS = new ProfileSettings();
+            PS.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddingItemsToCart ITTC = new AddingItemsToCart();
+            ITTC.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserHomePage UHP = new UserHomePage();
+            UHP.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserMakingRequest UMR = new UserMakingRequest();
+            UMR.Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            WorkerHomePage WHP = new WorkerHomePage();
+            WHP.Show();
+        }
     }
 }
