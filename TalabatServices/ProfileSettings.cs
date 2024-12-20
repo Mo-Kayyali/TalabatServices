@@ -21,5 +21,27 @@ namespace TalabatServices
         {
             Application.Exit();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (true) // user is clicking
+            {
+                this.Hide();
+                UserHomePage UHP = new UserHomePage();
+                UHP.Show();
+            }
+            else // worker is clicking
+            {
+                this.Hide();
+                WorkerHomePage workerHomePage = new WorkerHomePage();
+                workerHomePage.Show();
+            }
+
+        }
+
+        private void ProfileSettings_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
