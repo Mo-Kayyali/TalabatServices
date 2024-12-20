@@ -6,7 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Proj_pic.jpg</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Proj_pic.jpg" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
