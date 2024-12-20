@@ -128,6 +128,7 @@
             Controls.Add(pictureBox1);
             Name = "Rating";
             Text = "Rating";
+            Load += Rating_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
