@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserRequestAccepted));
             label1 = new Label();
             textBox1 = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
+            textBox2 = new TextBox();
+            label4 = new Label();
+            textBox3 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -38,21 +43,78 @@
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             label1.ForeColor = Color.FromArgb(41, 128, 185);
-            label1.Location = new Point(18, 50);
+            label1.Location = new Point(13, 124);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(119, 33);
+            label1.Size = new Size(93, 33);
             label1.TabIndex = 0;
-            label1.Text = "label1";
+            label1.Text = "Name";
             // 
             // textBox1
             // 
             textBox1.BackColor = SystemColors.ButtonFace;
-            textBox1.Location = new Point(177, 50);
+            textBox1.Location = new Point(150, 124);
             textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
             textBox1.Size = new Size(277, 34);
             textBox1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Stencil", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.FromArgb(41, 128, 185);
+            label2.Location = new Point(67, 27);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(414, 40);
+            label2.TabIndex = 2;
+            label2.Text = "Worker Information";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
+            label3.ForeColor = Color.FromArgb(41, 128, 185);
+            label3.Location = new Point(13, 214);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(112, 33);
+            label3.TabIndex = 3;
+            label3.Text = "Phone";
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.ButtonFace;
+            textBox2.Location = new Point(150, 214);
+            textBox2.Margin = new Padding(4);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(277, 34);
+            textBox2.TabIndex = 4;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(41, 128, 185);
+            label4.Location = new Point(13, 307);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(122, 33);
+            label4.TabIndex = 5;
+            label4.Text = "Rating";
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = SystemColors.ButtonFace;
+            textBox3.Location = new Point(150, 307);
+            textBox3.Margin = new Padding(4);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(277, 34);
+            textBox3.TabIndex = 6;
             // 
             // UserRequestAccepted
             // 
@@ -61,7 +123,12 @@
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(1200, 630);
+            ClientSize = new Size(522, 454);
+            Controls.Add(textBox3);
+            Controls.Add(label4);
+            Controls.Add(textBox2);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(textBox1);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -76,5 +143,10 @@
 
         private Label label1;
         private TextBox textBox1;
+        private Label label2;
+        private Label label3;
+        private TextBox textBox2;
+        private Label label4;
+        private TextBox textBox3;
     }
 }
