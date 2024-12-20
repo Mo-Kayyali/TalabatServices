@@ -63,9 +63,39 @@ namespace TalabatServices.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap DimStar {
+            get {
+                object obj = ResourceManager.GetObject("DimStar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LightStar {
+            get {
+                object obj = ResourceManager.GetObject("LightStar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap NotStar {
             get {
                 object obj = ResourceManager.GetObject("NotStar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OurLogo {
+            get {
+                object obj = ResourceManager.GetObject("OurLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
