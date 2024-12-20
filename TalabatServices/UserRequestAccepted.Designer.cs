@@ -58,7 +58,7 @@
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            BackgroundImage = Properties.Resources.Proj_pic;
+            //BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1200, 630);
             Controls.Add(textBox1);
