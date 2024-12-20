@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserRequestAccepted));
             label1 = new Label();
-            textBox1 = new TextBox();
             label2 = new Label();
             label3 = new Label();
             textBox2 = new TextBox();
             label4 = new Label();
             textBox3 = new TextBox();
             button1 = new Button();
+            textBox1 = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -50,16 +50,6 @@
             label1.Size = new Size(93, 33);
             label1.TabIndex = 0;
             label1.Text = "Name";
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = SystemColors.ButtonFace;
-            textBox1.Location = new Point(150, 124);
-            textBox1.Margin = new Padding(4);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(277, 34);
-            textBox1.TabIndex = 1;
             // 
             // label2
             // 
@@ -88,6 +78,7 @@
             // textBox2
             // 
             textBox2.BackColor = SystemColors.ButtonFace;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
             textBox2.Location = new Point(150, 214);
             textBox2.Margin = new Padding(4);
             textBox2.Name = "textBox2";
@@ -110,6 +101,7 @@
             // textBox3
             // 
             textBox3.BackColor = SystemColors.ButtonFace;
+            textBox3.BorderStyle = BorderStyle.FixedSingle;
             textBox3.Location = new Point(150, 307);
             textBox3.Margin = new Padding(4);
             textBox3.Name = "textBox3";
@@ -128,6 +120,17 @@
             button1.Text = "Exit";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ButtonFace;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(150, 124);
+            textBox1.Margin = new Padding(4);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(277, 34);
+            textBox1.TabIndex = 1;
             // 
             // UserRequestAccepted
             // 
@@ -159,12 +162,12 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
         private Label label2;
         private Label label3;
         private TextBox textBox2;
         private Label label4;
         private TextBox textBox3;
         private Button button1;
+        private TextBox textBox1;
     }
 }

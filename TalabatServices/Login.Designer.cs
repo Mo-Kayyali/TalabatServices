@@ -70,6 +70,7 @@
             // Email_Textbox
             // 
             Email_Textbox.BackColor = SystemColors.ButtonFace;
+            Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Email_Textbox.Location = new Point(323, 252);
             Email_Textbox.Name = "Email_Textbox";
@@ -79,6 +80,7 @@
             // Password_Textbox
             // 
             Password_Textbox.BackColor = SystemColors.ButtonFace;
+            Password_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Password_Textbox.Location = new Point(323, 332);
             Password_Textbox.Name = "Password_Textbox";

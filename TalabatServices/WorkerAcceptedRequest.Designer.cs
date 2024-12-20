@@ -60,6 +60,7 @@
             // textBox3
             // 
             textBox3.BackColor = SystemColors.ButtonFace;
+            textBox3.BorderStyle = BorderStyle.FixedSingle;
             textBox3.Location = new Point(199, 227);
             textBox3.Margin = new Padding(4);
             textBox3.Name = "textBox3";
@@ -82,6 +83,7 @@
             // textBox2
             // 
             textBox2.BackColor = SystemColors.ButtonFace;
+            textBox2.BorderStyle = BorderStyle.FixedSingle;
             textBox2.Location = new Point(199, 169);
             textBox2.Margin = new Padding(4);
             textBox2.Name = "textBox2";
@@ -104,6 +106,7 @@
             // textBox1
             // 
             textBox1.BackColor = SystemColors.ButtonFace;
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Location = new Point(199, 109);
             textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
@@ -126,6 +129,7 @@
             // textBox4
             // 
             textBox4.BackColor = SystemColors.ButtonFace;
+            textBox4.BorderStyle = BorderStyle.FixedSingle;
             textBox4.Location = new Point(199, 350);
             textBox4.Margin = new Padding(4);
             textBox4.Multiline = true;
@@ -149,6 +153,7 @@
             // textBox5
             // 
             textBox5.BackColor = SystemColors.ButtonFace;
+            textBox5.BorderStyle = BorderStyle.FixedSingle;
             textBox5.Location = new Point(199, 284);
             textBox5.Margin = new Padding(4);
             textBox5.Name = "textBox5";
@@ -171,6 +176,7 @@
             // textBox6
             // 
             textBox6.BackColor = SystemColors.ButtonFace;
+            textBox6.BorderStyle = BorderStyle.FixedSingle;
             textBox6.Location = new Point(199, 463);
             textBox6.Margin = new Padding(4);
             textBox6.Multiline = true;
