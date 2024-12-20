@@ -138,7 +138,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Center;
+            BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(522, 454);
             ControlBox = false;
             Controls.Add(button1);
