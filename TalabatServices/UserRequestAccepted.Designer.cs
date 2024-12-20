@@ -119,12 +119,14 @@
             // 
             // button1
             // 
-            button1.Location = new Point(416, 399);
+            button1.BackColor = Color.FromArgb(192, 0, 0);
+            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(416, 383);
             button1.Name = "button1";
-            button1.Size = new Size(94, 43);
+            button1.Size = new Size(94, 59);
             button1.TabIndex = 7;
             button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // UserRequestAccepted
