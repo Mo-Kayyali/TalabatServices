@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             label2 = new Label();
-            textBox3 = new TextBox();
-            label4 = new Label();
             textBox2 = new TextBox();
             label3 = new Label();
             textBox1 = new TextBox();
@@ -56,29 +54,6 @@
             label2.Size = new Size(355, 40);
             label2.TabIndex = 3;
             label2.Text = "User Information";
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = SystemColors.ButtonFace;
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Location = new Point(199, 227);
-            textBox3.Margin = new Padding(4);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(277, 27);
-            textBox3.TabIndex = 12;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
-            label4.ForeColor = Color.FromArgb(41, 128, 185);
-            label4.Location = new Point(17, 227);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(122, 33);
-            label4.TabIndex = 11;
-            label4.Text = "Rating";
             // 
             // textBox2
             // 
@@ -130,7 +105,7 @@
             // 
             textBox4.BackColor = SystemColors.ButtonFace;
             textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Location = new Point(199, 350);
+            textBox4.Location = new Point(199, 282);
             textBox4.Margin = new Padding(4);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
@@ -143,7 +118,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             label5.ForeColor = Color.FromArgb(41, 128, 185);
-            label5.Location = new Point(17, 363);
+            label5.Location = new Point(17, 294);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(143, 33);
@@ -154,7 +129,7 @@
             // 
             textBox5.BackColor = SystemColors.ButtonFace;
             textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Location = new Point(199, 284);
+            textBox5.Location = new Point(199, 231);
             textBox5.Margin = new Padding(4);
             textBox5.Name = "textBox5";
             textBox5.ReadOnly = true;
@@ -166,7 +141,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(41, 128, 185);
-            label6.Location = new Point(17, 278);
+            label6.Location = new Point(17, 231);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(134, 33);
@@ -177,12 +152,12 @@
             // 
             textBox6.BackColor = SystemColors.ButtonFace;
             textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Location = new Point(199, 463);
+            textBox6.Location = new Point(199, 384);
             textBox6.Margin = new Padding(4);
             textBox6.Multiline = true;
             textBox6.Name = "textBox6";
             textBox6.ReadOnly = true;
-            textBox6.Size = new Size(277, 106);
+            textBox6.Size = new Size(277, 197);
             textBox6.TabIndex = 18;
             // 
             // label7
@@ -190,7 +165,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(41, 128, 185);
-            label7.Location = new Point(17, 463);
+            label7.Location = new Point(12, 384);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(170, 27);
@@ -240,8 +215,6 @@
             Controls.Add(label6);
             Controls.Add(textBox4);
             Controls.Add(label5);
-            Controls.Add(textBox3);
-            Controls.Add(label4);
             Controls.Add(textBox2);
             Controls.Add(label3);
             Controls.Add(textBox1);
@@ -259,8 +232,6 @@
         #endregion
 
         private Label label2;
-        private TextBox textBox3;
-        private Label label4;
         private TextBox textBox2;
         private Label label3;
         private TextBox textBox1;
