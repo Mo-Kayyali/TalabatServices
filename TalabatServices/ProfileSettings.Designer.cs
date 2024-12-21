@@ -39,24 +39,24 @@
             CnfPassword_Text = new TextBox();
             label3 = new Label();
             Name_Text = new TextBox();
-            User_Checkbox = new CheckBox();
+            UserAdd_Checkbox = new CheckBox();
             label5 = new Label();
-            checkBox1 = new CheckBox();
-            checkBox2 = new CheckBox();
+            UserDel_Checkbox = new CheckBox();
+            UserEdit_Checkbox = new CheckBox();
             Phone_Text = new TextBox();
             Phone_Combo = new ComboBox();
             District_Combo = new ComboBox();
             District_Text = new TextBox();
-            checkBox3 = new CheckBox();
-            checkBox4 = new CheckBox();
+            DistrictEdit_Checkbox = new CheckBox();
+            DistrictDel_Checkbox = new CheckBox();
             label6 = new Label();
-            checkBox5 = new CheckBox();
+            DistrictAdd_Checkbox = new CheckBox();
             Address_Combo = new ComboBox();
             AddDistrict_Text = new TextBox();
-            checkBox6 = new CheckBox();
-            checkBox7 = new CheckBox();
+            AddressEdit_Checkbox = new CheckBox();
+            AddressDel_Checkbox = new CheckBox();
             label7 = new Label();
-            checkBox8 = new CheckBox();
+            AddressAdd_Checkbox = new CheckBox();
             Floor_Text = new TextBox();
             Building_Text = new TextBox();
             Street_Text = new TextBox();
@@ -192,17 +192,18 @@
             Name_Text.Size = new Size(453, 34);
             Name_Text.TabIndex = 17;
             // 
-            // User_Checkbox
+            // UserAdd_Checkbox
             // 
-            User_Checkbox.AutoSize = true;
-            User_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            User_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
-            User_Checkbox.Location = new Point(2, 220);
-            User_Checkbox.Name = "User_Checkbox";
-            User_Checkbox.Size = new Size(81, 31);
-            User_Checkbox.TabIndex = 23;
-            User_Checkbox.Text = "Add";
-            User_Checkbox.UseVisualStyleBackColor = true;
+            UserAdd_Checkbox.AutoSize = true;
+            UserAdd_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UserAdd_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            UserAdd_Checkbox.Location = new Point(2, 220);
+            UserAdd_Checkbox.Name = "UserAdd_Checkbox";
+            UserAdd_Checkbox.Size = new Size(81, 31);
+            UserAdd_Checkbox.TabIndex = 23;
+            UserAdd_Checkbox.Text = "Add";
+            UserAdd_Checkbox.UseVisualStyleBackColor = true;
+            UserAdd_Checkbox.CheckedChanged += UserAdd_Checkbox_CheckedChanged;
             // 
             // label5
             // 
@@ -215,29 +216,31 @@
             label5.TabIndex = 26;
             label5.Text = "Phone Number";
             // 
-            // checkBox1
+            // UserDel_Checkbox
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox1.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox1.Location = new Point(182, 220);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(120, 31);
-            checkBox1.TabIndex = 27;
-            checkBox1.Text = "Delete";
-            checkBox1.UseVisualStyleBackColor = true;
+            UserDel_Checkbox.AutoSize = true;
+            UserDel_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UserDel_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            UserDel_Checkbox.Location = new Point(182, 220);
+            UserDel_Checkbox.Name = "UserDel_Checkbox";
+            UserDel_Checkbox.Size = new Size(120, 31);
+            UserDel_Checkbox.TabIndex = 27;
+            UserDel_Checkbox.Text = "Delete";
+            UserDel_Checkbox.UseVisualStyleBackColor = true;
+            UserDel_Checkbox.CheckedChanged += UserDel_Checkbox_CheckedChanged;
             // 
-            // checkBox2
+            // UserEdit_Checkbox
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox2.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox2.Location = new Point(88, 220);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(89, 31);
-            checkBox2.TabIndex = 28;
-            checkBox2.Text = "Edit";
-            checkBox2.UseVisualStyleBackColor = true;
+            UserEdit_Checkbox.AutoSize = true;
+            UserEdit_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UserEdit_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            UserEdit_Checkbox.Location = new Point(88, 220);
+            UserEdit_Checkbox.Name = "UserEdit_Checkbox";
+            UserEdit_Checkbox.Size = new Size(89, 31);
+            UserEdit_Checkbox.TabIndex = 28;
+            UserEdit_Checkbox.Text = "Edit";
+            UserEdit_Checkbox.UseVisualStyleBackColor = true;
+            UserEdit_Checkbox.CheckedChanged += UserEdit_Checkbox_CheckedChanged;
             // 
             // Phone_Text
             // 
@@ -281,29 +284,31 @@
             District_Text.Size = new Size(453, 34);
             District_Text.TabIndex = 48;
             // 
-            // checkBox3
+            // DistrictEdit_Checkbox
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox3.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox3.Location = new Point(89, 280);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(89, 31);
-            checkBox3.TabIndex = 47;
-            checkBox3.Text = "Edit";
-            checkBox3.UseVisualStyleBackColor = true;
+            DistrictEdit_Checkbox.AutoSize = true;
+            DistrictEdit_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DistrictEdit_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            DistrictEdit_Checkbox.Location = new Point(89, 280);
+            DistrictEdit_Checkbox.Name = "DistrictEdit_Checkbox";
+            DistrictEdit_Checkbox.Size = new Size(89, 31);
+            DistrictEdit_Checkbox.TabIndex = 47;
+            DistrictEdit_Checkbox.Text = "Edit";
+            DistrictEdit_Checkbox.UseVisualStyleBackColor = true;
+            DistrictEdit_Checkbox.CheckedChanged += DistrictEdit_Checkbox_CheckedChanged;
             // 
-            // checkBox4
+            // DistrictDel_Checkbox
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox4.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox4.Location = new Point(184, 280);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(120, 31);
-            checkBox4.TabIndex = 46;
-            checkBox4.Text = "Delete";
-            checkBox4.UseVisualStyleBackColor = true;
+            DistrictDel_Checkbox.AutoSize = true;
+            DistrictDel_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DistrictDel_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            DistrictDel_Checkbox.Location = new Point(184, 280);
+            DistrictDel_Checkbox.Name = "DistrictDel_Checkbox";
+            DistrictDel_Checkbox.Size = new Size(120, 31);
+            DistrictDel_Checkbox.TabIndex = 46;
+            DistrictDel_Checkbox.Text = "Delete";
+            DistrictDel_Checkbox.UseVisualStyleBackColor = true;
+            DistrictDel_Checkbox.CheckedChanged += DistrictDel_Checkbox_CheckedChanged;
             // 
             // label6
             // 
@@ -316,17 +321,18 @@
             label6.TabIndex = 45;
             label6.Text = "District";
             // 
-            // checkBox5
+            // DistrictAdd_Checkbox
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox5.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox5.Location = new Point(3, 280);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(81, 31);
-            checkBox5.TabIndex = 44;
-            checkBox5.Text = "Add";
-            checkBox5.UseVisualStyleBackColor = true;
+            DistrictAdd_Checkbox.AutoSize = true;
+            DistrictAdd_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            DistrictAdd_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            DistrictAdd_Checkbox.Location = new Point(3, 280);
+            DistrictAdd_Checkbox.Name = "DistrictAdd_Checkbox";
+            DistrictAdd_Checkbox.Size = new Size(81, 31);
+            DistrictAdd_Checkbox.TabIndex = 44;
+            DistrictAdd_Checkbox.Text = "Add";
+            DistrictAdd_Checkbox.UseVisualStyleBackColor = true;
+            DistrictAdd_Checkbox.CheckedChanged += DistrictAdd_Checkbox_CheckedChanged;
             // 
             // Address_Combo
             // 
@@ -349,29 +355,31 @@
             AddDistrict_Text.Size = new Size(251, 34);
             AddDistrict_Text.TabIndex = 54;
             // 
-            // checkBox6
+            // AddressEdit_Checkbox
             // 
-            checkBox6.AutoSize = true;
-            checkBox6.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox6.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox6.Location = new Point(89, 341);
-            checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(89, 31);
-            checkBox6.TabIndex = 53;
-            checkBox6.Text = "Edit";
-            checkBox6.UseVisualStyleBackColor = true;
+            AddressEdit_Checkbox.AutoSize = true;
+            AddressEdit_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddressEdit_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            AddressEdit_Checkbox.Location = new Point(89, 341);
+            AddressEdit_Checkbox.Name = "AddressEdit_Checkbox";
+            AddressEdit_Checkbox.Size = new Size(89, 31);
+            AddressEdit_Checkbox.TabIndex = 53;
+            AddressEdit_Checkbox.Text = "Edit";
+            AddressEdit_Checkbox.UseVisualStyleBackColor = true;
+            AddressEdit_Checkbox.CheckedChanged += AddressEdit_Checkbox_CheckedChanged;
             // 
-            // checkBox7
+            // AddressDel_Checkbox
             // 
-            checkBox7.AutoSize = true;
-            checkBox7.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox7.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox7.Location = new Point(183, 341);
-            checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(120, 31);
-            checkBox7.TabIndex = 52;
-            checkBox7.Text = "Delete";
-            checkBox7.UseVisualStyleBackColor = true;
+            AddressDel_Checkbox.AutoSize = true;
+            AddressDel_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddressDel_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            AddressDel_Checkbox.Location = new Point(183, 341);
+            AddressDel_Checkbox.Name = "AddressDel_Checkbox";
+            AddressDel_Checkbox.Size = new Size(120, 31);
+            AddressDel_Checkbox.TabIndex = 52;
+            AddressDel_Checkbox.Text = "Delete";
+            AddressDel_Checkbox.UseVisualStyleBackColor = true;
+            AddressDel_Checkbox.CheckedChanged += AddressDel_Checkbox_CheckedChanged;
             // 
             // label7
             // 
@@ -384,17 +392,18 @@
             label7.TabIndex = 51;
             label7.Text = "Address";
             // 
-            // checkBox8
+            // AddressAdd_Checkbox
             // 
-            checkBox8.AutoSize = true;
-            checkBox8.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox8.ForeColor = Color.FromArgb(41, 128, 185);
-            checkBox8.Location = new Point(3, 341);
-            checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(81, 31);
-            checkBox8.TabIndex = 50;
-            checkBox8.Text = "Add";
-            checkBox8.UseVisualStyleBackColor = true;
+            AddressAdd_Checkbox.AutoSize = true;
+            AddressAdd_Checkbox.Font = new Font("Stencil", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AddressAdd_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
+            AddressAdd_Checkbox.Location = new Point(3, 341);
+            AddressAdd_Checkbox.Name = "AddressAdd_Checkbox";
+            AddressAdd_Checkbox.Size = new Size(81, 31);
+            AddressAdd_Checkbox.TabIndex = 50;
+            AddressAdd_Checkbox.Text = "Add";
+            AddressAdd_Checkbox.UseVisualStyleBackColor = true;
+            AddressAdd_Checkbox.CheckedChanged += AddressAdd_Checkbox_CheckedChanged;
             // 
             // Floor_Text
             // 
@@ -403,7 +412,7 @@
             Floor_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Floor_Text.Location = new Point(712, 565);
             Floor_Text.Name = "Floor_Text";
-            Floor_Text.Size = new Size(200, 34);
+            Floor_Text.Size = new Size(251, 34);
             Floor_Text.TabIndex = 56;
             // 
             // Building_Text
@@ -510,22 +519,22 @@
             Controls.Add(Floor_Text);
             Controls.Add(Address_Combo);
             Controls.Add(AddDistrict_Text);
-            Controls.Add(checkBox6);
-            Controls.Add(checkBox7);
+            Controls.Add(AddressEdit_Checkbox);
+            Controls.Add(AddressDel_Checkbox);
             Controls.Add(label7);
-            Controls.Add(checkBox8);
+            Controls.Add(AddressAdd_Checkbox);
             Controls.Add(District_Combo);
             Controls.Add(District_Text);
-            Controls.Add(checkBox3);
-            Controls.Add(checkBox4);
+            Controls.Add(DistrictEdit_Checkbox);
+            Controls.Add(DistrictDel_Checkbox);
             Controls.Add(label6);
-            Controls.Add(checkBox5);
+            Controls.Add(DistrictAdd_Checkbox);
             Controls.Add(Phone_Combo);
             Controls.Add(Phone_Text);
-            Controls.Add(checkBox2);
-            Controls.Add(checkBox1);
+            Controls.Add(UserEdit_Checkbox);
+            Controls.Add(UserDel_Checkbox);
             Controls.Add(label5);
-            Controls.Add(User_Checkbox);
+            Controls.Add(UserAdd_Checkbox);
             Controls.Add(label3);
             Controls.Add(Name_Text);
             Controls.Add(label2);
@@ -560,24 +569,24 @@
         private TextBox CnfPassword_Text;
         private Label label3;
         private TextBox Name_Text;
-        private CheckBox User_Checkbox;
+        private CheckBox UserAdd_Checkbox;
         private Label label5;
-        private CheckBox checkBox1;
-        private CheckBox checkBox2;
+        private CheckBox UserDel_Checkbox;
+        private CheckBox UserEdit_Checkbox;
         private TextBox Phone_Text;
         private ComboBox Phone_Combo;
         private ComboBox District_Combo;
         private TextBox District_Text;
-        private CheckBox checkBox3;
-        private CheckBox checkBox4;
+        private CheckBox DistrictEdit_Checkbox;
+        private CheckBox DistrictDel_Checkbox;
         private Label label6;
-        private CheckBox checkBox5;
+        private CheckBox DistrictAdd_Checkbox;
         private ComboBox Address_Combo;
         private TextBox AddDistrict_Text;
-        private CheckBox checkBox6;
-        private CheckBox checkBox7;
+        private CheckBox AddressEdit_Checkbox;
+        private CheckBox AddressDel_Checkbox;
         private Label label7;
-        private CheckBox checkBox8;
+        private CheckBox AddressAdd_Checkbox;
         private TextBox Floor_Text;
         private TextBox Building_Text;
         private TextBox Street_Text;
