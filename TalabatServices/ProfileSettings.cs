@@ -57,6 +57,29 @@ namespace TalabatServices
             label8.Hide();
             label11.Hide();
             label12.Hide();
+
+            //user
+            /*DistrictAdd_Checkbox.Hide();
+            DistrictEdit_Checkbox.Hide();
+            DistrictDel_Checkbox.Hide();
+            label6.Hide();
+            District_Text.Hide();
+            District_Combo.Hide();
+            AddressAdd_Checkbox.Location = new Point(2, 280);
+            AddressEdit_Checkbox.Location = new Point(89,280);
+            AddressDel_Checkbox.Location = new Point(184, 280);
+            label7.Location = new Point(308,280);
+            AddDistrict_Text.Location = new Point(713,280);
+            label10.Location = new Point(510,282);
+            Street_Text.Location = new Point(713, 338);
+            label9.Location = new Point(510,340);
+            label8.Location = new Point(510,394);
+            Building_Text.Location = new Point(713,390);
+            Apartment_Text.Location = new Point(713,447);
+            label11.Location = new Point(510, 451);
+            Address_Combo.Location = new Point(969,280);
+            label12.Location = new Point(505,508);
+            Floor_Text.Location = new Point(712, 508);*/
         }
         private void UserAdd_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
