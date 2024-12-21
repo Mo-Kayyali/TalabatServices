@@ -35,7 +35,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            BackgroundImage = Properties.Resources.Proj_pic;
+//            BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(800, 450);
             FormBorderStyle = FormBorderStyle.FixedSingle;

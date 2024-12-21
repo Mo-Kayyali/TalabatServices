@@ -70,24 +70,35 @@ namespace TalabatServices
                 connection.Open();
 
                 //  DataGridView to DB
+     
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (!row.IsNewRow)
                     {
-                        string query = "INSERT INTO اسم_الجدول (اسم_العنصر, الكمية, السعر) VALUES (@name, @quantity, @price)";
-                        SqlCommand command = new SqlCommand(query, connection);
-
-                        command.Parameters.AddWithValue("@name", row.Cells[0].Value);
-                        command.Parameters.AddWithValue("@quantity", row.Cells[1].Value);
-                        command.Parameters.AddWithValue("@price", row.Cells[2].Value);
-
-                        command.ExecuteNonQuery();
+                        string query = @"
+                        INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
+                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
+                
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                    
+                            command.Parameters.AddWithValue("@U_ID", CurrentUserID); // Replace with the logged-in user ID
+                            command.Parameters.AddWithValue("@W_ID", WorkerID); // Replace with selected worker ID
+                            command.Parameters.AddWithValue("@S_ID", ServiceID); // Replace with selected service ID
+                            command.Parameters.AddWithValue("@Req_ID", RequestID); // Replace with associated request ID
+                            command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemNameColumn"].Value); // Adjust column name
+                            command.Parameters.AddWithValue("@Quantity", row.Cells["QuantityColumn"].Value); // Adjust column name
+                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["CostColumn"].Value); // Adjust column name
+                    
+                            command.ExecuteNonQuery();
+                         }
                     }
                 }
 
-                MessageBox.Show("Data Saved Successfully!");
+                MessageBox.Show("Items added to cart successfully!");
                 dataGridView1.Rows.Clear();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"Oops!: {ex.Message}");
