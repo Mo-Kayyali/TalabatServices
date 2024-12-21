@@ -69,60 +69,118 @@ namespace TalabatServices
             string Apartment = Apartment_Textbox.Text;
             string Floor = Floor_Textbox.Text;
 
-
-
-            if (string.IsNullOrEmpty(Name_Textbox.Text))
+            if (User_Checkbox.Checked)
             {
-                MessageBox.Show("Please Enter Name");
-                return;
-            }
-
-
-
-            //string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
-            //string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
-            //string userqueryinsert3 = @"insert into User_Addresses(Street_Name,Building_No,Apartment_No,District,Floor_No) values(@District2_StreetName,@Building,@Apartment,@Floor)";
-
-            string ConString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-
-            using (SqlConnection conn = new SqlConnection(ConString))
-            {
-                try
+                if (string.IsNullOrEmpty(Name_Textbox.Text))
                 {
-                    conn.Open();
+                    MessageBox.Show("Please Enter Name");
+                    return;
+                }
 
-                    // Insert into Users table
-                    string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
-                    SqlCommand SCM = new SqlCommand(userqueryinsert, conn);
-                    SCM.Parameters.AddWithValue("@Name", Name);
-                    SCM.Parameters.AddWithValue("@Email", Email);
-                    SCM.Parameters.AddWithValue("@Password", Password);
-                    SCM.ExecuteNonQuery();
 
-                    // Insert into User_Phones table
-                    string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
-                    SCM = new SqlCommand(userqueryinsert2, conn);
-                    SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
-                    SCM.ExecuteNonQuery();
 
-                    // Insert into User_Addresses table
-                    string userqueryinsert3 = @"insert into User_Addresses(Street_Name, Building_No, Apartment_No, District, Floor_No) 
+                string ConString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                using (SqlConnection conn = new SqlConnection(ConString))
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        // Insert into Users table
+                        string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
+                        SqlCommand SCM = new SqlCommand(userqueryinsert, conn);
+                        SCM.Parameters.AddWithValue("@Name", Name);
+                        SCM.Parameters.AddWithValue("@Email", Email);
+                        SCM.Parameters.AddWithValue("@Password", Password);
+                        SCM.ExecuteNonQuery();
+
+                        // Insert into User_Phones table
+                        string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
+                        SCM = new SqlCommand(userqueryinsert2, conn);
+                        SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        SCM.ExecuteNonQuery();
+
+                        // Insert into User_Addresses table
+                        string userqueryinsert3 = @"insert into User_Addresses(Street_Name, Building_No, Apartment_No, District, Floor_No) 
                                     values(@District2_StreetName, @Building, @Apartment, @District, @Floor)";
-                    SCM = new SqlCommand(userqueryinsert3, conn);
-                    SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
-                    SCM.Parameters.AddWithValue("@Building", Building);
-                    SCM.Parameters.AddWithValue("@Apartment", Apartment);
-                    SCM.Parameters.AddWithValue("@District", District);
-                    SCM.Parameters.AddWithValue("@Floor", Floor);
-                    SCM.ExecuteNonQuery();
+                        SCM = new SqlCommand(userqueryinsert3, conn);
+                        SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
+                        SCM.Parameters.AddWithValue("@Building", Building);
+                        SCM.Parameters.AddWithValue("@Apartment", Apartment);
+                        SCM.Parameters.AddWithValue("@District", District);
+                        SCM.Parameters.AddWithValue("@Floor", Floor);
+                        SCM.ExecuteNonQuery();
 
-                    MessageBox.Show("Account Created Successfully!");
+                        MessageBox.Show("Account Created Successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
+
+            }else if (Worker_Checkbox.Checked)
+            {
+                if (string.IsNullOrEmpty(Name_Textbox.Text))
                 {
-                    MessageBox.Show($"Error: {ex.Message}");
+                    MessageBox.Show("Please Enter Name");
+                    return;
+                }
+
+
+
+                //string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
+                //string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
+                //string userqueryinsert3 = @"insert into User_Addresses(Street_Name,Building_No,Apartment_No,District,Floor_No) values(@District2_StreetName,@Building,@Apartment,@Floor)";
+
+                string ConString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                using (SqlConnection conn = new SqlConnection(ConString))
+                {
+                    try
+                    {
+                        conn.Open();
+
+                        // Insert into Users table
+                        string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
+                        SqlCommand SCM = new SqlCommand(userqueryinsert, conn);
+                        SCM.Parameters.AddWithValue("@Name", Name);
+                        SCM.Parameters.AddWithValue("@Email", Email);
+                        SCM.Parameters.AddWithValue("@Password", Password);
+                        SCM.ExecuteNonQuery();
+
+                        // Insert into User_Phones table
+                        string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
+                        SCM = new SqlCommand(userqueryinsert2, conn);
+                        SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        SCM.ExecuteNonQuery();
+
+                        // Insert into User_Addresses table
+                        string userqueryinsert3 = @"insert into User_Addresses(Street_Name, Building_No, Apartment_No, District, Floor_No) 
+                                    values(@District2_StreetName, @Building, @Apartment, @District, @Floor)";
+                        SCM = new SqlCommand(userqueryinsert3, conn);
+                        SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
+                        SCM.Parameters.AddWithValue("@Building", Building);
+                        SCM.Parameters.AddWithValue("@Apartment", Apartment);
+                        SCM.Parameters.AddWithValue("@District", District);
+                        SCM.Parameters.AddWithValue("@Floor", Floor);
+                        SCM.ExecuteNonQuery();
+
+                        MessageBox.Show("Account Created Successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Please Select User Or Worker");
+            }   
+
+            
 
 
 
