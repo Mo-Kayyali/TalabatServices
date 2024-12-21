@@ -92,6 +92,9 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
+
+//            BackgroundImage = Properties.Resources.Proj_pic;
+
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1124, 681);
             Controls.Add(District_lbl);

@@ -28,24 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            subheadline = new Label();
+            getstarted = new Button();
+            setting = new Button();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Arial Black", 22.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.FromArgb(41, 128, 158);
+            label1.Location = new Point(172, 9);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(652, 63);
+            label1.TabIndex = 0;
+            label1.Text = "find trusted services near you";
+            // 
+            // subheadline
+            // 
+            subheadline.AutoEllipsis = true;
+            subheadline.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
+            subheadline.ForeColor = Color.FromArgb(41, 128, 185);
+            subheadline.Location = new Point(226, 113);
+            subheadline.Name = "subheadline";
+            subheadline.Size = new Size(555, 127);
+            subheadline.TabIndex = 1;
+            subheadline.Text = "Choose from variety of services and get connected with reliable professionals in your area";
+            subheadline.TextAlign = ContentAlignment.MiddleCenter;
+            subheadline.UseCompatibleTextRendering = true;
+            subheadline.Click += label2_Click;
+            // 
+            // getstarted
+            // 
+            getstarted.BackColor = Color.FromArgb(41, 128, 185);
+            getstarted.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            getstarted.Location = new Point(415, 336);
+            getstarted.Name = "getstarted";
+            getstarted.Size = new Size(176, 61);
+            getstarted.TabIndex = 2;
+            getstarted.Text = "GET STARTED";
+            getstarted.UseVisualStyleBackColor = false;
+            getstarted.Click += button1_Click;
+            // 
+            // setting
+            // 
+            setting.BackColor = Color.FromArgb(41, 128, 185);
+            setting.Location = new Point(894, 29);
+            setting.Name = "setting";
+            setting.Size = new Size(94, 43);
+            setting.TabIndex = 3;
+            setting.Text = "setting";
+            setting.UseVisualStyleBackColor = false;
+            setting.Click += setting_Click;
             // 
             // UserHomePage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 518);
+            Controls.Add(setting);
+            Controls.Add(getstarted);
+            Controls.Add(subheadline);
+            Controls.Add(label1);
+            Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "UserHomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UserHomePage";
+            Load += UserHomePage_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Label label1;
+        private Label subheadline;
+        private Button getstarted;
+        private Button setting;
     }
 }
