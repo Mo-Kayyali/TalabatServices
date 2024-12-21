@@ -78,7 +78,7 @@
             setting.Name = "setting";
             setting.Size = new Size(94, 43);
             setting.TabIndex = 3;
-            setting.Text = "setting";
+            setting.Text = "Settings";
             setting.UseVisualStyleBackColor = false;
             setting.Click += setting_Click;
             // 
