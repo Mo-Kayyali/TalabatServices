@@ -159,9 +159,10 @@ namespace TalabatServices
                         int workerId = (int)SCM.ExecuteScalar();
 
                         // Now insert into Worker_Phones table
-                        string workerqueryinsert2 = @"INSERT INTO Worker_Phones (Phone) VALUES (@PhoneNumber)";
+                        string workerqueryinsert2 = @"INSERT INTO Worker_Phones (W_ID,Phone) VALUES (@W_ID,@PhoneNumber)";
                         SCM = new SqlCommand(workerqueryinsert2, conn);
                         SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        SCM.Parameters.AddWithValue("@W_ID", workerId);
                         SCM.ExecuteNonQuery();
 
                         // Insert into Worker_Districts table using the captured W_ID
