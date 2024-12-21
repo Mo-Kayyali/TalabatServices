@@ -77,7 +77,7 @@ namespace TalabatServices
                     {
                         string query = @"
                         INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
-                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
+                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @ItemName, @Quantity, @Cost)";
                 
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -86,9 +86,9 @@ namespace TalabatServices
                             command.Parameters.AddWithValue("@W_ID", WorkerID); // Replace with selected worker ID
                             command.Parameters.AddWithValue("@S_ID", ServiceID); // Replace with selected service ID
                             command.Parameters.AddWithValue("@Req_ID", RequestID); // Replace with associated request ID
-                            command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemNameColumn"].Value); // Adjust column name
-                            command.Parameters.AddWithValue("@Quantity", row.Cells["QuantityColumn"].Value); // Adjust column name
-                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["CostColumn"].Value); // Adjust column name
+                            command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemName"].Value); 
+                            command.Parameters.AddWithValue("@Quantity", row.Cells["Quantity"].Value); 
+                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["Cost"].Value); 
                     
                             command.ExecuteNonQuery();
                          }
