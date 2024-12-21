@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TalabatServices
 {
@@ -77,6 +78,78 @@ namespace TalabatServices
                     MessageBox.Show("Please Enter Name");
                     return;
                 }
+                if (string.IsNullOrEmpty(Email_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Email");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Password_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Password");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phonenumber_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Phone Number");
+                    return;
+                }
+                if (string.IsNullOrEmpty(District_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter District");
+                    return;
+                }
+                if (string.IsNullOrEmpty(District2_StreetName_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Street Name");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Building_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Building Number");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Apartment_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Apartment Number");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Floor_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Floor Number");
+                    return;
+                }
+
+
+                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) || !Phonenumber_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter a valid Phone Number.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(Phonenumber2_Textbox.Text) || !Phonenumber2_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter a valid Optional Phone Number.");
+                    return;
+                }
+                if (!Email_Textbox.Text.Contains("@"))
+                {
+                    MessageBox.Show("Please enter a valid email address containing '@'");
+                }
+
+                if (string.IsNullOrWhiteSpace(Apartment_Textbox.Text) || !Apartment_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter Apartment Number in Numbers.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(Floor_Textbox.Text) || !Floor_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter Floor Number in Numbers.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(Building_Textbox.Text) || !Building_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter Building Number in Numbers.");
+                    return;
+                }
 
 
 
@@ -89,29 +162,42 @@ namespace TalabatServices
                         conn.Open();
 
                         // Insert into Users table
-                        string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
+                        string userqueryinsert = @"insert into Users(Name, Email, Password) OUTPUT INSERTED.U_ID values(@Name,@Email,@Password)";
                         SqlCommand SCM = new SqlCommand(userqueryinsert, conn);
                         SCM.Parameters.AddWithValue("@Name", Name);
                         SCM.Parameters.AddWithValue("@Email", Email);
                         SCM.Parameters.AddWithValue("@Password", Password);
-                        SCM.ExecuteNonQuery();
+
+                        int userID = (int)SCM.ExecuteScalar();
 
                         // Insert into User_Phones table
-                        string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
+                        string userqueryinsert2 = @"insert into User_Phones(U_ID,Phone) values(@U_ID,@PhoneNumber)";
                         SCM = new SqlCommand(userqueryinsert2, conn);
                         SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                        SCM.Parameters.AddWithValue("@U_ID", userID);
                         SCM.ExecuteNonQuery();
 
+                        if (!String.IsNullOrEmpty(Phonenumber2_Textbox.Text))
+                        {
+                            string workerqueryinsert5 = @"INSERT INTO User_Phones(U_ID,Phone) VALUES (@U_ID,@PhoneNumber)";
+                            SCM = new SqlCommand(workerqueryinsert5, conn);
+                            SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber2);
+                            SCM.Parameters.AddWithValue("@U_ID", userID);
+                            SCM.ExecuteNonQuery();
+                        }
+
                         // Insert into User_Addresses table
-                        string userqueryinsert3 = @"insert into User_Addresses(Street_Name, Building_No, Apartment_No, District, Floor_No) 
-                                    values(@District2_StreetName, @Building, @Apartment, @District, @Floor)";
+                        string userqueryinsert3 = @"insert into User_Addresses(U_ID,Street_Name, Building_No, Apartment_No, District, Floor_No) 
+                                    values(@U_ID,@District2_StreetName, @Building, @Apartment, @District, @Floor)";
                         SCM = new SqlCommand(userqueryinsert3, conn);
+                        SCM.Parameters.AddWithValue("@U_ID", userID);
                         SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
                         SCM.Parameters.AddWithValue("@Building", Building);
                         SCM.Parameters.AddWithValue("@Apartment", Apartment);
                         SCM.Parameters.AddWithValue("@District", District);
                         SCM.Parameters.AddWithValue("@Floor", Floor);
                         SCM.ExecuteNonQuery();
+
 
                         MessageBox.Show("Account Created Successfully!");
                         this.Hide();
@@ -131,10 +217,52 @@ namespace TalabatServices
                     MessageBox.Show("Please Enter Name");
                     return;
                 }
+                if (string.IsNullOrEmpty(Email_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Email");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Password_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Password");
+                    return;
+                }
+                if (string.IsNullOrEmpty(Phonenumber_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter Phone Number");
+                    return;
+                }
+                if (string.IsNullOrEmpty(District_Textbox.Text))
+                {
+                    MessageBox.Show("Please Enter District");
+                    return;
+                }
+                if (Service_Combobox.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please Enter Select Service Ur Offering");
+                    return;
+                }
+
+
+                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) || !Phonenumber_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter a valid Phone Number.");
+                    return;
+                }
+                if (string.IsNullOrWhiteSpace(Phonenumber2_Textbox.Text) || !Phonenumber2_Textbox.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("Please enter a valid Optional Phone Number.");
+                    return;
+                }
+                if (!Email_Textbox.Text.Contains("@"))
+                {
+                    MessageBox.Show("Please enter a valid email address containing '@'");
+                }
 
 
 
-             
+
+
 
                 string ConString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
