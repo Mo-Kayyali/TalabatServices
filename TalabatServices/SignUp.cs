@@ -24,6 +24,7 @@ namespace TalabatServices
         }
         private void SignUp_Load(object sender, EventArgs e)
         {
+            LoadServices();
 
             label3.Hide();
             label4.Hide();
@@ -113,6 +114,9 @@ namespace TalabatServices
                         SCM.ExecuteNonQuery();
 
                         MessageBox.Show("Account Created Successfully!");
+                        this.Hide();
+                        Login LG = new Login();
+                        LG.Show();
                     }
                     catch (Exception ex)
                     {
@@ -130,9 +134,7 @@ namespace TalabatServices
 
 
 
-                //string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
-                //string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
-                //string userqueryinsert3 = @"insert into User_Addresses(Street_Name,Building_No,Apartment_No,District,Floor_No) values(@District2_StreetName,@Building,@Apartment,@Floor)";
+             
 
                 string ConString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
@@ -142,32 +144,51 @@ namespace TalabatServices
                     {
                         conn.Open();
 
-                        // Insert into Users table
-                        string userqueryinsert = @"insert into Users(Name, Email, Password) values(@Name,@Email,@Password)";
-                        SqlCommand SCM = new SqlCommand(userqueryinsert, conn);
+                        string workerqueryinsert = @"
+            INSERT INTO Workers (Name, Email, Password, S_ID) 
+            OUTPUT INSERTED.W_ID
+            VALUES (@Name, @Email, @Password, 
+                    (SELECT S.S_ID FROM Services S WHERE S.Name = @Service))";
+                        SqlCommand SCM = new SqlCommand(workerqueryinsert, conn);
                         SCM.Parameters.AddWithValue("@Name", Name);
                         SCM.Parameters.AddWithValue("@Email", Email);
                         SCM.Parameters.AddWithValue("@Password", Password);
-                        SCM.ExecuteNonQuery();
+                        SCM.Parameters.AddWithValue("@Service", Service);
 
-                        // Insert into User_Phones table
-                        string userqueryinsert2 = @"insert into User_Phones(Phone) values(@PhoneNumber)";
-                        SCM = new SqlCommand(userqueryinsert2, conn);
+                        // Get the W_ID of the newly inserted worker
+                        int workerId = (int)SCM.ExecuteScalar();
+
+                        // Now insert into Worker_Phones table
+                        string workerqueryinsert2 = @"INSERT INTO Worker_Phones (Phone) VALUES (@PhoneNumber)";
+                        SCM = new SqlCommand(workerqueryinsert2, conn);
                         SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         SCM.ExecuteNonQuery();
 
-                        // Insert into User_Addresses table
-                        string userqueryinsert3 = @"insert into User_Addresses(Street_Name, Building_No, Apartment_No, District, Floor_No) 
-                                    values(@District2_StreetName, @Building, @Apartment, @District, @Floor)";
-                        SCM = new SqlCommand(userqueryinsert3, conn);
-                        SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
-                        SCM.Parameters.AddWithValue("@Building", Building);
-                        SCM.Parameters.AddWithValue("@Apartment", Apartment);
+                        // Insert into Worker_Districts table using the captured W_ID
+                        string workerqueryinsert3 = @"
+            INSERT INTO Worker_Districts (W_ID, District) 
+            VALUES (@W_ID, @District)";
+                        SCM = new SqlCommand(workerqueryinsert3, conn);
+                        SCM.Parameters.AddWithValue("@W_ID", workerId); // Use the captured W_ID
                         SCM.Parameters.AddWithValue("@District", District);
-                        SCM.Parameters.AddWithValue("@Floor", Floor);
                         SCM.ExecuteNonQuery();
 
+
+                        if (!String.IsNullOrEmpty(District2_StreetName_Textbox.Text))
+                        {
+                            string workerqueryinsert4 = @"
+            INSERT INTO Worker_Districts (W_ID, District) 
+            VALUES (@W_ID, @District2_StreetName)";
+                            SCM = new SqlCommand(workerqueryinsert4, conn);
+                            SCM.Parameters.AddWithValue("@W_ID", workerId); // Use the captured W_ID
+                            SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
+                            SCM.ExecuteNonQuery();
+                        }
+
                         MessageBox.Show("Account Created Successfully!");
+                        this.Hide();
+                        Login LG = new Login();
+                        LG.Show();
                     }
                     catch (Exception ex)
                     {
@@ -175,22 +196,46 @@ namespace TalabatServices
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("Please Select User Or Worker");
-            }   
+             
 
             
 
 
 
-            if (User_Checkbox.Checked)
-            {
-                //
-            }
+            
 
         }
 
+
+        private void LoadServices()
+        {
+            try
+            {
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT Name FROM Services";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Service_Combobox.Items.Add(reader["Name"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading Services: {ex.Message}");
+            }
+        }
         private void User_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (User_Checkbox.Checked)
