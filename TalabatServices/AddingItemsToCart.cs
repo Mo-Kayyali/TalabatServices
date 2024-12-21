@@ -113,6 +113,10 @@ namespace TalabatServices
             }
 
             //need to connect this form with the checkout form here after submission
+
+            this.Hide();
+            CheckOut Co = new CheckOut(RequestID);
+            Co.Show();
         }
 
 
