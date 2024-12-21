@@ -203,6 +203,7 @@
             UserAdd_Checkbox.TabIndex = 23;
             UserAdd_Checkbox.Text = "Add";
             UserAdd_Checkbox.UseVisualStyleBackColor = true;
+            UserAdd_Checkbox.CheckedChanged += UserAdd_Checkbox_CheckedChanged;
             // 
             // label5
             // 
@@ -226,6 +227,7 @@
             UserDel_Checkbox.TabIndex = 27;
             UserDel_Checkbox.Text = "Delete";
             UserDel_Checkbox.UseVisualStyleBackColor = true;
+            UserDel_Checkbox.CheckedChanged += UserDel_Checkbox_CheckedChanged;
             // 
             // UserEdit_Checkbox
             // 
@@ -238,6 +240,7 @@
             UserEdit_Checkbox.TabIndex = 28;
             UserEdit_Checkbox.Text = "Edit";
             UserEdit_Checkbox.UseVisualStyleBackColor = true;
+            UserEdit_Checkbox.CheckedChanged += UserEdit_Checkbox_CheckedChanged;
             // 
             // Phone_Text
             // 
@@ -292,6 +295,7 @@
             DistrictEdit_Checkbox.TabIndex = 47;
             DistrictEdit_Checkbox.Text = "Edit";
             DistrictEdit_Checkbox.UseVisualStyleBackColor = true;
+            DistrictEdit_Checkbox.CheckedChanged += DistrictEdit_Checkbox_CheckedChanged;
             // 
             // DistrictDel_Checkbox
             // 
@@ -304,6 +308,7 @@
             DistrictDel_Checkbox.TabIndex = 46;
             DistrictDel_Checkbox.Text = "Delete";
             DistrictDel_Checkbox.UseVisualStyleBackColor = true;
+            DistrictDel_Checkbox.CheckedChanged += DistrictDel_Checkbox_CheckedChanged;
             // 
             // label6
             // 
@@ -327,6 +332,7 @@
             DistrictAdd_Checkbox.TabIndex = 44;
             DistrictAdd_Checkbox.Text = "Add";
             DistrictAdd_Checkbox.UseVisualStyleBackColor = true;
+            DistrictAdd_Checkbox.CheckedChanged += DistrictAdd_Checkbox_CheckedChanged;
             // 
             // Address_Combo
             // 
@@ -360,6 +366,7 @@
             AddressEdit_Checkbox.TabIndex = 53;
             AddressEdit_Checkbox.Text = "Edit";
             AddressEdit_Checkbox.UseVisualStyleBackColor = true;
+            AddressEdit_Checkbox.CheckedChanged += AddressEdit_Checkbox_CheckedChanged;
             // 
             // AddressDel_Checkbox
             // 
@@ -372,6 +379,7 @@
             AddressDel_Checkbox.TabIndex = 52;
             AddressDel_Checkbox.Text = "Delete";
             AddressDel_Checkbox.UseVisualStyleBackColor = true;
+            AddressDel_Checkbox.CheckedChanged += AddressDel_Checkbox_CheckedChanged;
             // 
             // label7
             // 
@@ -395,6 +403,7 @@
             AddressAdd_Checkbox.TabIndex = 50;
             AddressAdd_Checkbox.Text = "Add";
             AddressAdd_Checkbox.UseVisualStyleBackColor = true;
+            AddressAdd_Checkbox.CheckedChanged += AddressAdd_Checkbox_CheckedChanged;
             // 
             // Floor_Text
             // 
@@ -403,7 +412,7 @@
             Floor_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Floor_Text.Location = new Point(712, 565);
             Floor_Text.Name = "Floor_Text";
-            Floor_Text.Size = new Size(200, 34);
+            Floor_Text.Size = new Size(251, 34);
             Floor_Text.TabIndex = 56;
             // 
             // Building_Text
