@@ -13,9 +13,17 @@ namespace TalabatServices
 {
     public partial class AddingItemsToCart : Form
     {
-        public AddingItemsToCart()
+        private int CurrentUserID;
+        private int WorkerID;
+        private int ServiceID;
+        private int RequestID;
+        public AddingItemsToCart(int currentuserid, int workerid, int serviceid, int requestid)
         {
             InitializeComponent();
+            CurrentUserID = currentuserid;
+            WorkerID = workerid;
+            ServiceID = serviceid;
+            RequestID = requestid;
         }
 
         private void AddingItemsToCart_Load(object sender, EventArgs e)
@@ -62,10 +70,10 @@ namespace TalabatServices
         private void SubmitToDB_Btn_Click(object sender, EventArgs e)
         {
             // This is a dummy code to show how to connect to a database and insert data from a DataGridView
-            /*try
+            try
             {
                 // DB Connection
-                string connectionString = "Data Source=.;Initial Catalog=اسم_الداتابيز;Integrated Security=True";
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
 
@@ -77,7 +85,7 @@ namespace TalabatServices
                     {
                         string query = @"
                         INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
-                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @ItemName, @Quantity, @Cost)";
+                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
                 
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -88,7 +96,7 @@ namespace TalabatServices
                             command.Parameters.AddWithValue("@Req_ID", RequestID); // Replace with associated request ID
                             command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemName"].Value); 
                             command.Parameters.AddWithValue("@Quantity", row.Cells["Quantity"].Value); 
-                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["Cost"].Value); 
+                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["Price"].Value); 
                     
                             command.ExecuteNonQuery();
                          }
@@ -102,7 +110,7 @@ namespace TalabatServices
             catch (Exception ex)
             {
                 MessageBox.Show($"Oops!: {ex.Message}");
-            }*/
+            }
 
             //need to connect this form with the checkout form here after submission
         }

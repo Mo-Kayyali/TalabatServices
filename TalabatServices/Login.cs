@@ -70,7 +70,7 @@ namespace TalabatServices
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddingItemsToCart ITTC = new AddingItemsToCart();
+            AddingItemsToCart ITTC = new AddingItemsToCart(1,1,1,1);
             ITTC.Show();
         }
 
