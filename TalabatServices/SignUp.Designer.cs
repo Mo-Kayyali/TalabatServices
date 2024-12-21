@@ -115,7 +115,7 @@
             Password_Textbox.Location = new Point(427, 250);
             Password_Textbox.Name = "Password_Textbox";
             Password_Textbox.Size = new Size(376, 34);
-            Password_Textbox.TabIndex = 14;
+            Password_Textbox.TabIndex = 3;
             Password_Textbox.UseSystemPasswordChar = true;
             // 
             // Email_Textbox
@@ -126,7 +126,7 @@
             Email_Textbox.Location = new Point(427, 190);
             Email_Textbox.Name = "Email_Textbox";
             Email_Textbox.Size = new Size(376, 34);
-            Email_Textbox.TabIndex = 13;
+            Email_Textbox.TabIndex = 2;
             // 
             // User_Checkbox
             // 
@@ -182,7 +182,7 @@
             Name_Textbox.Location = new Point(427, 130);
             Name_Textbox.Name = "Name_Textbox";
             Name_Textbox.Size = new Size(376, 34);
-            Name_Textbox.TabIndex = 26;
+            Name_Textbox.TabIndex = 1;
             // 
             // label6
             // 
@@ -203,7 +203,7 @@
             Phonenumber2_Textbox.Location = new Point(427, 365);
             Phonenumber2_Textbox.Name = "Phonenumber2_Textbox";
             Phonenumber2_Textbox.Size = new Size(376, 34);
-            Phonenumber2_Textbox.TabIndex = 28;
+            Phonenumber2_Textbox.TabIndex = 5;
             // 
             // label7
             // 
@@ -224,7 +224,7 @@
             Phonenumber_Textbox.Location = new Point(427, 307);
             Phonenumber_Textbox.Name = "Phonenumber_Textbox";
             Phonenumber_Textbox.Size = new Size(376, 34);
-            Phonenumber_Textbox.TabIndex = 30;
+            Phonenumber_Textbox.TabIndex = 4;
             // 
             // label8
             // 
@@ -245,7 +245,7 @@
             Apartment_Textbox.Location = new Point(1182, 369);
             Apartment_Textbox.Name = "Apartment_Textbox";
             Apartment_Textbox.Size = new Size(376, 34);
-            Apartment_Textbox.TabIndex = 32;
+            Apartment_Textbox.TabIndex = 10;
             // 
             // label9
             // 
@@ -266,7 +266,7 @@
             Floor_Textbox.Location = new Point(1182, 308);
             Floor_Textbox.Name = "Floor_Textbox";
             Floor_Textbox.Size = new Size(376, 34);
-            Floor_Textbox.TabIndex = 34;
+            Floor_Textbox.TabIndex = 9;
             // 
             // label10
             // 
@@ -287,7 +287,7 @@
             Building_Textbox.Location = new Point(1182, 248);
             Building_Textbox.Name = "Building_Textbox";
             Building_Textbox.Size = new Size(376, 34);
-            Building_Textbox.TabIndex = 36;
+            Building_Textbox.TabIndex = 8;
             // 
             // label11
             // 
@@ -308,7 +308,7 @@
             District2_StreetName_Textbox.Location = new Point(1182, 188);
             District2_StreetName_Textbox.Name = "District2_StreetName_Textbox";
             District2_StreetName_Textbox.Size = new Size(376, 34);
-            District2_StreetName_Textbox.TabIndex = 38;
+            District2_StreetName_Textbox.TabIndex = 7;
             // 
             // label12
             // 
@@ -329,7 +329,7 @@
             District_Textbox.Location = new Point(1182, 128);
             District_Textbox.Name = "District_Textbox";
             District_Textbox.Size = new Size(376, 34);
-            District_Textbox.TabIndex = 40;
+            District_Textbox.TabIndex = 6;
             // 
             // Service_Combobox
             // 
@@ -340,7 +340,7 @@
             Service_Combobox.Location = new Point(427, 426);
             Service_Combobox.Name = "Service_Combobox";
             Service_Combobox.Size = new Size(376, 40);
-            Service_Combobox.TabIndex = 42;
+            Service_Combobox.TabIndex = 11;
             // 
             // label13
             // 

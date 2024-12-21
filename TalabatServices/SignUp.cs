@@ -165,6 +165,15 @@ namespace TalabatServices
                         SCM.Parameters.AddWithValue("@W_ID", workerId);
                         SCM.ExecuteNonQuery();
 
+                        if (!String.IsNullOrEmpty(Phonenumber2_Textbox.Text))
+                        {
+                            string workerqueryinsert5 = @"INSERT INTO Worker_Phones (W_ID,Phone) VALUES (@W_ID,@PhoneNumber)";
+                            SCM = new SqlCommand(workerqueryinsert5, conn);
+                            SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber2);
+                            SCM.Parameters.AddWithValue("@W_ID", workerId);
+                            SCM.ExecuteNonQuery();
+                        }
+
                         // Insert into Worker_Districts table using the captured W_ID
                         string workerqueryinsert3 = @"
             INSERT INTO Worker_Districts (W_ID, District) 
