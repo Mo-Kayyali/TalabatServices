@@ -31,16 +31,15 @@ namespace TalabatServices
         {
             try
             {
-                string connectionString = "Data Source=.;Initial Catalog=اسم الداتا بيز ;Integrated Security=True";
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
 
-                    // fetchin' worker's name and rating
                     string query = @"
-                        SELECT Name, Rating 
+                        SELECT Name, Rate 
                         FROM Workers 
-                        WHERE WorkerID = @WorkerID";
+                        WHERE W_ID = @WorkerID";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -50,8 +49,18 @@ namespace TalabatServices
                         {
                             if (reader.Read())
                             {
-                                WorkerName_lbl.Text = reader["Name"].ToString();
-                                WorkerRating_lbl.Text = $"Rating: {reader["Rating"]}";
+                                string workerName = reader["Name"] == DBNull.Value ? "N/A" : reader["Name"].ToString();
+                                string workerRate = reader["Rate"] == DBNull.Value ? "N/A" : reader["Rate"].ToString();
+
+                                WorkerName_lbl.Text = workerName;
+                                WorkerRating_lbl.Text = $"Rating: {workerRate}";
+
+                                // Debugging message
+                                MessageBox.Show($"Loaded: {workerName}, {workerRate}");
+                            }
+                            else
+                            {
+                                MessageBox.Show("No worker found with the given ID.");
                             }
                         }
                     }
@@ -67,7 +76,7 @@ namespace TalabatServices
         {
             try
             {
-                string connectionString = "Data Source=.;Initial Catalog=YourDatabaseName;Integrated Security=True";
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -102,7 +111,7 @@ namespace TalabatServices
         {
             try
             {
-                string connectionString = "Data Source=.;Initial Catalog=YourDatabaseName;Integrated Security=True";
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -122,7 +131,7 @@ namespace TalabatServices
                             adapter.Fill(ordersTable);
 
                             dataGridView_Orders.DataSource = ordersTable;
-                            AddAcceptButtonColumn(); //button to accept or nt
+                            AddAcceptButtonColumn(); //button to accept or not
                         }
                     }
                 }
@@ -156,12 +165,11 @@ namespace TalabatServices
 
                 try
                 {
-                    string connectionString = "Data Source=.;Initial Catalog=YourDatabaseName;Integrated Security=True";
+                    string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         connection.Open();
 
-                        // update status if accepted
                         string query = "UPDATE Request SET Status = 'Accepted', W_ID = @WorkerID WHERE Req_ID = @OrderID";
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -171,7 +179,7 @@ namespace TalabatServices
                             command.ExecuteNonQuery();
 
                             MessageBox.Show("Order accepted successfully!");
-                            LoadOrders(District_cb.SelectedItem.ToString()); 
+                            LoadOrders(District_cb.SelectedItem.ToString());
                         }
                     }
                 }
@@ -181,7 +189,6 @@ namespace TalabatServices
                 }
             }
         }
-
 
     }
 }

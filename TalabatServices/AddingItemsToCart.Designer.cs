@@ -44,32 +44,36 @@
             // 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(508, 37);
+            dataGridView1.Location = new Point(406, 30);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(730, 466);
+            dataGridView1.Size = new Size(584, 373);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // ItemName_tb
             // 
-            ItemName_tb.Location = new Point(293, 81);
+            ItemName_tb.Location = new Point(234, 65);
+            ItemName_tb.Margin = new Padding(2);
             ItemName_tb.Name = "ItemName_tb";
-            ItemName_tb.Size = new Size(150, 31);
+            ItemName_tb.Size = new Size(121, 27);
             ItemName_tb.TabIndex = 3;
             // 
             // Quantity_tb
             // 
-            Quantity_tb.Location = new Point(293, 206);
+            Quantity_tb.Location = new Point(234, 165);
+            Quantity_tb.Margin = new Padding(2);
             Quantity_tb.Name = "Quantity_tb";
-            Quantity_tb.Size = new Size(150, 31);
+            Quantity_tb.Size = new Size(121, 27);
             Quantity_tb.TabIndex = 4;
             // 
             // Price_tb
             // 
-            Price_tb.Location = new Point(293, 320);
+            Price_tb.Location = new Point(234, 256);
+            Price_tb.Margin = new Padding(2);
             Price_tb.Name = "Price_tb";
-            Price_tb.Size = new Size(150, 31);
+            Price_tb.Size = new Size(121, 27);
             Price_tb.TabIndex = 5;
             // 
             // Name_lbl
@@ -77,9 +81,10 @@
             Name_lbl.AutoSize = true;
             Name_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             Name_lbl.ForeColor = Color.FromArgb(41, 128, 185);
-            Name_lbl.Location = new Point(31, 73);
+            Name_lbl.Location = new Point(25, 58);
+            Name_lbl.Margin = new Padding(2, 0, 2, 0);
             Name_lbl.Name = "Name_lbl";
-            Name_lbl.Size = new Size(199, 39);
+            Name_lbl.Size = new Size(171, 33);
             Name_lbl.TabIndex = 6;
             Name_lbl.Text = "Item name";
             // 
@@ -88,9 +93,10 @@
             Quantity.AutoSize = true;
             Quantity.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             Quantity.ForeColor = Color.FromArgb(41, 128, 185);
-            Quantity.Location = new Point(31, 206);
+            Quantity.Location = new Point(25, 165);
+            Quantity.Margin = new Padding(2, 0, 2, 0);
             Quantity.Name = "Quantity";
-            Quantity.Size = new Size(183, 39);
+            Quantity.Size = new Size(158, 33);
             Quantity.TabIndex = 7;
             Quantity.Text = "Quantity";
             // 
@@ -99,9 +105,10 @@
             Price.AutoSize = true;
             Price.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             Price.ForeColor = Color.FromArgb(41, 128, 185);
-            Price.Location = new Point(31, 320);
+            Price.Location = new Point(25, 256);
+            Price.Margin = new Padding(2, 0, 2, 0);
             Price.Name = "Price";
-            Price.Size = new Size(211, 39);
+            Price.Size = new Size(181, 33);
             Price.TabIndex = 8;
             Price.Text = "Price/Item";
             // 
@@ -111,13 +118,13 @@
             SubmitToDB_Btn.FlatStyle = FlatStyle.Flat;
             SubmitToDB_Btn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SubmitToDB_Btn.ForeColor = Color.White;
-            SubmitToDB_Btn.Location = new Point(1008, 560);
-            SubmitToDB_Btn.Margin = new Padding(4);
+            SubmitToDB_Btn.Location = new Point(806, 448);
             SubmitToDB_Btn.Name = "SubmitToDB_Btn";
-            SubmitToDB_Btn.Size = new Size(144, 72);
+            SubmitToDB_Btn.Size = new Size(115, 58);
             SubmitToDB_Btn.TabIndex = 19;
             SubmitToDB_Btn.Text = "Finish!";
             SubmitToDB_Btn.UseVisualStyleBackColor = false;
+            SubmitToDB_Btn.Click += SubmitToDB_Btn_Click;
             // 
             // AddToGrid_Btn
             // 
@@ -125,21 +132,21 @@
             AddToGrid_Btn.FlatStyle = FlatStyle.Flat;
             AddToGrid_Btn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddToGrid_Btn.ForeColor = Color.White;
-            AddToGrid_Btn.Location = new Point(204, 439);
-            AddToGrid_Btn.Margin = new Padding(4);
+            AddToGrid_Btn.Location = new Point(163, 351);
             AddToGrid_Btn.Name = "AddToGrid_Btn";
-            AddToGrid_Btn.Size = new Size(108, 53);
+            AddToGrid_Btn.Size = new Size(86, 42);
             AddToGrid_Btn.TabIndex = 20;
             AddToGrid_Btn.Text = "Add";
             AddToGrid_Btn.UseVisualStyleBackColor = false;
+            AddToGrid_Btn.Click += AddToGrid_Btn_Click;
             // 
             // AddingItemsToCart
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1268, 741);
+            ClientSize = new Size(1014, 593);
             Controls.Add(AddToGrid_Btn);
             Controls.Add(SubmitToDB_Btn);
             Controls.Add(Price);
@@ -150,7 +157,6 @@
             Controls.Add(ItemName_tb);
             Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "AddingItemsToCart";
             StartPosition = FormStartPosition.CenterScreen;

@@ -70,7 +70,7 @@ namespace TalabatServices
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddingItemsToCart ITTC = new AddingItemsToCart();
+            AddingItemsToCart ITTC = new AddingItemsToCart(1,1,1,1);
             ITTC.Show();
         }
 
@@ -91,7 +91,7 @@ namespace TalabatServices
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide();
-            WorkerHomePage WHP = new WorkerHomePage();
+            WorkerHomePage WHP = new WorkerHomePage(1);
             WHP.Show();
         }
     }
