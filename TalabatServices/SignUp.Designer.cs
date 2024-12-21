@@ -204,7 +204,6 @@
             Phonenumber2_Textbox.Name = "Phonenumber2_Textbox";
             Phonenumber2_Textbox.Size = new Size(376, 34);
             Phonenumber2_Textbox.TabIndex = 28;
-            Phonenumber2_Textbox.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -226,7 +225,6 @@
             Phonenumber_Textbox.Name = "Phonenumber_Textbox";
             Phonenumber_Textbox.Size = new Size(376, 34);
             Phonenumber_Textbox.TabIndex = 30;
-            Phonenumber_Textbox.UseSystemPasswordChar = true;
             // 
             // label8
             // 
@@ -248,7 +246,6 @@
             Apartment_Textbox.Name = "Apartment_Textbox";
             Apartment_Textbox.Size = new Size(376, 34);
             Apartment_Textbox.TabIndex = 32;
-            Apartment_Textbox.UseSystemPasswordChar = true;
             // 
             // label9
             // 
@@ -270,7 +267,6 @@
             Floor_Textbox.Name = "Floor_Textbox";
             Floor_Textbox.Size = new Size(376, 34);
             Floor_Textbox.TabIndex = 34;
-            Floor_Textbox.UseSystemPasswordChar = true;
             // 
             // label10
             // 
@@ -292,7 +288,6 @@
             Building_Textbox.Name = "Building_Textbox";
             Building_Textbox.Size = new Size(376, 34);
             Building_Textbox.TabIndex = 36;
-            Building_Textbox.UseSystemPasswordChar = true;
             // 
             // label11
             // 
@@ -314,7 +309,6 @@
             District2_StreetName_Textbox.Name = "District2_StreetName_Textbox";
             District2_StreetName_Textbox.Size = new Size(376, 34);
             District2_StreetName_Textbox.TabIndex = 38;
-            District2_StreetName_Textbox.UseSystemPasswordChar = true;
             // 
             // label12
             // 
@@ -336,7 +330,6 @@
             District_Textbox.Name = "District_Textbox";
             District_Textbox.Size = new Size(376, 34);
             District_Textbox.TabIndex = 40;
-            District_Textbox.UseSystemPasswordChar = true;
             // 
             // Service_Combobox
             // 
@@ -404,7 +397,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-//            BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1570, 686);
             ControlBox = false;
