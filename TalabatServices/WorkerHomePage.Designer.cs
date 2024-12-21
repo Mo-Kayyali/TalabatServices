@@ -33,6 +33,7 @@
             dataGridView_Orders = new DataGridView();
             District_cb = new ComboBox();
             District_lbl = new Label();
+            setting = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).BeginInit();
             SuspendLayout();
             // 
@@ -41,9 +42,10 @@
             WorkerName_lbl.AutoSize = true;
             WorkerName_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             WorkerName_lbl.ForeColor = Color.FromArgb(41, 128, 185);
-            WorkerName_lbl.Location = new Point(33, 31);
+            WorkerName_lbl.Location = new Point(26, 25);
+            WorkerName_lbl.Margin = new Padding(2, 0, 2, 0);
             WorkerName_lbl.Name = "WorkerName_lbl";
-            WorkerName_lbl.Size = new Size(251, 39);
+            WorkerName_lbl.Size = new Size(217, 33);
             WorkerName_lbl.TabIndex = 7;
             WorkerName_lbl.Text = "WorkerName";
             // 
@@ -52,9 +54,10 @@
             WorkerRating_lbl.AutoSize = true;
             WorkerRating_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             WorkerRating_lbl.ForeColor = Color.FromArgb(41, 128, 185);
-            WorkerRating_lbl.Location = new Point(340, 31);
+            WorkerRating_lbl.Location = new Point(272, 25);
+            WorkerRating_lbl.Margin = new Padding(2, 0, 2, 0);
             WorkerRating_lbl.Name = "WorkerRating_lbl";
-            WorkerRating_lbl.Size = new Size(141, 39);
+            WorkerRating_lbl.Size = new Size(122, 33);
             WorkerRating_lbl.TabIndex = 8;
             WorkerRating_lbl.Text = "Rating";
             // 
@@ -62,18 +65,20 @@
             // 
             dataGridView_Orders.AllowUserToOrderColumns = true;
             dataGridView_Orders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Orders.Location = new Point(488, 247);
+            dataGridView_Orders.Location = new Point(390, 198);
+            dataGridView_Orders.Margin = new Padding(2);
             dataGridView_Orders.Name = "dataGridView_Orders";
             dataGridView_Orders.RowHeadersWidth = 62;
-            dataGridView_Orders.Size = new Size(624, 422);
+            dataGridView_Orders.Size = new Size(499, 338);
             dataGridView_Orders.TabIndex = 9;
             // 
             // District_cb
             // 
             District_cb.FormattingEnabled = true;
-            District_cb.Location = new Point(869, 189);
+            District_cb.Location = new Point(695, 151);
+            District_cb.Margin = new Padding(2);
             District_cb.Name = "District_cb";
-            District_cb.Size = new Size(182, 33);
+            District_cb.Size = new Size(146, 28);
             District_cb.TabIndex = 10;
             // 
             // District_lbl
@@ -81,29 +86,38 @@
             District_lbl.AutoSize = true;
             District_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             District_lbl.ForeColor = Color.FromArgb(41, 128, 185);
-            District_lbl.Location = new Point(549, 189);
+            District_lbl.Location = new Point(439, 151);
+            District_lbl.Margin = new Padding(2, 0, 2, 0);
             District_lbl.Name = "District_lbl";
-            District_lbl.Size = new Size(193, 39);
+            District_lbl.Size = new Size(167, 33);
             District_lbl.TabIndex = 11;
             District_lbl.Text = "District: ";
             // 
+            // setting
+            // 
+            setting.BackColor = Color.FromArgb(41, 128, 185);
+            setting.Location = new Point(795, 12);
+            setting.Name = "setting";
+            setting.Size = new Size(94, 43);
+            setting.TabIndex = 12;
+            setting.Text = "Setting";
+            setting.UseVisualStyleBackColor = false;
+            setting.Click += setting_Click;
+            // 
             // WorkerHomePage
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-
-//            BackgroundImage = Properties.Resources.Proj_pic;
-
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1124, 681);
+            ClientSize = new Size(899, 545);
+            Controls.Add(setting);
             Controls.Add(District_lbl);
             Controls.Add(District_cb);
             Controls.Add(dataGridView_Orders);
             Controls.Add(WorkerRating_lbl);
             Controls.Add(WorkerName_lbl);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
@@ -120,5 +134,6 @@
         private DataGridView dataGridView_Orders;
         private ComboBox District_cb;
         private Label District_lbl;
+        private Button setting;
     }
 }

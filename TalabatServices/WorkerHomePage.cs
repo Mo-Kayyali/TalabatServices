@@ -190,5 +190,11 @@ namespace TalabatServices
             }
         }
 
+        private void setting_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ProfileSettings PS = new ProfileSettings(1);
+            PS.Show();
+        }
     }
 }

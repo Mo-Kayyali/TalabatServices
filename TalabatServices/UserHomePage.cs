@@ -39,7 +39,7 @@ namespace TalabatServices
         private void setting_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings();
+            ProfileSettings PS = new ProfileSettings(0);
             PS.Show();
         }
     }
