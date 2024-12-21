@@ -30,10 +30,10 @@ namespace TalabatServices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection conn=new SqlConnection()
+         /* SqlConnection conn = new SqlConnection();
             this.Hide();
             UserMakingRequest UMR = new UserMakingRequest();
-            UMR.Show();
+            UMR.Show();*/
         }
 
         private void setting_Click(object sender, EventArgs e)
