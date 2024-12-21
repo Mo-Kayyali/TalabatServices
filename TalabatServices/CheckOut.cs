@@ -45,6 +45,25 @@ namespace TalabatServices
                 // Bind to DataGridView
                 dataGridView1.DataSource = dataTable;
 
+                string query2 = $@"SELECT SUM(Item_Cost * Quantity) FROM Payment WHERE Req_ID = {Requestid}";
+                SqlCommand command2 = new SqlCommand(query2, connection);
+                connection.Open();
+
+                var result = command2.ExecuteScalar();
+                connection.Close();
+
+                // Check if the result is not null and display in the TextBox
+                if (result != DBNull.Value)
+                {
+                    textBox1.Text = result.ToString();
+                }
+                else
+                {
+                    textBox1.Text = "0"; // Or handle as needed if no result is found
+                }
+
+
+
             }
         }
 
