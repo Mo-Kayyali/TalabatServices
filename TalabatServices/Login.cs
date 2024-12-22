@@ -58,7 +58,7 @@ namespace TalabatServices
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CheckOut CO = new CheckOut(1,0);
+            CheckOut CO = new CheckOut(7,0);
             CO.Show();
         }
 

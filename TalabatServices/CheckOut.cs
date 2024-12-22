@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Azure.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace TalabatServices
     //FormNum5
     public partial class CheckOut : Form
     {
+        private int U_ID;
         private int Requestid;
         private int Flag0User1Worker;
         public CheckOut(int Req_ID, int FlagUserWorker)
@@ -116,9 +118,30 @@ namespace TalabatServices
             // Show the appropriate form based on the flag
             if (Flag0User1Worker == 0 && userOrWorkerId > 0) // For user
             {
+                
+
+                string connectionString1 = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"; // Update this with your connection string
+                using (SqlConnection conn1 = new SqlConnection(connectionString1))
+                {
+                    conn1.Open();
+                    string query1 = "SELECT U_ID FROM Request WHERE Req_ID = @Req_ID";
+                    using (SqlCommand cmd = new SqlCommand(query1, conn1))
+                    {
+                        cmd.Parameters.AddWithValue("@Req_ID", Requestid);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                U_ID = reader.GetInt32(0); 
+                            }
+                        }
+                    }
+                }
+
+
                 this.Hide();
-                UserHomePage UHP = new UserHomePage(userOrWorkerId);
-                UHP.Show();
+                Rating rate = new Rating(Requestid,U_ID);
+                rate.Show();
             }
             else if (Flag0User1Worker == 1 && userOrWorkerId > 0) // For worker
             {
