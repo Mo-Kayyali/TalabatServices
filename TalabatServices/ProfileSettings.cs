@@ -8,10 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -36,7 +38,8 @@ namespace TalabatServices
     {
         private int Flag0user1worker;
         private int id;
-        public ProfileSettings(int ID,int FlagUserWorker)
+
+        public ProfileSettings(int ID, int FlagUserWorker)
         {
             InitializeComponent();
             Flag0user1worker = FlagUserWorker;
@@ -50,7 +53,7 @@ namespace TalabatServices
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (Flag0user1worker==0) // user is clicking
+            if (Flag0user1worker == 0) // user is clicking
             {
                 this.Hide();
                 UserHomePage UHP = new UserHomePage(id);
@@ -84,7 +87,7 @@ namespace TalabatServices
             label11.Hide();
             label12.Hide();
 
-            if (Flag0user1worker==0) 
+            if (Flag0user1worker == 0)
             {
                 DistrictAdd_Checkbox.Hide();
                 DistrictEdit_Checkbox.Hide();
@@ -116,8 +119,9 @@ namespace TalabatServices
                 label7.Hide();
 
             }
-            
+
         }
+
         private void UserAdd_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
             if (UserAdd_Checkbox.Checked)
@@ -279,7 +283,7 @@ namespace TalabatServices
 
             }
 
-                
+
         }
 
         private void AddressDel_Checkbox_CheckedChanged(object sender, EventArgs e)
@@ -303,162 +307,832 @@ namespace TalabatServices
 
         private string Connection_String =
             @"Data Source=DESKTOP-1PC44GN;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-     
+
         private void Login_Button_Click(object sender, EventArgs e)
         {
-            string Change_Email = Email_Textbox.Text;
-            string Change_Password = Chpassword_Text.Text;
-            string Change_Name = Name_Text.Text;
-            string UserPhone = Phone_Text.Text;
-           
-            string Change_EmailSQL = @"Update Users set Email = @Change_Email where U_ID = ";
-            string Change_PasswordSQL = @"Update Users set Password = @Change_Password where U_ID = ";
-            string Change_NameSQL = @"Update Users set Name = @Change_Name where U_ID = ";
-            string Add_PhoneSql = @"INSERT INTO User_Phones (Phone) VALUES (@Add_UserPhone)";
-            string PhoneNumbersSql = @"Select Phone From User_Phones";
-            try
+
+            if (id == 0) // As User
             {
-                using (SqlConnection conn = new SqlConnection(Connection_String))
+                try
                 {
-                    // Open connection
-                    conn.Open();
-
-                    // Create command OF Change Email
-                    using (SqlCommand command = new SqlCommand(Change_EmailSQL, conn))
+                    using (SqlConnection conn = new SqlConnection(Connection_String))
                     {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@Email", Change_Email);
+                        string ConfirmSql = @"SELECT Password FROM Users WHERE U_ID = @id";
 
-                        // Execute command
-                        int rowsAffected = command.ExecuteNonQuery();
+                        // Open connection
+                        conn.Open();
 
-                        // Feedback to user
-                        if (rowsAffected > 0)
+                        // Create command Of Confirm Password
+                        using (SqlCommand command = new SqlCommand(ConfirmSql, conn))
                         {
-                            MessageBox.Show("Update successful!");
+                            string EnteredPassword = CnfPassword_Text.Text;
+                            command.Parameters.AddWithValue("@U_ID", id);
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                string storedPassword = reader["Password"].ToString();
+
+                                if (EnteredPassword == storedPassword)
+                                {
+                                    MessageBox.Show("Successfully");
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Please Enter A Right Password Again");
+
+                                }
+                            }
                         }
-                        else
+
+                        if (!string.IsNullOrEmpty(Email_Textbox.Text) && Regex.IsMatch(Email_Textbox.Text, "@"))
                         {
-                            MessageBox.Show("No rows updated. Check your condition.");
+                            try
+                            {
+                                string Change_EmailSQL = @"Update Users set Email = @Change_Email where U_ID =id ";
+                                string Change_Email = Email_Textbox.Text;
+
+                                // Create command OF Change Email
+                                using (SqlCommand EmailCommand = new SqlCommand(Change_EmailSQL, conn))
+                                {
+                                    // Add parameters
+                                    EmailCommand.Parameters.AddWithValue("@Email", Change_Email);
+
+                                    // Execute command
+                                    int rowsAffected = EmailCommand.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+
+                            }
+
                         }
+
+                        if (!String.IsNullOrEmpty(Chpassword_Text.Text))
+                        {
+                            try
+                            {
+                                string Change_PasswordSQL = @"Update Users set Password = @Change_Password where U_ID =id ";
+                                string Change_Password = Chpassword_Text.Text;
+
+                                using (SqlCommand command = new SqlCommand(Change_PasswordSQL, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Password", Change_Password);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+                            }
+
+                        }
+
+                        if (!string.IsNullOrEmpty(Name_Text.Text))
+                        {
+                            try
+                            {
+                                string Change_NameSQL = @"Update Users set Name = @Change_Name where U_ID = id";
+
+                                string Change_Name = Name_Text.Text;
+
+                                using (SqlCommand command = new SqlCommand(Change_NameSQL, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Name", Change_Name);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+
+                            }
+                        }
+
+                        if (UserAdd_Checkbox.Checked)
+                        {
+                            string Add_PhoneSql = @"INSERT INTO User_Phones (Phone) VALUES (@PhoneNumber)";
+
+                            if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
+                            {
+                                string PhoneNumber = Phone_Text.Text;
+                                using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Phone", PhoneNumber);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please Enter A Phone Number Just As Digit");
+                            }
+                        }
+
+                        if (UserDel_Checkbox.Checked)
+                        {
+                            LoadUsersPhoneNumbersIntoCompoBox(conn);
+
+                            if (Phone_Combo.SelectedItem != null)
+                            {
+                                string selectedPhoneNumber = Phone_Combo.SelectedItem.ToString();
+                                DeleteUsersPhoneNumber(selectedPhoneNumber, conn);
+                            }
+                        }
+
+                        if (UserEdit_Checkbox.Checked)
+                        {
+
+                            if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
+                            {
+                                LoadUsersPhoneNumbersIntoCompoBox(conn);
+                                string Old_PhoneNumber = Phone_Combo.SelectedItem.ToString();
+                                string New_PhoneNumber = Phone_Text.Text;
+
+                                UpdateUsersPhoneNumber(Old_PhoneNumber, New_PhoneNumber, conn);
+
+                            }
+                        }
+
+                        if (AddressDel_Checkbox.Checked)
+                        {
+                            LoadDistrictIntoCompoBox(conn);
+
+                            if (Address_Combo.SelectedItem != null)
+                            {
+                                string Selected_District = Address_Combo.SelectedItem.ToString();
+                                string Delete_District_Sql =
+                                    @"Delete from User_Addresses Where District = @Selected_District";
+                                using (SqlCommand cmd = new SqlCommand(Delete_District_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@District", Selected_District);
+
+                                    try
+                                    {
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Delete Successfully");
+                                            Phone_Combo.Items.Remove(Selected_District);
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+                        }
+
+                        if (AddressAdd_Checkbox.Checked)
+                        {
+                            string District_text = AddDistrict_Text.Text;
+                            string streetText = Street_Text.Text;
+                            string buildingtext = Building_Text.Text;
+                            string Apartment_text = Apartment_Text.Text;
+                            string Floor_text = Floor_Text.Text;
+
+                            string Add_District_Sql =
+                                @"Insert into User_Addresses (District,Street_Name,Building_No,Apartment_No,Floor_No)
+                                                   Values (@District_text,@streetText,@buildingtext,@Apartment_text,@Floor_text)";
+
+
+                            if (!string.IsNullOrEmpty(AddDistrict_Text.Text) && !string.IsNullOrEmpty(Street_Text.Text)
+                                 && !string.IsNullOrEmpty(Building_Text.Text) && !string.IsNullOrEmpty(Apartment_Text.Text)
+                                 && !string.IsNullOrEmpty(Floor_Text.Text) && Building_Text.Text.All(char.IsDigit)
+                                 && Apartment_Text.Text.All(char.IsDigit) && Floor_Text.Text.All(char.IsDigit))
+                            {
+
+                                using (SqlCommand cmd = new SqlCommand(Add_District_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@District", District_text);
+                                    cmd.Parameters.AddWithValue("@Street_Name", streetText);
+                                    cmd.Parameters.AddWithValue("@Building_No", buildingtext);
+                                    cmd.Parameters.AddWithValue("@Apartment_No", Apartment_text);
+                                    cmd.Parameters.AddWithValue("@Floor_No", Floor_text);
+
+                                    // Execute command
+                                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Insert successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows Inserted. Check your condition.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please Check Your Info");
+                            }
+
+
+                        }
+
+                        if (AddressEdit_Checkbox.Checked)
+                        {
+                            string Old_District = Address_Combo.SelectedItem.ToString();
+                            string District_text = AddDistrict_Text.Text;
+                            string streetText = Street_Text.Text;
+                            string buildingtext = Building_Text.Text;
+                            string Apartment_text = Apartment_Text.Text;
+                            string Floor_text = Floor_Text.Text;
+                            // Queries Of Edit District
+                            string District_Sql =
+                                @"Update User_Addresses set District =@District_text Where District =@Old_District ";
+                            string Street_Sql =
+                                @"Update User_Addresses set Street_Name =@streetText Where District =@Old_District ";
+                            string Building_Sql =
+                                @"Update User_Addresses set Building_No =@buildingtext Where District =@Old_District ";
+                            string Apartment_Sql =
+                                @"Update User_Addresses set Apartment_No =@Apartment_text Where District =@Old_District ";
+                            string Floor_Sql =
+                                @"Update User_Addresses set Floor_No =@Floor_text Where District =@Old_District ";
+
+                            LoadDistrictIntoCompoBox(conn);
+
+                            if (!string.IsNullOrEmpty(AddDistrict_Text.Text))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(District_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@District", District_text);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Updated Successfully");
+
+
+                                            Address_Combo.Items[Address_Combo.SelectedIndex] = District_text;
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(Street_Text.Text))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(Street_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@Street_Name", streetText);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Updated Successfully");
+
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(Building_Text.Text) && Building_Text.Text.All(char.IsDigit))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(Building_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@Building_No", buildingtext);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Updated Successfully");
+
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(Apartment_Text.Text) && Apartment_Text.Text.All(char.IsDigit))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(Apartment_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@Apartment_No", Apartment_text);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Updated Successfully");
+
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(Floor_Text.Text) && Floor_Text.Text.All(char.IsDigit))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(Floor_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@Floor_No", Floor_text);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            MessageBox.Show("Updated Successfully");
+
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection");
+                                    }
+                                }
+                            }
+                        }
+
+
                     }
                 }
-
-                // Create command OF Change Password
-                using (SqlConnection conn = new SqlConnection(Connection_String))
+                catch (Exception exception)
                 {
-                    // Open connection
-                    conn.Open();
-                    using (SqlCommand command = new SqlCommand(Change_PasswordSQL, conn))
-                    {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@Password", Change_Password);
+                    MessageBox.Show("There Are Error In Connection");
 
-                        // Execute command
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // Feedback to user
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Update successful!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No rows updated. Check your condition.");
-                        }
-                    }
                 }
 
-                // Create command OF Change Name
-
-                using (SqlConnection conn = new SqlConnection(Connection_String))
-                {
-                    // Open connection
-                    conn.Open();
-                    using (SqlCommand command = new SqlCommand(Change_NameSQL, conn))
-                    {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@Name", Change_Name);
-
-                        // Execute command
-                        int rowsAffected = command.ExecuteNonQuery();
-
-                        // Feedback to user
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Update successful!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No rows updated. Check your condition.");
-                        }
-                    }
-                }
+            }
             
-            }
-            catch (Exception ex)
+            else if (id == 1) // As Worker 
             {
-                MessageBox.Show("There are Error ");
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(Connection_String))
+                    {
+                        string ConfirmSql = @"SELECT Password FROM Workers WHERE W_ID = @id";
+
+                        // Open connection
+                        conn.Open();
+
+                        // Create command Of Confirm Password
+                        using (SqlCommand command = new SqlCommand(ConfirmSql, conn))
+                        {
+                            // Add parameters
+                            command.Parameters.AddWithValue("@W_ID", id);
+                            string EnteredPassword = CnfPassword_Text.Text;
+                            SqlDataReader reader = command.ExecuteReader();
+
+                            if (reader.Read())
+                            {
+                                string storedPassword = reader["Password"].ToString();
+
+                                if (EnteredPassword == storedPassword)
+                                {
+                                    MessageBox.Show("Successfully");
+
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Please Enter A Right Password Again");
+
+                                }
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(Email_Textbox.Text) && Regex.IsMatch(Email_Textbox.Text, "@"))
+                        {
+                            try
+                            {
+                                string Change_Email = Email_Textbox.Text;
+                                string Change_EmailSQL = @"Update Workers set Email = @Change_Email where W_ID =id ";
+
+                                // Create command OF Change Email
+                                using (SqlCommand EmailCommand = new SqlCommand(Change_EmailSQL, conn))
+                                {
+                                    // Add parameters
+                                    EmailCommand.Parameters.AddWithValue("@Email", Change_Email);
+
+                                    // Execute command
+                                    int rowsAffected = EmailCommand.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+
+                            }
+
+                        }
+
+                        if (!String.IsNullOrEmpty(Chpassword_Text.Text))
+                        {
+                            try
+                            {
+                                string Change_Password = Chpassword_Text.Text;
+                                string Change_PasswordSQL = @"Update Workers set Password = @Change_Password where W_ID =id ";
+
+                                using (SqlCommand command = new SqlCommand(Change_PasswordSQL, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Password", Change_Password);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+                            }
+
+                        }
+
+                        if (!string.IsNullOrEmpty(Name_Text.Text))
+                        {
+                            try
+                            {
+                                string Change_Name = Name_Text.Text;
+                                string Change_NameSQL = @"Update Workers set Name = @Change_Name where W_ID = id";
+
+                                using (SqlCommand command = new SqlCommand(Change_NameSQL, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Name", Change_Name);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+                                    // Feedback to user
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+
+                            }
+                            catch (Exception exception)
+                            {
+                                MessageBox.Show("There Are Error In Connection");
+
+                            }
+                        }
+
+                        if (UserAdd_Checkbox.Checked)
+                        {
+                            string Add_PhoneSql = @"INSERT INTO Worker_Phones (Phone) VALUES (@PhoneNumber)";
+
+                            if (Phone_Text.Text.All(char.IsDigit) && string.IsNullOrEmpty(Phone_Text.Text))
+                            {
+                                string PhoneNumber = Phone_Text.Text;
+                                using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@Phone", PhoneNumber);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+
+                                    if (rowsAffected > 0)
+                                    {
+                                        MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please Enter A Phone Number Just As Digit");
+                            }
+                        }
+
+                        if (UserDel_Checkbox.Checked)
+                        {
+                            LoadWorkersPhoneNumbersIntoCompoBox(conn);
+
+                            if (Phone_Combo.SelectedItem != null)
+                            {
+                                string selectedPhoneNumber = Phone_Combo.SelectedItem.ToString();
+                                DeleteWorkersPhoneNumber(selectedPhoneNumber, conn);
+                            }
+                        }
+
+                        if (UserEdit_Checkbox.Checked)
+                        {
+
+                            if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
+                            {
+                                LoadWorkersPhoneNumbersIntoCompoBox(conn);
+                                string Old_PhoneNumber = Phone_Combo.SelectedItem.ToString();
+                                string New_PhoneNumber = Phone_Text.Text;
+
+                                UpdateWorkersPhoneNumber(Old_PhoneNumber, New_PhoneNumber, conn);
+
+                            }
+                        }
+
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show("There Are Error In Connection");
+                }
+
             }
-
-
-            //if (User_Checkbox.Checked)
-            //{
-            //    using (SqlConnection conn = new SqlConnection(Connection_String))
-            //    {
-            //        // Open connection
-            //        conn.Open();
-
-            //        // Create command OF Change Email
-            //        using (SqlCommand command = new SqlCommand(Change_EmailSQL, conn))
-            //        {
-            //            // Add parameters
-            //            command.Parameters.AddWithValue("@Phone", Add_Phone);
-
-            //            // Execute command
-            //            int rowsAffected = command.ExecuteNonQuery();
-
-            //            // Feedback to user
-            //            if (rowsAffected > 0)
-            //            {
-            //                MessageBox.Show("Update successful!");
-            //            }
-            //            else
-            //            {
-            //                MessageBox.Show("No rows updated. Check your condition.");
-            //            }
-            //        }
-            //    }
-            //}
-
-            //if (checkBox2.Checked)
-            //{
-            //    using (SqlConnection conn = new SqlConnection(Connection_String))
-            //    {
-            //        // Open connection
-            //        conn.Open();
-
-            //        // Create command OF Change Email
-            //        using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
-            //        {
-
-            //            using (SqlDataReader reader =cmd.ExecuteReader() )
-            //            {
-            //                while (reader.Read())
-            //                {
-            //                    Phone_Combo.Items.Add(reader["@Phone"].ToString());
-            //                }
-            //            }
-                      
-            //        }
-            //    }
-
-            //}
 
 
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+        private void LoadWorkersPhoneNumbersIntoCompoBox(SqlConnection conn)
+        {
+
+            string PhoneNumbersSql = @"Select Phone From Worker_Phones";
+            using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
+            {
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Phone_Combo.Items.Add(reader["@Phone"].ToString());
+                    }
+                }
+
+            }
+
+        }
+
+        private void LoadUsersPhoneNumbersIntoCompoBox(SqlConnection conn)
+        {
+           
+                string PhoneNumbersSql = @"Select Phone From User_Phones";
+                using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Phone_Combo.Items.Add(reader["@Phone"].ToString());
+                        }
+                    }
+
+                }
+            
+        }
+
+        private void LoadDistrictIntoCompoBox(SqlConnection conn)
+        {
+
+            string DistrictSql = @"Select District From User_Addresses";
+            using (SqlCommand cmd = new SqlCommand(DistrictSql, conn))
+            {
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Address_Combo.Items.Add(reader["@District"].ToString());
+                    }
+                }
+
+            }
+
+        }
+        private void DeleteUsersPhoneNumber(string phoneNumber, SqlConnection conn)
+        {
+
+
+            string DeletePhoneSql = @"Delete From User_Phones Where Phone =@phoneNumber ";
+
+
+           
+                SqlCommand command = new SqlCommand(DeletePhoneSql, conn);
+                command.Parameters.AddWithValue("@Phone", phoneNumber);
+
+                try
+                {
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Delete Successfully");
+                        Phone_Combo.Items.Remove(phoneNumber);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There are Error In Connection");
+                }
+            
+        }
+
+        private void DeleteWorkersPhoneNumber(string phoneNumber, SqlConnection conn)
+        {
+
+
+            string DeletePhoneSql = @"Delete From Worker_Phones Where Phone =@phoneNumber ";
+
+
+
+            SqlCommand command = new SqlCommand(DeletePhoneSql, conn);
+            command.Parameters.AddWithValue("@Phone", phoneNumber);
+
+            try
+            {
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Delete Successfully");
+                    Phone_Combo.Items.Remove(phoneNumber);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There are Error In Connection");
+            }
+
+        }
+        private void UpdateUsersPhoneNumber(string oldPhoneNumber, string newPhoneNumber,SqlConnection conn)
+        {
+
+            string Edit_Phone_Sql = @"Update User_Phones set Phone =@NnewPhoneNumber Where Phone =@oldPhoneNumber ";
+
+
+          
+                SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
+                command.Parameters.AddWithValue("@Phone", newPhoneNumber);
+              
+
+                try
+                {
+                   
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Updated Successfully");
+
+
+                        Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("There are Error In Connection");
+                }
+            
+        }
+
+        private void UpdateWorkersPhoneNumber(string oldPhoneNumber, string newPhoneNumber, SqlConnection conn)
+        {
+
+            string Edit_Phone_Sql = @"Update Worker_Phones set Phone =@NnewPhoneNumber Where Phone =@oldPhoneNumber ";
+
+
+
+            SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
+            command.Parameters.AddWithValue("@Phone", newPhoneNumber);
+
+
+            try
+            {
+
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Updated Successfully");
+
+
+                    Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There are Error In Connection");
+            }
+
+        }
     }
 }
+
 
