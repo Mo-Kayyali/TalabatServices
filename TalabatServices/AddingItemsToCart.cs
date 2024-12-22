@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace TalabatServices
 {
-    //FormNum9
     public partial class AddingItemsToCart : Form
     {
         private int CurrentUserID;
@@ -39,9 +38,7 @@ namespace TalabatServices
             deleteButtonColumn.Text = "X";
             deleteButtonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(deleteButtonColumn);
-
         }
-
         private void AddToGrid_Btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(ItemName_tb.Text) && !string.IsNullOrEmpty(Quantity_tb.Text) && !string.IsNullOrEmpty(Price_tb.Text))
@@ -64,17 +61,12 @@ namespace TalabatServices
         {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete" && e.RowIndex >= 0)
             {
-                // Show confirmation dialog for updating quantity
                 DialogResult result = MessageBox.Show("Are you sure you want to set the quantity to 0?", "Confirm Update", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     try
                     {
-                        // Set the quantity of the selected row to 0
                         dataGridView1.Rows[e.RowIndex].Cells["Quantity"].Value = 0;
-
-                        // Optionally, you can disable the delete button for this row (if you no longer want to delete)
-                        // or visually indicate that the item is no longer available.
                         MessageBox.Show("Item quantity set to 0.");
                     }
                     catch (Exception ex)
@@ -87,56 +79,56 @@ namespace TalabatServices
 
         private void SubmitToDB_Btn_Click(object sender, EventArgs e)
         {
-            // This is a dummy code to show how to connect to a database and insert data from a DataGridView
             try
             {
-                // DB Connection
                 string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-                SqlConnection connection = new SqlConnection(connectionString);
-                connection.Open();
 
-                //  DataGridView to DB
-     
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    if (!row.IsNewRow)
+                    connection.Open();
+
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        string query = @"
-                        INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
-                        VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
-                
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        if (!row.IsNewRow)
                         {
-                    
-                            command.Parameters.AddWithValue("@U_ID", CurrentUserID); // Replace with the logged-in user ID
-                            command.Parameters.AddWithValue("@W_ID", WorkerID); // Replace with selected worker ID
-                            command.Parameters.AddWithValue("@S_ID", ServiceID); // Replace with selected service ID
-                            command.Parameters.AddWithValue("@Req_ID", RequestID); // Replace with associated request ID
-                            command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemName"].Value); 
-                            command.Parameters.AddWithValue("@Quantity", row.Cells["Quantity"].Value); 
-                            command.Parameters.AddWithValue("@Item_Cost", row.Cells["Price"].Value); 
-                    
-                            command.ExecuteNonQuery();
-                         }
+                            string insertQuery = @"
+                    INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
+                    VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
+
+                            using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@U_ID", CurrentUserID);
+                                command.Parameters.AddWithValue("@W_ID", WorkerID);
+                                command.Parameters.AddWithValue("@S_ID", ServiceID);
+                                command.Parameters.AddWithValue("@Req_ID", RequestID);
+                                command.Parameters.AddWithValue("@Item_Name", row.Cells["ItemName"].Value);
+                                command.Parameters.AddWithValue("@Quantity", row.Cells["Quantity"].Value);
+                                command.Parameters.AddWithValue("@Item_Cost", row.Cells["Price"].Value);
+
+                                command.ExecuteNonQuery();
+                            }
+                        }
                     }
+
+                    string updateQuery = "UPDATE Request SET Status = 'Finished' WHERE Req_ID = @Req_ID";
+                    using (SqlCommand updateCommand = new SqlCommand(updateQuery, connection))
+                    {
+                        updateCommand.Parameters.AddWithValue("@Req_ID", RequestID);
+                        updateCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Items added to cart successfully and request status updated to 'Finished'!");
+                    dataGridView1.Rows.Clear();
                 }
 
-                MessageBox.Show("Items added to cart successfully!");
-                dataGridView1.Rows.Clear();
+                this.Hide();
+                CheckOut Co = new CheckOut(RequestID);
+                Co.Show();
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"Oops!: {ex.Message}");
             }
-
-            //need to connect this form with the checkout form here after submission
-
-            this.Hide();
-            CheckOut Co = new CheckOut(RequestID,1);
-            Co.Show();
         }
-
-
     }
 }

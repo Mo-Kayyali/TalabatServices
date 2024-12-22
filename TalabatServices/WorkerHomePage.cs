@@ -207,9 +207,6 @@ namespace TalabatServices
             PS.Show();
         }
 
-        private void WorkerHomePage_Load_1(object sender, EventArgs e)
-        {
 
-        }
     }
 }

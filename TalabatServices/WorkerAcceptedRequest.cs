@@ -1,26 +1,97 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient; 
 using System.Windows.Forms;
 
 namespace TalabatServices
 {
-    //FormNum8
     public partial class WorkerAcceptedRequest : Form
     {
-        public WorkerAcceptedRequest(int Req_ID)
+        private int RequestID;
+        private int UserID;
+        private int WorkerID;
+        private int ServiceID;
+
+        public WorkerAcceptedRequest(int reqID)
         {
             InitializeComponent();
+            RequestID = reqID;
+            LoadUserData(reqID);
+        }
+
+        private void LoadUserData(int reqID)
+        {
+            try
+            {
+                
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    
+                    string query = @"
+                SELECT 
+                    u.Name AS UserName, 
+                    p.Phone AS UserPhone,
+                    s.Name AS ServiceName, 
+                    a.Street_Name + ', ' + a.Building_No + ', Apt ' + a.Apartment_No AS Address,
+                    r.Description, 
+                    r.U_ID, 
+                    r.W_ID, 
+                    r.S_ID
+                FROM Request r
+                INNER JOIN Users u ON r.U_ID = u.U_ID
+                LEFT JOIN User_Phones p ON u.U_ID = p.U_ID AND p.CurrentlySelected = 'Y'
+                LEFT JOIN User_Addresses a ON u.U_ID = a.U_ID AND a.CurrentlySelected = 'Y'
+                INNER JOIN Services s ON r.S_ID = s.S_ID
+                WHERE r.Req_ID = @ReqID";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ReqID", reqID);
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // Populate form fields
+                                Name_tb.Text = reader["UserName"].ToString();
+                                Phone_tb.Text = reader["UserPhone"]?.ToString(); 
+                                Service_tb.Text = reader["ServiceName"].ToString();
+                                Addr_tb.Text = reader["Address"]?.ToString(); 
+                                Description_tb.Text = reader["Description"].ToString();
+
+                                // Store IDs for later use
+                                UserID = Convert.ToInt32(reader["U_ID"]);
+                                WorkerID = Convert.ToInt32(reader["W_ID"]);
+                                ServiceID = Convert.ToInt32(reader["S_ID"]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No data found for the provided Request ID.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching data: {ex.Message}");
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            AddingItemsToCart AITC = new AddingItemsToCart(UserID, WorkerID, ServiceID, RequestID);
+            AITC.Show();
         }
     }
 }
