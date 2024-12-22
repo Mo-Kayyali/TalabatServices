@@ -21,38 +21,28 @@ namespace TalabatServices
 
         private void UserMakingRequest_Load(object sender, EventArgs e)
         {
-            statusCheckTimer = new System.Windows.Forms.Timer();
-            statusCheckTimer.Interval = 5000; // Check every 5 seconds
+            // Initialize timer for status checking
+            statusCheckTimer = new System.Windows.Forms.Timer
+            {
+                Interval = 5000 // Check every 5 seconds
+            };
             statusCheckTimer.Tick += StatusCheckTimer_Tick;
+
+            // Load available services into the combo box
+            LoadServiceNames();
         }
 
-        private int GetServiceIdByName(string serviceName)
-        {
-            using (SqlConnection con = new SqlConnection(constring))
-            {
-                con.Open();
-                string query = "SELECT S_ID FROM Services WHERE Name = @ServiceName";
-                using (SqlCommand command = new SqlCommand(query, con))
-                {
-                    command.Parameters.AddWithValue("@ServiceName", serviceName);
-                    return (int)command.ExecuteScalar();
-                }
-            }
-        }
-        private void data()
+        private void LoadServiceNames()
         {
             try
             {
-                
                 using (SqlConnection connection = new SqlConnection(constring))
                 {
                     connection.Open();
+                    string query = "SELECT Name FROM Services";
 
-                    string query = "SELECT Name FROM Services  ";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                       
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
@@ -65,36 +55,58 @@ namespace TalabatServices
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading names: {ex.Message}");
+                MessageBox.Show($"Error loading service names: {ex.Message}");
             }
         }
+
+        private int GetServiceIdByName(string serviceName)
+        {
+            using (SqlConnection connection = new SqlConnection(constring))
+            {
+                connection.Open();
+                string query = "SELECT S_ID FROM Services WHERE Name = @ServiceName";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ServiceName", serviceName);
+                    return (int)command.ExecuteScalar();
+                }
+            }
+        }
+
         private void makrequest_Click(object sender, EventArgs e)
         {
+            // Validate that the description is not empty
             if (string.IsNullOrWhiteSpace(description.Text))
             {
                 MessageBox.Show("Please write a description before confirming the request.");
-                return; // Stop further execution if description is empty
+                return;
             }
-            using (SqlConnection con = new SqlConnection(constring))
+
+            // Validate that a service is selected
+            if (chooseservice.SelectedItem == null)
             {
-                try
+                MessageBox.Show("Please select a service.");
+                return;
+            }
+
+            // Insert the request into the database
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(constring))
                 {
-                    con.Open();
+                    connection.Open();
 
-                    string selectedService = chooseservice.SelectedItem?.ToString();
-                    if (string.IsNullOrEmpty(selectedService))
-                    {
-                        MessageBox.Show("Please select a service.");
-                        return; // Stop further execution if no service is selected
-                    }
-
+                    string selectedService = chooseservice.SelectedItem.ToString();
                     string descriptionText = description.Text;
-
                     int serviceId = GetServiceIdByName(selectedService);
 
-                    string query = "INSERT INTO Request (U_ID, S_ID, Description, Status, Start_Date, End_Date) OUTPUT INSERTED.Req_ID VALUES (@UserId, @ServiceId, @Description, 'Pending', GETDATE(), DATEADD(DAY, 7, GETDATE()))";
+                    string query = @"
+                        INSERT INTO Request (U_ID, S_ID, Description, Status, Start_Date, End_Date) 
+                        OUTPUT INSERTED.Req_ID
+                        VALUES (@UserId, @ServiceId, @Description, 'Pending', GETDATE(), DATEADD(DAY, 7, GETDATE()))";
 
-                    using (SqlCommand command = new SqlCommand(query, con))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@UserId", u_id);
                         command.Parameters.AddWithValue("@ServiceId", serviceId);
@@ -104,78 +116,70 @@ namespace TalabatServices
                     }
 
                     MessageBox.Show("Request has been successfully created.");
-                    statusCheckTimer.Start();
+                    statusCheckTimer.Start(); // Start checking for status updates
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while creating the request: {ex.Message}");
             }
         }
 
         private void StatusCheckTimer_Tick(object sender, EventArgs e)
         {
-            if (isCheckingStatus) return;
+            if (isCheckingStatus) return; // Prevent concurrent status checks
 
             isCheckingStatus = true;
-            using (SqlConnection con = new SqlConnection(constring))
+            try
             {
-                try
+                using (SqlConnection connection = new SqlConnection(constring))
                 {
-                    con.Open();
+                    connection.Open();
 
                     string query = "SELECT Status FROM Request WHERE Req_ID = @RequestId";
-                    using (SqlCommand command = new SqlCommand(query, con))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@RequestId", lastRequestId);
-                        string status = command.ExecuteScalar()?.ToString();
 
+                        string status = command.ExecuteScalar()?.ToString();
                         if (string.IsNullOrEmpty(status))
                         {
                             MessageBox.Show("No status found for this request.");
                             return;
                         }
 
-        //        string query = "INSERT INTO Request (U_ID, S_ID, Description, Start_Date, End_Date) VALUES (@UserId, @ServiceId, @Description, @StartDate, @EndDate)";
-
-        //        using (SqlCommand command = new SqlCommand(query, con))
-        //        {
-        //            command.Parameters.AddWithValue("@UserId", userId);
-        //            command.Parameters.AddWithValue("@ServiceId", serviceId);
-        //            command.Parameters.AddWithValue("@Description", description);
-        //            command.Parameters.AddWithValue("@StartDate", startDate);
-        //            command.Parameters.AddWithValue("@EndDate", endDate);
-
-        //            command.ExecuteNonQuery();
-        //        }
-
+                        if (status == "Accepted")
+                        {
+                            statusCheckTimer.Stop();
+                            MessageBox.Show("Your request has been accepted!");
+                            OpenUserRequestAcceptedForm();
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error checking request status: " + ex.Message);
-                }
-                finally
-                {
-                    isCheckingStatus = false;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking request status: {ex.Message}");
+            }
+            finally
+            {
+                isCheckingStatus = false;
             }
         }
 
         private void OpenUserRequestAcceptedForm()
         {
             this.Hide();
-            UserRequestAccepted form = new UserRequestAccepted(u_id);
-            form.Show();
+            UserRequestAccepted acceptedForm = new UserRequestAccepted(lastRequestId);
+            acceptedForm.Show();
         }
 
         private void back_Click(object sender, EventArgs e)
         {
             statusCheckTimer.Stop();
             this.Hide();
-            UserHomePage UHP = new UserHomePage(u_id);
-            UHP.Show();
+            UserHomePage homePage = new UserHomePage(u_id);
+            homePage.Show();
         }
     }
 }
