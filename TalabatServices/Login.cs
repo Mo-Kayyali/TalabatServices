@@ -32,7 +32,7 @@ namespace TalabatServices
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Rating Rate = new Rating(1);
+            Rating Rate = new Rating(1,7);
             Rate.Show();
         }
 

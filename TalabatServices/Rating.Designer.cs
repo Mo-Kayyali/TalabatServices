@@ -124,6 +124,7 @@
             Sumbit_Button.TabIndex = 6;
             Sumbit_Button.Text = "Submit";
             Sumbit_Button.UseVisualStyleBackColor = false;
+            Sumbit_Button.Click += Sumbit_Button_Click;
             // 
             // label1
             // 
@@ -180,6 +181,7 @@
             Skip_Button.TabIndex = 12;
             Skip_Button.Text = "Skip";
             Skip_Button.UseVisualStyleBackColor = false;
+            Skip_Button.Click += Skip_Button_Click;
             // 
             // Rating
             // 
