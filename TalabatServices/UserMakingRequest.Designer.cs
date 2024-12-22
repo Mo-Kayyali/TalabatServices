@@ -119,7 +119,6 @@
             MaximizeBox = false;
             Name = "UserMakingRequest";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "UserMakingRequest";
             Load += UserMakingRequest_Load;
             ResumeLayout(false);
             PerformLayout();

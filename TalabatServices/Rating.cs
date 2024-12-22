@@ -16,9 +16,14 @@ namespace TalabatServices
         public Boolean FlagClick4 = false;
         public Boolean FlagClick5 = false;
 
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
         public Rating(int Req_ID, int U_ID)
         {
             InitializeComponent();
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
             userID = U_ID;
             requestID = Req_ID;
 

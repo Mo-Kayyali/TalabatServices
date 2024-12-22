@@ -23,6 +23,12 @@ namespace TalabatServices
             this.User_Checkbox.CheckedChanged += new System.EventHandler(this.User_Checkbox_CheckedChanged);
             this.Worker_Checkbox.CheckedChanged += new System.EventHandler(this.Worker_Checkbox_CheckedChanged);
             this.FormClosing += new FormClosingEventHandler(Signup_FormClosing);
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
         private void SignUp_Load(object sender, EventArgs e)
         {

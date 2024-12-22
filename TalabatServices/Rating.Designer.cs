@@ -190,7 +190,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(771, 373);
-            ControlBox = false;
             Controls.Add(Skip_Button);
             Controls.Add(label4);
             Controls.Add(label2);
@@ -203,8 +202,8 @@
             Controls.Add(pictureBox2);
             Controls.Add(Comment_Textbox);
             Controls.Add(pictureBox1);
+            MaximizeBox = false;
             Name = "Rating";
-            Text = "Rating";
             Load += Rating_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

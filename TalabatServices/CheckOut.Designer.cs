@@ -104,7 +104,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(481, 576);
-            ControlBox = false;
             Controls.Add(textBox1);
             Controls.Add(label1);
             Controls.Add(button2);
@@ -113,7 +112,6 @@
             MaximizeBox = false;
             Name = "CheckOut";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CheckOut";
             Load += CheckOut_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

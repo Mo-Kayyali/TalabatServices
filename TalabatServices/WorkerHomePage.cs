@@ -26,6 +26,11 @@ namespace TalabatServices
             ordersRefreshTimer = new System.Windows.Forms.Timer();
             ordersRefreshTimer.Interval = 5000; // Refresh every 30 seconds
             ordersRefreshTimer.Tick += OrdersRefreshTimer_Tick;
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void WorkerHomePage_Load(object sender, EventArgs e)

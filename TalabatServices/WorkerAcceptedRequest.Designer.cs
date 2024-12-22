@@ -60,7 +60,7 @@
             Phone_tb.BackColor = SystemColors.ButtonFace;
             Phone_tb.BorderStyle = BorderStyle.FixedSingle;
             Phone_tb.Location = new Point(199, 169);
-            Phone_tb.Margin = new Padding(4, 4, 4, 4);
+            Phone_tb.Margin = new Padding(4);
             Phone_tb.Name = "Phone_tb";
             Phone_tb.ReadOnly = true;
             Phone_tb.Size = new Size(277, 27);
@@ -83,7 +83,7 @@
             Name_tb.BackColor = SystemColors.ButtonFace;
             Name_tb.BorderStyle = BorderStyle.FixedSingle;
             Name_tb.Location = new Point(199, 109);
-            Name_tb.Margin = new Padding(4, 4, 4, 4);
+            Name_tb.Margin = new Padding(4);
             Name_tb.Name = "Name_tb";
             Name_tb.ReadOnly = true;
             Name_tb.Size = new Size(277, 27);
@@ -106,7 +106,7 @@
             Addr_tb.BackColor = SystemColors.ButtonFace;
             Addr_tb.BorderStyle = BorderStyle.FixedSingle;
             Addr_tb.Location = new Point(199, 282);
-            Addr_tb.Margin = new Padding(4, 4, 4, 4);
+            Addr_tb.Margin = new Padding(4);
             Addr_tb.Multiline = true;
             Addr_tb.Name = "Addr_tb";
             Addr_tb.ReadOnly = true;
@@ -130,7 +130,7 @@
             Service_tb.BackColor = SystemColors.ButtonFace;
             Service_tb.BorderStyle = BorderStyle.FixedSingle;
             Service_tb.Location = new Point(199, 231);
-            Service_tb.Margin = new Padding(4, 4, 4, 4);
+            Service_tb.Margin = new Padding(4);
             Service_tb.Name = "Service_tb";
             Service_tb.ReadOnly = true;
             Service_tb.Size = new Size(277, 27);
@@ -153,7 +153,7 @@
             Description_tb.BackColor = SystemColors.ButtonFace;
             Description_tb.BorderStyle = BorderStyle.FixedSingle;
             Description_tb.Location = new Point(199, 384);
-            Description_tb.Margin = new Padding(4, 4, 4, 4);
+            Description_tb.Margin = new Padding(4);
             Description_tb.Multiline = true;
             Description_tb.Name = "Description_tb";
             Description_tb.ReadOnly = true;
@@ -207,7 +207,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(538, 667);
-            ControlBox = false;
             Controls.Add(button10);
             Controls.Add(button1);
             Controls.Add(Description_tb);
@@ -224,7 +223,6 @@
             MaximizeBox = false;
             Name = "WorkerAcceptedRequest";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "WorkerAcceptedRequest";
             ResumeLayout(false);
             PerformLayout();
         }

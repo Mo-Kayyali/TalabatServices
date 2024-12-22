@@ -125,7 +125,6 @@
             MaximizeBox = false;
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "WorkerHomePage";
             Load += WorkerHomePage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).EndInit();
             ResumeLayout(false);

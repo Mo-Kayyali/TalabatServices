@@ -409,7 +409,6 @@
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1570, 686);
-            ControlBox = false;
             Controls.Add(button10);
             Controls.Add(Login_Button);
             Controls.Add(label14);
@@ -443,7 +442,6 @@
             MaximizeBox = false;
             Name = "SignUp";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SignUp";
             Load += SignUp_Load;
             ResumeLayout(false);
             PerformLayout();

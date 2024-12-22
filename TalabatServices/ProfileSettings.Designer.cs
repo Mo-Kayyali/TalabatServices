@@ -550,7 +550,6 @@
             MaximizeBox = false;
             Name = "ProfileSettings";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ProfileSettings";
             Load += ProfileSettings_Load;
             ResumeLayout(false);
             PerformLayout();
