@@ -405,21 +405,22 @@ namespace TalabatServices
                                 using (SqlCommand command = new SqlCommand(Change_PasswordSQL, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Password", Change_Password);
+                                    command.Parameters.AddWithValue("@Change_Password", Change_Password);
                                     command.Parameters.AddWithValue("@id", id);
 
+                                    command.ExecuteNonQuery();
                                     // Execute command
-                                    int rowsAffected = command.ExecuteNonQuery();
+                                    //int rowsAffected = command.ExecuteNonQuery();
 
-                                    // Feedback to user
-                                    if (rowsAffected > 0)
-                                    {
-                                        MessageBox.Show("Update successful!");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No rows updated. Check your condition.");
-                                    }
+                                    //// Feedback to user
+                                    //if (rowsAffected > 0)
+                                    //{
+                                    //    MessageBox.Show("Update successful!");
+                                    //}
+                                    //else
+                                    //{
+                                    //    MessageBox.Show("No rows updated. Check your condition.");
+                                    //}
                                 }
 
                             }
@@ -441,21 +442,21 @@ namespace TalabatServices
                                 using (SqlCommand command = new SqlCommand(Change_NameSQL, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Name", Change_Name);
+                                    command.Parameters.AddWithValue("@Change_Name", Change_Name);
                                     command.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
-                                    int rowsAffected = command.ExecuteNonQuery();
+                                    command.ExecuteNonQuery();
 
-                                    // Feedback to user
-                                    if (rowsAffected > 0)
-                                    {
-                                        MessageBox.Show("Update successful!");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No rows updated. Check your condition.");
-                                    }
+                                    //// Feedback to user
+                                    //if (rowsAffected > 0)
+                                    //{
+                                    //    MessageBox.Show("Update successful!");
+                                    //}
+                                    //else
+                                    //{
+                                    //    MessageBox.Show("No rows updated. Check your condition.");
+                                    //}
                                 }
 
                             }
@@ -476,21 +477,21 @@ namespace TalabatServices
                                 using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Phone", PhoneNumber);
+                                    command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                                     command.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
-                                    int rowsAffected = command.ExecuteNonQuery();
+                                    command.ExecuteNonQuery();
 
-                                    // Feedback to user
-                                    if (rowsAffected > 0)
-                                    {
-                                        MessageBox.Show("Update successful!");
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show("No rows updated. Check your condition.");
-                                    }
+                                    //// Feedback to user
+                                    //if (rowsAffected > 0)
+                                    //{
+                                    //    MessageBox.Show("Update successful!");
+                                    //}
+                                    //else
+                                    //{
+                                    //    MessageBox.Show("No rows updated. Check your condition.");
+                                    //}
                                 }
                             }
                             else
@@ -542,7 +543,7 @@ namespace TalabatServices
                                         int rowsAffected = cmd.ExecuteNonQuery();
                                         if (rowsAffected > 0)
                                         {
-                                            MessageBox.Show("Delete Successfully");
+                                            //MessageBox.Show("Delete Successfully");
                                             Phone_Combo.Items.Remove(Selected_District);
                                         }
 
@@ -589,7 +590,7 @@ namespace TalabatServices
                                     // Feedback to user
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Insert successful!");
+                                        //MessageBox.Show("Insert successful!");
                                     }
                                     else
                                     {
@@ -627,31 +628,7 @@ namespace TalabatServices
 
                             LoadDistrictIntoCompoBox(conn);
 
-                            if (!string.IsNullOrEmpty(AddDistrict_Text.Text))
-                            {
-                                using (SqlCommand cmd = new SqlCommand(District_Sql, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@District", District_text);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
-                                    {
 
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            MessageBox.Show("Updated Successfully");
-
-
-                                            Address_Combo.Items[Address_Combo.SelectedIndex] = District_text;
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection5");
-                                    }
-                                }
-                            }
 
                             if (!string.IsNullOrEmpty(Street_Text.Text))
                             {
@@ -665,7 +642,7 @@ namespace TalabatServices
                                         int rowsAffected = cmd.ExecuteNonQuery();
                                         if (rowsAffected > 0)
                                         {
-                                            MessageBox.Show("Updated Successfully");
+                                            //MessageBox.Show("Updated Successfully");
 
                                         }
 
@@ -689,7 +666,7 @@ namespace TalabatServices
                                         int rowsAffected = cmd.ExecuteNonQuery();
                                         if (rowsAffected > 0)
                                         {
-                                            MessageBox.Show("Updated Successfully");
+                                            //MessageBox.Show("Updated Successfully");
 
                                         }
 
@@ -713,7 +690,7 @@ namespace TalabatServices
                                         int rowsAffected = cmd.ExecuteNonQuery();
                                         if (rowsAffected > 0)
                                         {
-                                            MessageBox.Show("Updated Successfully");
+                                            //MessageBox.Show("Updated Successfully");
 
                                         }
 
@@ -737,7 +714,7 @@ namespace TalabatServices
                                         int rowsAffected = cmd.ExecuteNonQuery();
                                         if (rowsAffected > 0)
                                         {
-                                            MessageBox.Show("Updated Successfully");
+                                            //MessageBox.Show("Updated Successfully");
 
                                         }
 
@@ -745,6 +722,32 @@ namespace TalabatServices
                                     catch (Exception ex)
                                     {
                                         MessageBox.Show("There are Error In Connection9");
+                                    }
+                                }
+                            }
+
+                            if (!string.IsNullOrEmpty(AddDistrict_Text.Text))
+                            {
+                                using (SqlCommand cmd = new SqlCommand(District_Sql, conn))
+                                {
+                                    cmd.Parameters.AddWithValue("@District", District_text);
+                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
+                                    try
+                                    {
+
+                                        int rowsAffected = cmd.ExecuteNonQuery();
+                                        if (rowsAffected > 0)
+                                        {
+                                            //MessageBox.Show("Updated Successfully");
+
+
+                                            Address_Combo.Items[Address_Combo.SelectedIndex] = District_text;
+                                        }
+
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("There are Error In Connection5");
                                     }
                                 }
                             }
@@ -776,7 +779,7 @@ namespace TalabatServices
                         using (SqlCommand command = new SqlCommand(ConfirmSql, conn))
                         {
                             // Add parameters
-                            command.Parameters.AddWithValue("@W_ID", id);
+                            command.Parameters.AddWithValue("@id", id);
                             string EnteredPassword = CnfPassword_Text.Text;
                             SqlDataReader reader = command.ExecuteReader();
 
@@ -794,6 +797,7 @@ namespace TalabatServices
                                     MessageBox.Show("Please Enter A Right Password Again");
 
                                 }
+                                reader.Close();
                             }
                         }
 
@@ -802,13 +806,14 @@ namespace TalabatServices
                             try
                             {
                                 string Change_Email = Email_Textbox.Text;
-                                string Change_EmailSQL = @"Update Workers set Email = @Change_Email where W_ID =id ";
+                                string Change_EmailSQL = @"Update Workers set Email = @Change_Email where W_ID =@id ";
 
                                 // Create command OF Change Email
                                 using (SqlCommand EmailCommand = new SqlCommand(Change_EmailSQL, conn))
                                 {
                                     // Add parameters
-                                    EmailCommand.Parameters.AddWithValue("@Email", Change_Email);
+                                    EmailCommand.Parameters.AddWithValue("@Change_Email", Change_Email);
+                                    EmailCommand.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
                                     int rowsAffected = EmailCommand.ExecuteNonQuery();
@@ -816,7 +821,7 @@ namespace TalabatServices
                                     // Feedback to user
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Update successful!");
+                                        //MessageBox.Show("Update successful!");
                                     }
                                     else
                                     {
@@ -838,12 +843,13 @@ namespace TalabatServices
                             try
                             {
                                 string Change_Password = Chpassword_Text.Text;
-                                string Change_PasswordSQL = @"Update Workers set Password = @Change_Password where W_ID =id ";
+                                string Change_PasswordSQL = @"Update Workers set Password = @Change_Password where W_ID =@id ";
 
                                 using (SqlCommand command = new SqlCommand(Change_PasswordSQL, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Password", Change_Password);
+                                    command.Parameters.AddWithValue("@Change_Password", Change_Password);
+                                    command.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
                                     int rowsAffected = command.ExecuteNonQuery();
@@ -851,7 +857,7 @@ namespace TalabatServices
                                     // Feedback to user
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Update successful!");
+                                        //MessageBox.Show("Update successful!");
                                     }
                                     else
                                     {
@@ -872,12 +878,13 @@ namespace TalabatServices
                             try
                             {
                                 string Change_Name = Name_Text.Text;
-                                string Change_NameSQL = @"Update Workers set Name = @Change_Name where W_ID = id";
+                                string Change_NameSQL = @"Update Workers set Name = @Change_Name where W_ID = @id";
 
                                 using (SqlCommand command = new SqlCommand(Change_NameSQL, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Name", Change_Name);
+                                    command.Parameters.AddWithValue("@Change_Name", Change_Name);
+                                    command.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
                                     int rowsAffected = command.ExecuteNonQuery();
@@ -885,7 +892,7 @@ namespace TalabatServices
                                     // Feedback to user
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Update successful!");
+                                        //MessageBox.Show("Update successful!");
                                     }
                                     else
                                     {
@@ -903,7 +910,7 @@ namespace TalabatServices
 
                         if (UserAdd_Checkbox.Checked)
                         {
-                            string Add_PhoneSql = @"INSERT INTO Worker_Phones (Phone) VALUES (@PhoneNumber)";
+                            string Add_PhoneSql = @"INSERT INTO Worker_Phones (W_ID,Phone) VALUES (@id,@PhoneNumber)";
 
                             if (Phone_Text.Text.All(char.IsDigit) && string.IsNullOrEmpty(Phone_Text.Text))
                             {
@@ -911,7 +918,8 @@ namespace TalabatServices
                                 using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
                                 {
                                     // Add parameters
-                                    command.Parameters.AddWithValue("@Phone", PhoneNumber);
+                                    command.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+                                    command.Parameters.AddWithValue("@id", id);
 
                                     // Execute command
                                     int rowsAffected = command.ExecuteNonQuery();
@@ -919,7 +927,7 @@ namespace TalabatServices
 
                                     if (rowsAffected > 0)
                                     {
-                                        MessageBox.Show("Update successful!");
+                                        //MessageBox.Show("Update successful!");
                                     }
                                     else
                                     {
@@ -993,7 +1001,7 @@ namespace TalabatServices
                 {
                     while (reader.Read())
                     {
-                        Phone_Combo.Items.Add(reader["@Phone"].ToString());
+                        Phone_Combo.Items.Add(reader["Phone"].ToString());
                     }
                 }
 
@@ -1013,7 +1021,7 @@ namespace TalabatServices
                     {
                         while (reader.Read())
                         {
-                            Phone_Combo.Items.Add(reader["@Phone"].ToString());
+                            Phone_Combo.Items.Add(reader["Phone"].ToString());
                         }
                     }
 
@@ -1037,7 +1045,7 @@ namespace TalabatServices
                 {
                     while (reader.Read())
                     {
-                        Address_Combo.Items.Add(reader["@District"].ToString());
+                        Address_Combo.Items.Add(reader["District"].ToString());
                     }
                 }
 
@@ -1053,21 +1061,21 @@ namespace TalabatServices
 
 
             SqlCommand command = new SqlCommand(DeletePhoneSql, conn);
-            command.Parameters.AddWithValue("@Phone", phoneNumber);
+            command.Parameters.AddWithValue("@phoneNumber", phoneNumber);
 
             try
             {
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Delete Successfully");
+                    //MessageBox.Show("Delete Successfully");
                     Phone_Combo.Items.Remove(phoneNumber);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("There are Error In Connection");
+                MessageBox.Show("There are Error In Connection11");
             }
 
         }
@@ -1081,14 +1089,14 @@ namespace TalabatServices
 
 
             SqlCommand command = new SqlCommand(DeletePhoneSql, conn);
-            command.Parameters.AddWithValue("@Phone", phoneNumber);
+            command.Parameters.AddWithValue("@phoneNumber", phoneNumber);
 
             try
             {
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Delete Successfully");
+                    //MessageBox.Show("Delete Successfully");
                     Phone_Combo.Items.Remove(phoneNumber);
                 }
 
@@ -1102,12 +1110,13 @@ namespace TalabatServices
         private void UpdateUsersPhoneNumber(string oldPhoneNumber, string newPhoneNumber, SqlConnection conn)
         {
 
-            string Edit_Phone_Sql = @"Update User_Phones set Phone =@NnewPhoneNumber Where Phone =@oldPhoneNumber ";
+            string Edit_Phone_Sql = @"Update User_Phones set Phone =@NewPhoneNumber Where Phone =@oldPhoneNumber";
 
 
 
             SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
-            command.Parameters.AddWithValue("@Phone", newPhoneNumber);
+            command.Parameters.AddWithValue("@NewPhoenNumber", newPhoneNumber);
+            command.Parameters.AddWithValue("@oldPhoneNumber", oldPhoneNumber);
 
 
             try
@@ -1116,7 +1125,7 @@ namespace TalabatServices
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Updated Successfully");
+                    // MessageBox.Show("Updated Successfully");
 
 
                     Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
@@ -1133,12 +1142,13 @@ namespace TalabatServices
         private void UpdateWorkersPhoneNumber(string oldPhoneNumber, string newPhoneNumber, SqlConnection conn)
         {
 
-            string Edit_Phone_Sql = @"Update Worker_Phones set Phone =@NnewPhoneNumber Where Phone =@oldPhoneNumber ";
+            string Edit_Phone_Sql = @"Update Worker_Phones set Phone =@NewPhoneNumber Where Phone =@oldPhoneNumber ";
 
 
 
             SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
-            command.Parameters.AddWithValue("@Phone", newPhoneNumber);
+            command.Parameters.AddWithValue("@NewPhoenNumber", newPhoneNumber);
+            command.Parameters.AddWithValue("@oldPhoneNumber", oldPhoneNumber);
 
 
             try
@@ -1147,7 +1157,7 @@ namespace TalabatServices
                 int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("Updated Successfully");
+                    // MessageBox.Show("Updated Successfully");
 
 
                     Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
