@@ -58,7 +58,7 @@ namespace TalabatServices
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CheckOut CO = new CheckOut(1);
+            CheckOut CO = new CheckOut(1,0);
             CO.Show();
         }
 
@@ -72,7 +72,7 @@ namespace TalabatServices
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddingItemsToCart ITTC = new AddingItemsToCart(1, 1, 1, 1);
+            AddingItemsToCart ITTC = new AddingItemsToCart(7, 2, 1, 1);
             ITTC.Show();
         }
 
