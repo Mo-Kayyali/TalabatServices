@@ -67,7 +67,7 @@
             button2.Location = new Point(349, 497);
             button2.Name = "button2";
             button2.Size = new Size(120, 67);
-            button2.TabIndex = 12;
+            button2.TabIndex = 2;
             button2.Text = "Done";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
@@ -91,10 +91,11 @@
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             textBox1.Location = new Point(125, 432);
             textBox1.Margin = new Padding(4);
+            textBox1.MaxLength = 20;
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(277, 34);
-            textBox1.TabIndex = 14;
+            textBox1.TabIndex = 1;
             // 
             // CheckOut
             // 

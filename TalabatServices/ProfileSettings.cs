@@ -51,11 +51,6 @@ namespace TalabatServices
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             if (Flag0user1worker == 0) // user is clicking

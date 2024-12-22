@@ -40,7 +40,6 @@
             Description_tb = new TextBox();
             label7 = new Label();
             button1 = new Button();
-            button10 = new Button();
             SuspendLayout();
             // 
             // label2
@@ -174,30 +173,16 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ButtonFace;
-            button1.Font = new Font("Showcard Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.BackColor = Color.FromArgb(41, 128, 185);
+            button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(337, 588);
+            button1.Location = new Point(357, 596);
             button1.Name = "button1";
             button1.Size = new Size(179, 67);
             button1.TabIndex = 19;
             button1.Text = "Arrived";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // button10
-            // 
-            button10.BackColor = Color.FromArgb(192, 0, 0);
-            button10.FlatStyle = FlatStyle.Flat;
-            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.Black;
-            button10.Location = new Point(12, 611);
-            button10.Name = "button10";
-            button10.Size = new Size(72, 44);
-            button10.TabIndex = 48;
-            button10.Text = "Exit";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
             // 
             // WorkerAcceptedRequest
             // 
@@ -207,7 +192,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(538, 667);
-            Controls.Add(button10);
             Controls.Add(button1);
             Controls.Add(Description_tb);
             Controls.Add(label7);
@@ -241,6 +225,5 @@
         private TextBox Description_tb;
         private Label label7;
         private Button button1;
-        private Button button10;
     }
 }
