@@ -181,9 +181,16 @@ namespace TalabatServices
 
                             command.ExecuteNonQuery();
 
+                            // Show success message
                             MessageBox.Show("Order accepted successfully!");
-                            LoadOrders(District_cb.SelectedItem.ToString());
+
+                            // Hide current form
+                            this.Hide();
+                            WorkerAcceptedRequest WAR = new WorkerAcceptedRequest(selectedOrderId);
+                            WAR.Show();
                         }
+
+                        // Reload the orders
                     }
                 }
                 catch (Exception ex)
