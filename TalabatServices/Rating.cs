@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace TalabatServices
 {
+    //FormNum6
     public partial class Rating : Form
     {
         public Boolean FlagClick1 = false;
@@ -11,7 +12,7 @@ namespace TalabatServices
         public Boolean FlagClick4 = false;
         public Boolean FlagClick5 = false;
 
-        public Rating()
+        public Rating(int Req_ID)
         {
             InitializeComponent();
 

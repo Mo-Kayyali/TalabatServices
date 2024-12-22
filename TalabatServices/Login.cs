@@ -2,8 +2,10 @@ using System.Data.SqlClient;
 
 namespace TalabatServices
 {
+    //FormNum1
     public partial class Login : Form
     {
+
         public Login()
         {
             InitializeComponent();
@@ -30,21 +32,21 @@ namespace TalabatServices
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Rating Rate = new Rating();
+            Rating Rate = new Rating(1);
             Rate.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserRequestAccepted UR = new UserRequestAccepted();
+            UserRequestAccepted UR = new UserRequestAccepted(1);
             UR.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            WorkerAcceptedRequest WR = new WorkerAcceptedRequest();
+            WorkerAcceptedRequest WR = new WorkerAcceptedRequest(1);
             WR.Show();
         }
 

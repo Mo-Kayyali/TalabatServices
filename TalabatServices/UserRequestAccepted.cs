@@ -10,9 +10,10 @@ using System.Windows.Forms;
 
 namespace TalabatServices
 {
+    //FormNum4
     public partial class UserRequestAccepted : Form
     {
-        public UserRequestAccepted()
+        public UserRequestAccepted(int Req_ID)
         {
             InitializeComponent();
         }
