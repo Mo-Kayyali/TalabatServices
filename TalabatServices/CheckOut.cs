@@ -23,10 +23,7 @@ namespace TalabatServices
             Flag0User1Worker = FlagUserWorker;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        
 
         private void CheckOut_Load(object sender, EventArgs e)
         {
