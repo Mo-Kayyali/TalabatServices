@@ -13,7 +13,7 @@ namespace TalabatServices
 {
     public partial class UserHomePage : Form
     {
-        public UserHomePage()
+        public UserHomePage(int U_ID)
         {
             InitializeComponent();
         }

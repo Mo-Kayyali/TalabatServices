@@ -64,6 +64,7 @@
             Login_Button.TabIndex = 0;
             Login_Button.Text = "LOGIN";
             Login_Button.UseVisualStyleBackColor = false;
+            Login_Button.Click += Login_Button_Click;
             // 
             // Email_Textbox
             // 
@@ -71,6 +72,7 @@
             Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Email_Textbox.Location = new Point(269, 156);
+            Email_Textbox.MaxLength = 50;
             Email_Textbox.Name = "Email_Textbox";
             Email_Textbox.Size = new Size(376, 34);
             Email_Textbox.TabIndex = 1;
@@ -81,6 +83,7 @@
             Password_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Password_Textbox.Location = new Point(269, 236);
+            Password_Textbox.MaxLength = 50;
             Password_Textbox.Name = "Password_Textbox";
             Password_Textbox.Size = new Size(376, 34);
             Password_Textbox.TabIndex = 2;
