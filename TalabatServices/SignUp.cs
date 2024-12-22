@@ -125,7 +125,7 @@ namespace TalabatServices
                     MessageBox.Show("Please enter a valid Phone Number.");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(Phonenumber2_Textbox.Text) || !Phonenumber2_Textbox.Text.All(char.IsDigit))
+                if (!Phonenumber2_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter a valid Optional Phone Number.");
                     return;
@@ -135,17 +135,17 @@ namespace TalabatServices
                     MessageBox.Show("Please enter a valid email address containing '@'");
                 }
 
-                if (string.IsNullOrWhiteSpace(Apartment_Textbox.Text) || !Apartment_Textbox.Text.All(char.IsDigit))
+                if (!Apartment_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter Apartment Number in Numbers.");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(Floor_Textbox.Text) || !Floor_Textbox.Text.All(char.IsDigit))
+                if (!Floor_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter Floor Number in Numbers.");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(Building_Textbox.Text) || !Building_Textbox.Text.All(char.IsDigit))
+                if (!Building_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter Building Number in Numbers.");
                     return;

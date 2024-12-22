@@ -14,15 +14,33 @@ using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
+//if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) || !Phonenumber_Textbox.Text.All(char.IsDigit))
+//{
+//    MessageBox.Show("Please enter a valid Phone Number.");
+//    return;
+//}
+//if (!Phonenumber2_Textbox.Text.All(char.IsDigit))
+//{
+//    MessageBox.Show("Please enter a valid Optional Phone Number.");
+//    return;
+//}
+//if (!Email_Textbox.Text.Contains("@"))
+//{
+//    MessageBox.Show("Please enter a valid email address containing '@'");
+//}
+
 namespace TalabatServices
 {
     public partial class ProfileSettings : Form
     {
         private int Flag0user1worker;
-        public ProfileSettings(int FlagUserWorker )
+        private int id;
+        public ProfileSettings(int ID,int FlagUserWorker)
         {
             InitializeComponent();
             Flag0user1worker = FlagUserWorker;
+            id = ID;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,13 +53,13 @@ namespace TalabatServices
             if (Flag0user1worker==0) // user is clicking
             {
                 this.Hide();
-                UserHomePage UHP = new UserHomePage(1);
+                UserHomePage UHP = new UserHomePage(id);
                 UHP.Show();
             }
             else // worker is clicking
             {
                 this.Hide();
-                WorkerHomePage workerHomePage = new WorkerHomePage(1);
+                WorkerHomePage workerHomePage = new WorkerHomePage(id);
                 workerHomePage.Show();
             }
 
