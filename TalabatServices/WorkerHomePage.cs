@@ -19,7 +19,9 @@ namespace TalabatServices
         public WorkerHomePage(int workerID)
         {
             InitializeComponent();
+            
             WorkerID = workerID;
+            this.Load += WorkerHomePage_Load;
         }
 
         private void WorkerHomePage_Load(object sender, EventArgs e)
