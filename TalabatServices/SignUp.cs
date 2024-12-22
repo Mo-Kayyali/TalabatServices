@@ -250,7 +250,7 @@ namespace TalabatServices
                     MessageBox.Show("Please enter a valid Phone Number.");
                     return;
                 }
-                if (string.IsNullOrWhiteSpace(Phonenumber2_Textbox.Text) || !Phonenumber2_Textbox.Text.All(char.IsDigit))
+                if (!Phonenumber2_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter a valid Optional Phone Number.");
                     return;

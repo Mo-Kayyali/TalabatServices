@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             dataGridView1 = new DataGridView();
             label2 = new Label();
             button2 = new Button();
@@ -36,19 +35,6 @@
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 497);
-            button1.Name = "button1";
-            button1.Size = new Size(120, 67);
-            button1.TabIndex = 9;
-            button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
@@ -74,9 +60,10 @@
             // 
             // button2
             // 
-            button2.BackColor = Color.Cyan;
+            button2.BackColor = Color.FromArgb(41, 128, 185);
             button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            button2.ForeColor = Color.White;
             button2.Location = new Point(349, 497);
             button2.Name = "button2";
             button2.Size = new Size(120, 67);
@@ -101,11 +88,12 @@
             // 
             textBox1.BackColor = SystemColors.ButtonFace;
             textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             textBox1.Location = new Point(125, 432);
             textBox1.Margin = new Padding(4);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
-            textBox1.Size = new Size(277, 27);
+            textBox1.Size = new Size(277, 34);
             textBox1.TabIndex = 14;
             // 
             // CheckOut
@@ -122,7 +110,6 @@
             Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(dataGridView1);
-            Controls.Add(button1);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "CheckOut";
@@ -135,8 +122,6 @@
         }
 
         #endregion
-
-        private Button button1;
         private DataGridView dataGridView1;
         private Label label2;
         private Button button2;

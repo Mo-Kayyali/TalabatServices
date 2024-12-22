@@ -215,11 +215,5 @@ namespace TalabatServices
             PS.Show();
         }
 
-        private void WorkerHomePage_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Stop the timer when the form is closed
-            ordersRefreshTimer.Stop();
-            ordersRefreshTimer.Dispose();
-        }
     }
 }
