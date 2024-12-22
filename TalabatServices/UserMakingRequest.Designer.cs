@@ -41,7 +41,6 @@
             // 
             chooseservice.ForeColor = Color.FromArgb(41, 128, 185);
             chooseservice.FormattingEnabled = true;
-            chooseservice.Items.AddRange(new object[] { "cleaning", "plumbing", "electricians ", "babysitting" });
             chooseservice.Location = new Point(258, 12);
             chooseservice.Name = "chooseservice";
             chooseservice.Size = new Size(274, 28);
