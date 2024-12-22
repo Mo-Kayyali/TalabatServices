@@ -64,7 +64,24 @@ namespace TalabatServices
         {
             if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete" && e.RowIndex >= 0)
             {
-                dataGridView1.Rows.RemoveAt(e.RowIndex);
+                // Show confirmation dialog for updating quantity
+                DialogResult result = MessageBox.Show("Are you sure you want to set the quantity to 0?", "Confirm Update", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Set the quantity of the selected row to 0
+                        dataGridView1.Rows[e.RowIndex].Cells["Quantity"].Value = 0;
+
+                        // Optionally, you can disable the delete button for this row (if you no longer want to delete)
+                        // or visually indicate that the item is no longer available.
+                        MessageBox.Show("Item quantity set to 0.");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error updating row: {ex.Message}");
+                    }
+                }
             }
         }
 
