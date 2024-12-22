@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace TalabatServices
 {
-    
+    //FormNum2
     public partial class UserHomePage : Form
     {
         private int userID;
@@ -36,7 +36,7 @@ namespace TalabatServices
         {
          //SqlConnection conn = new SqlConnection();
             this.Hide();
-            UserMakingRequest UMR = new UserMakingRequest();
+            UserMakingRequest UMR = new UserMakingRequest(userID);
             UMR.Show();
         }
 

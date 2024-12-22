@@ -12,11 +12,15 @@ using System.Collections;
 using static System.Collections.Specialized.BitVector32;
 namespace TalabatServices
 {
+
+    //FormNum3
     public partial class UserMakingRequest : Form
     {
-        public UserMakingRequest()
+        private int u_id;
+        public UserMakingRequest(int U_ID)
         {
             InitializeComponent();
+            u_id = U_ID;
         }
         //public string constring = "Data Source=DESKTOP;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
 
@@ -49,7 +53,7 @@ namespace TalabatServices
         private void back_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserHomePage UHP = new UserHomePage();
+            UserHomePage UHP = new UserHomePage(u_id);
             UHP.Show();
         }
 
@@ -102,8 +106,6 @@ namespace TalabatServices
         }
 
     }
-    public static class Session {
-    public static int UserId { get; set; }
-    }
+    
 
 }

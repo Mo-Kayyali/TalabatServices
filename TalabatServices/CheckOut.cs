@@ -11,13 +11,14 @@ using System.Windows.Forms;
 
 namespace TalabatServices
 {
+    //FormNum5
     public partial class CheckOut : Form
     {
         private int Requestid;
-        public CheckOut(int requestid)
+        public CheckOut(int Req_ID)
         {
             InitializeComponent();
-            Requestid = requestid;
+            Requestid = Req_ID;
         }
 
         private void button1_Click(object sender, EventArgs e)
