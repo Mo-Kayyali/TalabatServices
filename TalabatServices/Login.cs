@@ -108,7 +108,7 @@ namespace TalabatServices
                 return;
             }
 
-            string connectionString = @"Data Source=DESKTOP;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

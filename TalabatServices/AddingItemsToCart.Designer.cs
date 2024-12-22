@@ -156,7 +156,6 @@
             Controls.Add(Quantity_tb);
             Controls.Add(ItemName_tb);
             Controls.Add(dataGridView1);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AddingItemsToCart";
             StartPosition = FormStartPosition.CenterScreen;

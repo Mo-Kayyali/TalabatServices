@@ -48,7 +48,6 @@
             chooseservice.TabIndex = 0;
             chooseservice.Text = "what service do you need ";
             chooseservice.SelectedIndexChanged += makrequest_Click;
-
             // 
             // back
             // 
@@ -119,7 +118,6 @@
             Controls.Add(label1);
             Controls.Add(back);
             Controls.Add(chooseservice);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "UserMakingRequest";
             StartPosition = FormStartPosition.CenterScreen;

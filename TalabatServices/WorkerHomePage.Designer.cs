@@ -122,16 +122,11 @@
             Controls.Add(dataGridView_Orders);
             Controls.Add(WorkerRating_lbl);
             Controls.Add(WorkerName_lbl);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "WorkerHomePage";
-
-            
-
             Load += WorkerHomePage_Load;
-          
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -547,7 +547,6 @@
             Controls.Add(Email_Textbox);
             Controls.Add(Login_Button);
             Controls.Add(button1);
-            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "ProfileSettings";
             StartPosition = FormStartPosition.CenterScreen;

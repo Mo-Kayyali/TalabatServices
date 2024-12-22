@@ -11,7 +11,7 @@ namespace TalabatServices
         private System.Windows.Forms.Timer statusCheckTimer;
         private bool isCheckingStatus = false;
 
-        public string constring = "Data Source=DESKTOP;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
+        public string constring = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
         public UserMakingRequest(int U_ID)
         {

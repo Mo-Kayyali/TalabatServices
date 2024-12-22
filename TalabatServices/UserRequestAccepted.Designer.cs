@@ -140,7 +140,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(522, 454);
-            ControlBox = false;
             Controls.Add(button1);
             Controls.Add(rating);
             Controls.Add(label4);
@@ -150,7 +149,6 @@
             Controls.Add(name);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(4);
             MaximizeBox = false;
             Name = "UserRequestAccepted";

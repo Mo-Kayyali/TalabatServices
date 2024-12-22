@@ -6,7 +6,7 @@ namespace TalabatServices
 {
     public partial class UserRequestAccepted : Form
     {
-        public string constring = "Data Source=DESKTOP;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
+        public string constring = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
         private int reqId; // Store the Request ID
         private System.Windows.Forms.Timer statusCheckTimer; // Timer for status checking
 

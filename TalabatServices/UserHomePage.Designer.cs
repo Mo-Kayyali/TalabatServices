@@ -69,7 +69,7 @@
             getstarted.Name = "getstarted";
             getstarted.Size = new Size(176, 61);
             getstarted.TabIndex = 2;
-            getstarted.Text = "GET STARTED";
+            getstarted.Text = "Make Request";
             getstarted.UseVisualStyleBackColor = false;
             getstarted.Click += button1_Click;
             // 
@@ -119,7 +119,6 @@
             Controls.Add(subheadline);
             Controls.Add(label1);
             Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4);
             MaximizeBox = false;
             Name = "UserHomePage";
