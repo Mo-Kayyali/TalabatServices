@@ -78,7 +78,7 @@
             makrequest.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             makrequest.Location = new Point(258, 343);
             makrequest.Name = "makrequest";
-            makrequest.Size = new Size(274, 47);
+            makrequest.Size = new Size(274, 57);
             makrequest.TabIndex = 4;
             makrequest.Text = "confirm request";
             makrequest.UseVisualStyleBackColor = false;
@@ -87,10 +87,10 @@
             // description
             // 
             description.BackColor = SystemColors.InactiveCaption;
-            description.Location = new Point(258, 108);
+            description.Location = new Point(258, 109);
             description.Multiline = true;
             description.Name = "description";
-            description.Size = new Size(274, 157);
+            description.Size = new Size(274, 208);
             description.TabIndex = 6;
             description.Text = "describe your requirment";
             // 

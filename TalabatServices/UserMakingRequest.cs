@@ -70,13 +70,24 @@ namespace TalabatServices
         }
         private void makrequest_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(description.Text))
+            {
+                MessageBox.Show("Please write a description before confirming the request.");
+                return; // Stop further execution if description is empty
+            }
             using (SqlConnection con = new SqlConnection(constring))
             {
                 try
                 {
                     con.Open();
 
-                    string selectedService = chooseservice.SelectedItem.ToString();
+                    string selectedService = chooseservice.SelectedItem?.ToString();
+                    if (string.IsNullOrEmpty(selectedService))
+                    {
+                        MessageBox.Show("Please select a service.");
+                        return; // Stop further execution if no service is selected
+                    }
+
                     string descriptionText = description.Text;
 
                     int serviceId = GetServiceIdByName(selectedService);
@@ -125,11 +136,18 @@ namespace TalabatServices
                             return;
                         }
 
-                        if (status == "Accepted")
-                        {
-                            statusCheckTimer.Stop();
-                            MessageBox.Show("Your request has been accepted!");
-                            OpenUserRequestAcceptedForm();//open form user request
+        //        string query = "INSERT INTO Request (U_ID, S_ID, Description, Start_Date, End_Date) VALUES (@UserId, @ServiceId, @Description, @StartDate, @EndDate)";
+
+        //        using (SqlCommand command = new SqlCommand(query, con))
+        //        {
+        //            command.Parameters.AddWithValue("@UserId", userId);
+        //            command.Parameters.AddWithValue("@ServiceId", serviceId);
+        //            command.Parameters.AddWithValue("@Description", description);
+        //            command.Parameters.AddWithValue("@StartDate", startDate);
+        //            command.Parameters.AddWithValue("@EndDate", endDate);
+
+        //            command.ExecuteNonQuery();
+        //        }
 
                         }
                     }
