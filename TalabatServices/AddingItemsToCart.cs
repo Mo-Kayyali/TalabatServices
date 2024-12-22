@@ -122,7 +122,7 @@ namespace TalabatServices
                 }
 
                 this.Hide();
-                CheckOut Co = new CheckOut(RequestID);
+                CheckOut Co = new CheckOut(RequestID,1);
                 Co.Show();
             }
             catch (Exception ex)
