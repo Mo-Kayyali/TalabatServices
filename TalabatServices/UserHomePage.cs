@@ -36,7 +36,7 @@ namespace TalabatServices
         {
          //SqlConnection conn = new SqlConnection();
             this.Hide();
-            UserMakingRequest UMR = new UserMakingRequest();
+            UserMakingRequest UMR = new UserMakingRequest(userID);
             UMR.Show();
         }
 

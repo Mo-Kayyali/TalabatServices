@@ -84,7 +84,7 @@ namespace TalabatServices
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserMakingRequest UMR = new UserMakingRequest();
+            UserMakingRequest UMR = new UserMakingRequest(7);
             UMR.Show();
         }
 
