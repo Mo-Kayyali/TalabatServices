@@ -41,7 +41,7 @@ namespace TalabatServices
         private void back_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserHomePage UHP = new UserHomePage(1);
+            UserHomePage UHP = new UserHomePage();
             UHP.Show();
         }
     }
