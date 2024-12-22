@@ -20,6 +20,11 @@ namespace TalabatServices
         {
             InitializeComponent();
             userID = U_ID;
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void UserHomePage_Load(object sender, EventArgs e)

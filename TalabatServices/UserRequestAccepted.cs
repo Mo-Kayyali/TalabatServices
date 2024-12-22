@@ -14,8 +14,13 @@ namespace TalabatServices
         {
             InitializeComponent();
             reqId = Req_ID; // Initialize the request ID
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
         }
 
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
         private void UserRequestAccepted_Load(object sender, EventArgs e)
         {
             // Initialize and start the timer
@@ -105,9 +110,6 @@ namespace TalabatServices
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+
     }
 }

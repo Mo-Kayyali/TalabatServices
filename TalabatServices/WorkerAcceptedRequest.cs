@@ -17,6 +17,11 @@ namespace TalabatServices
             InitializeComponent();
             RequestID = reqID;
             LoadUserData(reqID);
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void LoadUserData(int reqID)
@@ -82,15 +87,11 @@ namespace TalabatServices
             }
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-            AddingItemsToCart AITC = new AddingItemsToCart(UserID, WorkerID, ServiceID, RequestID);
+            AddingItemsToCart AITC = new AddingItemsToCart(RequestID);
             AITC.Show();
         }
     }

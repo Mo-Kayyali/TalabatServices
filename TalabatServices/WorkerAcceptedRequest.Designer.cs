@@ -40,7 +40,6 @@
             Description_tb = new TextBox();
             label7 = new Label();
             button1 = new Button();
-            button10 = new Button();
             SuspendLayout();
             // 
             // label2
@@ -60,7 +59,7 @@
             Phone_tb.BackColor = SystemColors.ButtonFace;
             Phone_tb.BorderStyle = BorderStyle.FixedSingle;
             Phone_tb.Location = new Point(199, 169);
-            Phone_tb.Margin = new Padding(4, 4, 4, 4);
+            Phone_tb.Margin = new Padding(4);
             Phone_tb.Name = "Phone_tb";
             Phone_tb.ReadOnly = true;
             Phone_tb.Size = new Size(277, 27);
@@ -83,7 +82,7 @@
             Name_tb.BackColor = SystemColors.ButtonFace;
             Name_tb.BorderStyle = BorderStyle.FixedSingle;
             Name_tb.Location = new Point(199, 109);
-            Name_tb.Margin = new Padding(4, 4, 4, 4);
+            Name_tb.Margin = new Padding(4);
             Name_tb.Name = "Name_tb";
             Name_tb.ReadOnly = true;
             Name_tb.Size = new Size(277, 27);
@@ -106,7 +105,7 @@
             Addr_tb.BackColor = SystemColors.ButtonFace;
             Addr_tb.BorderStyle = BorderStyle.FixedSingle;
             Addr_tb.Location = new Point(199, 282);
-            Addr_tb.Margin = new Padding(4, 4, 4, 4);
+            Addr_tb.Margin = new Padding(4);
             Addr_tb.Multiline = true;
             Addr_tb.Name = "Addr_tb";
             Addr_tb.ReadOnly = true;
@@ -130,7 +129,7 @@
             Service_tb.BackColor = SystemColors.ButtonFace;
             Service_tb.BorderStyle = BorderStyle.FixedSingle;
             Service_tb.Location = new Point(199, 231);
-            Service_tb.Margin = new Padding(4, 4, 4, 4);
+            Service_tb.Margin = new Padding(4);
             Service_tb.Name = "Service_tb";
             Service_tb.ReadOnly = true;
             Service_tb.Size = new Size(277, 27);
@@ -153,7 +152,7 @@
             Description_tb.BackColor = SystemColors.ButtonFace;
             Description_tb.BorderStyle = BorderStyle.FixedSingle;
             Description_tb.Location = new Point(199, 384);
-            Description_tb.Margin = new Padding(4, 4, 4, 4);
+            Description_tb.Margin = new Padding(4);
             Description_tb.Multiline = true;
             Description_tb.Name = "Description_tb";
             Description_tb.ReadOnly = true;
@@ -174,30 +173,16 @@
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ButtonFace;
-            button1.Font = new Font("Showcard Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.BackColor = Color.FromArgb(41, 128, 185);
+            button1.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(337, 588);
+            button1.Location = new Point(357, 596);
             button1.Name = "button1";
             button1.Size = new Size(179, 67);
             button1.TabIndex = 19;
             button1.Text = "Arrived";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
-            // 
-            // button10
-            // 
-            button10.BackColor = Color.FromArgb(192, 0, 0);
-            button10.FlatStyle = FlatStyle.Flat;
-            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.Black;
-            button10.Location = new Point(12, 611);
-            button10.Name = "button10";
-            button10.Size = new Size(72, 44);
-            button10.TabIndex = 48;
-            button10.Text = "Exit";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
             // 
             // WorkerAcceptedRequest
             // 
@@ -207,8 +192,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(538, 667);
-            ControlBox = false;
-            Controls.Add(button10);
             Controls.Add(button1);
             Controls.Add(Description_tb);
             Controls.Add(label7);
@@ -224,7 +207,6 @@
             MaximizeBox = false;
             Name = "WorkerAcceptedRequest";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "WorkerAcceptedRequest";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -243,6 +225,5 @@
         private TextBox Description_tb;
         private Label label7;
         private Button button1;
-        private Button button10;
     }
 }

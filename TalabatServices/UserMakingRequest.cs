@@ -17,8 +17,13 @@ namespace TalabatServices
         {
             InitializeComponent();
             u_id = U_ID;
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
         }
 
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
         private void UserMakingRequest_Load(object sender, EventArgs e)
         {
             // Initialize timer for status checking

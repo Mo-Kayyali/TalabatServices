@@ -23,9 +23,13 @@ namespace TalabatServices
             InitializeComponent();
             Requestid = Req_ID;
             Flag0User1Worker = FlagUserWorker;
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
-        
 
         private void CheckOut_Load(object sender, EventArgs e)
         {

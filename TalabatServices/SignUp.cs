@@ -24,6 +24,8 @@ namespace TalabatServices
             this.Worker_Checkbox.CheckedChanged += new System.EventHandler(this.Worker_Checkbox_CheckedChanged);
             this.FormClosing += new FormClosingEventHandler(Signup_FormClosing);
         }
+
+
         private void SignUp_Load(object sender, EventArgs e)
         {
             LoadServices();
@@ -501,9 +503,5 @@ namespace TalabatServices
             log.Show();
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

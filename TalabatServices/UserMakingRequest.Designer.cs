@@ -39,33 +39,34 @@
             // 
             // chooseservice
             // 
-            chooseservice.ForeColor = Color.FromArgb(41, 128, 185);
+            chooseservice.ForeColor = SystemColors.WindowText;
             chooseservice.FormattingEnabled = true;
-            chooseservice.Location = new Point(258, 12);
+            chooseservice.Location = new Point(258, 8);
             chooseservice.Name = "chooseservice";
             chooseservice.Size = new Size(274, 28);
             chooseservice.TabIndex = 0;
-            chooseservice.Text = "what service do you need ";
+            chooseservice.Text = "Choose The Service You Want ...";
             // 
             // back
             // 
             back.BackColor = Color.FromArgb(41, 128, 185);
-            back.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            back.Location = new Point(693, 13);
+            back.Font = new Font("Century Gothic", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            back.ForeColor = Color.White;
+            back.Location = new Point(678, 2);
             back.Name = "back";
-            back.Size = new Size(106, 35);
+            back.Size = new Size(120, 68);
             back.TabIndex = 1;
-            back.Text = "back";
+            back.Text = "Back To Home Page";
             back.UseVisualStyleBackColor = false;
             back.Click += back_Click;
             // 
             // label1
             // 
-            label1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Stencil", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(41, 128, 185);
             label1.Location = new Point(3, 9);
             label1.Name = "label1";
-            label1.Size = new Size(204, 48);
+            label1.Size = new Size(249, 50);
             label1.TabIndex = 2;
             label1.Text = "easily find and book servicies";
             // 
@@ -73,33 +74,36 @@
             // 
             makrequest.BackColor = Color.FromArgb(41, 128, 185);
             makrequest.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            makrequest.Location = new Point(258, 343);
+            makrequest.ForeColor = Color.White;
+            makrequest.Location = new Point(199, 346);
             makrequest.Name = "makrequest";
-            makrequest.Size = new Size(274, 57);
+            makrequest.Size = new Size(376, 57);
             makrequest.TabIndex = 4;
-            makrequest.Text = "confirm request";
+            makrequest.Text = "Confirm Request";
             makrequest.UseVisualStyleBackColor = false;
             makrequest.Click += makrequest_Click;
             // 
             // description
             // 
             description.BackColor = SystemColors.InactiveCaption;
+            description.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             description.Location = new Point(258, 109);
+            description.MaxLength = 500;
             description.Multiline = true;
             description.Name = "description";
-            description.Size = new Size(274, 208);
-            description.TabIndex = 6;
-            description.Text = "describe your requirment";
+            description.Size = new Size(530, 228);
+            description.TabIndex = 2;
+            description.Text = "Description ...";
             // 
             // label2
             // 
-            label2.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(41, 128, 185);
-            label2.Location = new Point(12, 109);
+            label2.Location = new Point(3, 109);
             label2.Name = "label2";
-            label2.Size = new Size(195, 156);
+            label2.Size = new Size(249, 180);
             label2.TabIndex = 7;
-            label2.Text = "choose the best match based on your prefernces and budget";
+            label2.Text = "Descripe Your Problem (Important) In not more than 500 Letters";
             // 
             // UserMakingRequest
             // 
@@ -109,7 +113,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 415);
             Controls.Add(label2);
             Controls.Add(description);
             Controls.Add(makrequest);
@@ -119,7 +123,6 @@
             MaximizeBox = false;
             Name = "UserMakingRequest";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "UserMakingRequest";
             Load += UserMakingRequest_Load;
             ResumeLayout(false);
             PerformLayout();

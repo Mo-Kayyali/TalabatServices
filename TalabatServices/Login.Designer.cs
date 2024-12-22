@@ -47,7 +47,6 @@
             button7 = new Button();
             button8 = new Button();
             button9 = new Button();
-            button10 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -61,7 +60,7 @@
             Login_Button.Location = new Point(376, 303);
             Login_Button.Name = "Login_Button";
             Login_Button.Size = new Size(157, 58);
-            Login_Button.TabIndex = 0;
+            Login_Button.TabIndex = 3;
             Login_Button.Text = "LOGIN";
             Login_Button.UseVisualStyleBackColor = false;
             Login_Button.Click += Login_Button_Click;
@@ -131,7 +130,7 @@
             Sign_Up_Button.Location = new Point(376, 376);
             Sign_Up_Button.Name = "Sign_Up_Button";
             Sign_Up_Button.Size = new Size(157, 58);
-            Sign_Up_Button.TabIndex = 9;
+            Sign_Up_Button.TabIndex = 4;
             Sign_Up_Button.Text = "Sign Up";
             Sign_Up_Button.UseVisualStyleBackColor = false;
             Sign_Up_Button.Click += Sign_Up_Button_Click;
@@ -247,20 +246,6 @@
             button9.UseVisualStyleBackColor = true;
             button9.Click += button9_Click;
             // 
-            // button10
-            // 
-            button10.BackColor = Color.FromArgb(192, 0, 0);
-            button10.FlatStyle = FlatStyle.Flat;
-            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.Black;
-            button10.Location = new Point(781, 4);
-            button10.Name = "button10";
-            button10.Size = new Size(121, 45);
-            button10.TabIndex = 22;
-            button10.Text = "Exit";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
-            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -269,8 +254,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(914, 533);
-            ControlBox = false;
-            Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
             Controls.Add(button7);
@@ -293,7 +276,6 @@
             Name = "Login";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
             Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -321,6 +303,5 @@
         private Button button7;
         private Button button8;
         private Button button9;
-        private Button button10;
     }
 }

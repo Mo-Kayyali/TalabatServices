@@ -35,7 +35,6 @@
             phone = new TextBox();
             label4 = new Label();
             rating = new TextBox();
-            button1 = new Button();
             name = new TextBox();
             SuspendLayout();
             // 
@@ -109,18 +108,6 @@
             rating.Size = new Size(277, 34);
             rating.TabIndex = 6;
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(416, 383);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 59);
-            button1.TabIndex = 7;
-            button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // name
             // 
             name.BackColor = SystemColors.ButtonFace;
@@ -140,7 +127,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(522, 454);
-            Controls.Add(button1);
             Controls.Add(rating);
             Controls.Add(label4);
             Controls.Add(phone);
@@ -166,7 +152,6 @@
         private TextBox phone;
         private Label label4;
         private TextBox rating;
-        private Button button1;
         private TextBox name;
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
             label4 = new Label();
             Email_Textbox = new TextBox();
             Login_Button = new Button();
@@ -68,18 +67,6 @@
             label12 = new Label();
             SuspendLayout();
             // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(1335, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 59);
-            button1.TabIndex = 8;
-            button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -97,9 +84,10 @@
             Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Email_Textbox.Location = new Point(572, 36);
+            Email_Textbox.MaxLength = 50;
             Email_Textbox.Name = "Email_Textbox";
             Email_Textbox.Size = new Size(453, 34);
-            Email_Textbox.TabIndex = 10;
+            Email_Textbox.TabIndex = 1;
             // 
             // Login_Button
             // 
@@ -146,9 +134,10 @@
             Chpassword_Text.BorderStyle = BorderStyle.FixedSingle;
             Chpassword_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Chpassword_Text.Location = new Point(572, 97);
+            Chpassword_Text.MaxLength = 50;
             Chpassword_Text.Name = "Chpassword_Text";
             Chpassword_Text.Size = new Size(453, 34);
-            Chpassword_Text.TabIndex = 13;
+            Chpassword_Text.TabIndex = 2;
             // 
             // label2
             // 
@@ -167,9 +156,10 @@
             CnfPassword_Text.BorderStyle = BorderStyle.FixedSingle;
             CnfPassword_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CnfPassword_Text.Location = new Point(794, 620);
+            CnfPassword_Text.MaxLength = 50;
             CnfPassword_Text.Name = "CnfPassword_Text";
             CnfPassword_Text.Size = new Size(390, 34);
-            CnfPassword_Text.TabIndex = 15;
+            CnfPassword_Text.TabIndex = 11;
             CnfPassword_Text.UseSystemPasswordChar = true;
             // 
             // label3
@@ -189,9 +179,10 @@
             Name_Text.BorderStyle = BorderStyle.FixedSingle;
             Name_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name_Text.Location = new Point(572, 158);
+            Name_Text.MaxLength = 50;
             Name_Text.Name = "Name_Text";
             Name_Text.Size = new Size(453, 34);
-            Name_Text.TabIndex = 17;
+            Name_Text.TabIndex = 3;
             // 
             // UserAdd_Checkbox
             // 
@@ -249,9 +240,10 @@
             Phone_Text.BorderStyle = BorderStyle.FixedSingle;
             Phone_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Phone_Text.Location = new Point(510, 219);
+            Phone_Text.MaxLength = 15;
             Phone_Text.Name = "Phone_Text";
             Phone_Text.Size = new Size(453, 34);
-            Phone_Text.TabIndex = 29;
+            Phone_Text.TabIndex = 4;
             // 
             // Phone_Combo
             // 
@@ -281,9 +273,10 @@
             District_Text.BorderStyle = BorderStyle.FixedSingle;
             District_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             District_Text.Location = new Point(511, 280);
+            District_Text.MaxLength = 50;
             District_Text.Name = "District_Text";
             District_Text.Size = new Size(453, 34);
-            District_Text.TabIndex = 48;
+            District_Text.TabIndex = 5;
             // 
             // DistrictEdit_Checkbox
             // 
@@ -352,9 +345,10 @@
             AddDistrict_Text.BorderStyle = BorderStyle.FixedSingle;
             AddDistrict_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             AddDistrict_Text.Location = new Point(712, 337);
+            AddDistrict_Text.MaxLength = 50;
             AddDistrict_Text.Name = "AddDistrict_Text";
             AddDistrict_Text.Size = new Size(251, 34);
-            AddDistrict_Text.TabIndex = 54;
+            AddDistrict_Text.TabIndex = 6;
             // 
             // AddressEdit_Checkbox
             // 
@@ -412,9 +406,10 @@
             Floor_Text.BorderStyle = BorderStyle.FixedSingle;
             Floor_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Floor_Text.Location = new Point(712, 565);
+            Floor_Text.MaxLength = 8;
             Floor_Text.Name = "Floor_Text";
             Floor_Text.Size = new Size(251, 34);
-            Floor_Text.TabIndex = 56;
+            Floor_Text.TabIndex = 10;
             // 
             // Building_Text
             // 
@@ -422,9 +417,10 @@
             Building_Text.BorderStyle = BorderStyle.FixedSingle;
             Building_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Building_Text.Location = new Point(712, 451);
+            Building_Text.MaxLength = 5;
             Building_Text.Name = "Building_Text";
             Building_Text.Size = new Size(251, 34);
-            Building_Text.TabIndex = 57;
+            Building_Text.TabIndex = 8;
             // 
             // Street_Text
             // 
@@ -432,9 +428,10 @@
             Street_Text.BorderStyle = BorderStyle.FixedSingle;
             Street_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Street_Text.Location = new Point(712, 394);
+            Street_Text.MaxLength = 100;
             Street_Text.Name = "Street_Text";
             Street_Text.Size = new Size(251, 34);
-            Street_Text.TabIndex = 58;
+            Street_Text.TabIndex = 7;
             // 
             // Apartment_Text
             // 
@@ -442,9 +439,10 @@
             Apartment_Text.BorderStyle = BorderStyle.FixedSingle;
             Apartment_Text.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Apartment_Text.Location = new Point(712, 508);
+            Apartment_Text.MaxLength = 8;
             Apartment_Text.Name = "Apartment_Text";
             Apartment_Text.Size = new Size(251, 34);
-            Apartment_Text.TabIndex = 59;
+            Apartment_Text.TabIndex = 9;
             // 
             // label8
             // 
@@ -546,19 +544,15 @@
             Controls.Add(label4);
             Controls.Add(Email_Textbox);
             Controls.Add(Login_Button);
-            Controls.Add(button1);
             MaximizeBox = false;
             Name = "ProfileSettings";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ProfileSettings";
             Load += ProfileSettings_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Button button1;
         private Label label4;
         private TextBox Email_Textbox;
         private Button Login_Button;

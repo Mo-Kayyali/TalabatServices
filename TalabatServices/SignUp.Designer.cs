@@ -57,7 +57,6 @@
             label13 = new Label();
             label14 = new Label();
             Login_Button = new Button();
-            button10 = new Button();
             SuspendLayout();
             // 
             // Create_Account_Button
@@ -388,20 +387,6 @@
             Login_Button.UseVisualStyleBackColor = false;
             Login_Button.Click += Login_Button_Click;
             // 
-            // button10
-            // 
-            button10.BackColor = Color.FromArgb(192, 0, 0);
-            button10.FlatStyle = FlatStyle.Flat;
-            button10.Font = new Font("Century Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button10.ForeColor = Color.Black;
-            button10.Location = new Point(1437, 7);
-            button10.Name = "button10";
-            button10.Size = new Size(121, 45);
-            button10.TabIndex = 47;
-            button10.Text = "Exit";
-            button10.UseVisualStyleBackColor = false;
-            button10.Click += button10_Click;
-            // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -409,8 +394,6 @@
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(1570, 686);
-            ControlBox = false;
-            Controls.Add(button10);
             Controls.Add(Login_Button);
             Controls.Add(label14);
             Controls.Add(label13);
@@ -443,7 +426,6 @@
             MaximizeBox = false;
             Name = "SignUp";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "SignUp";
             Load += SignUp_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -479,6 +461,5 @@
         private Label label13;
         private Label label14;
         private Button Login_Button;
-        private Button button10;
     }
 }

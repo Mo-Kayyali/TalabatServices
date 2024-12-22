@@ -38,14 +38,14 @@
             // 
             // label1
             // 
-            label1.Font = new Font("Arial Black", 22.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Algerian", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(41, 128, 158);
             label1.Location = new Point(172, 9);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(652, 63);
             label1.TabIndex = 0;
-            label1.Text = "find trusted services near you";
+            label1.Text = "Find Trusted Services Near You";
             // 
             // subheadline
             // 
@@ -65,9 +65,10 @@
             // 
             getstarted.BackColor = Color.FromArgb(41, 128, 185);
             getstarted.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            getstarted.Location = new Point(415, 336);
+            getstarted.ForeColor = Color.White;
+            getstarted.Location = new Point(373, 318);
             getstarted.Name = "getstarted";
-            getstarted.Size = new Size(176, 61);
+            getstarted.Size = new Size(258, 82);
             getstarted.TabIndex = 2;
             getstarted.Text = "Make Request";
             getstarted.UseVisualStyleBackColor = false;
@@ -76,9 +77,11 @@
             // setting
             // 
             setting.BackColor = Color.FromArgb(41, 128, 185);
-            setting.Location = new Point(894, 29);
+            setting.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
+            setting.ForeColor = Color.White;
+            setting.Location = new Point(894, 9);
             setting.Name = "setting";
-            setting.Size = new Size(94, 43);
+            setting.Size = new Size(94, 63);
             setting.TabIndex = 3;
             setting.Text = "Settings";
             setting.UseVisualStyleBackColor = false;
@@ -123,7 +126,6 @@
             MaximizeBox = false;
             Name = "UserHomePage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "UserHomePage";
             Load += UserHomePage_Load;
             ResumeLayout(false);
             PerformLayout();

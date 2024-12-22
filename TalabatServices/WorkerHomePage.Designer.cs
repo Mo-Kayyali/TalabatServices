@@ -101,9 +101,10 @@
             // 
             setting.BackColor = Color.FromArgb(41, 128, 185);
             setting.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
-            setting.Location = new Point(795, 12);
+            setting.ForeColor = Color.White;
+            setting.Location = new Point(802, 0);
             setting.Name = "setting";
-            setting.Size = new Size(94, 43);
+            setting.Size = new Size(94, 58);
             setting.TabIndex = 12;
             setting.Text = "Setting";
             setting.UseVisualStyleBackColor = false;
@@ -125,7 +126,6 @@
             MaximizeBox = false;
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "WorkerHomePage";
             Load += WorkerHomePage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).EndInit();
             ResumeLayout(false);
