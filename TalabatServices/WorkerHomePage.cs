@@ -21,7 +21,7 @@ namespace TalabatServices
             InitializeComponent();
             
             WorkerID = workerID;
-            this.Load += WorkerHomePage_Load;
+
         }
 
         private void WorkerHomePage_Load(object sender, EventArgs e)
@@ -120,9 +120,9 @@ namespace TalabatServices
                     connection.Open();
 
                     string query = @"
-                        SELECT Req_ID, Description, Start_Date, End_Date, Status
-                        FROM Request
-                        WHERE District = @District AND Status = 'Pending'";
+                        SELECT R.Req_ID, R.Description, R.Start_Date, R.Status
+                        FROM Request R, User_Addresses UA
+                        WHERE UA.District = @District AND UA.CurrentlySelected = 1 and UA.U_Id = R.U_ID And R.Status = 'Pending'";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
