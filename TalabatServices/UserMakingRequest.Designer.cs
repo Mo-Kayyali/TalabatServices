@@ -46,7 +46,6 @@
             chooseservice.Size = new Size(274, 28);
             chooseservice.TabIndex = 0;
             chooseservice.Text = "what service do you need ";
-            chooseservice.SelectedIndexChanged += makrequest_Click;
             // 
             // back
             // 

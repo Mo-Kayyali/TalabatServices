@@ -37,13 +37,11 @@ namespace TalabatServices
 
                     string query = @"
                         SELECT w.Name, wp.Phone, w.Rate
-                        FROM dbo.Workers w
-                        INNER JOIN dbo.Worker_Phones wp ON w.W_ID = wp.W_ID
-                        WHERE w.W_ID = (
-                            SELECT Assigned_Worker_ID
+                        FROM dbo.Workers w ,dbo.Worker_Phones wp  
+                        WHERE w.W_ID = wp.W_ID and wp.CurrentlySelected = 1 and  w.W_ID = (
+                            SELECT W_ID
                             FROM dbo.Request
-                            WHERE Req_ID = @RequestId
-                        ) AND wp.CurrentlySelected = 'Yes'";
+                            WHERE Req_ID = @RequestId )";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
