@@ -17,6 +17,7 @@ namespace TalabatServices
 
         }
 
+        
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -72,7 +73,7 @@ namespace TalabatServices
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddingItemsToCart ITTC = new AddingItemsToCart(7, 2, 1, 1);
+            AddingItemsToCart ITTC = new AddingItemsToCart(1);
             ITTC.Show();
         }
 

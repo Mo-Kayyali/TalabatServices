@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TalabatServices
@@ -17,17 +10,63 @@ namespace TalabatServices
         private int WorkerID;
         private int ServiceID;
         private int RequestID;
-        public AddingItemsToCart(int currentuserid, int workerid, int serviceid, int requestid)
+
+        // Constructor now only takes RequestID
+        public AddingItemsToCart(int requestid)
         {
             InitializeComponent();
-            CurrentUserID = currentuserid;
-            WorkerID = workerid;
-            ServiceID = serviceid;
             RequestID = requestid;
+            this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
+        }
+
+        
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        // Method to fetch UserID, WorkerID, and ServiceID based on RequestID
+        private void FetchRequestDetails()
+        {
+            try
+            {
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT U_ID, W_ID, S_ID FROM Request WHERE Req_ID = @Req_ID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Req_ID", RequestID);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                CurrentUserID = Convert.ToInt32(reader["U_ID"]);
+                                WorkerID = Convert.ToInt32(reader["W_ID"]);
+                                ServiceID = Convert.ToInt32(reader["S_ID"]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Request ID not found.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching request details: {ex.Message}");
+            }
         }
 
         private void AddingItemsToCart_Load(object sender, EventArgs e)
         {
+            // Fetch the request details from the database
+            FetchRequestDetails();
+
             dataGridView1.Columns.Add("ItemName", "ItemName");
             dataGridView1.Columns.Add("Quantity", "Quantity");
             dataGridView1.Columns.Add("Price", "Price");
@@ -39,13 +78,12 @@ namespace TalabatServices
             deleteButtonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(deleteButtonColumn);
         }
+
         private void AddToGrid_Btn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(ItemName_tb.Text) && !string.IsNullOrEmpty(Quantity_tb.Text) && !string.IsNullOrEmpty(Price_tb.Text))
             {
-
                 dataGridView1.Rows.Add(ItemName_tb.Text, Quantity_tb.Text, Price_tb.Text);
-
 
                 ItemName_tb.Clear();
                 Quantity_tb.Clear();
@@ -53,7 +91,7 @@ namespace TalabatServices
             }
             else
             {
-                MessageBox.Show("Please fullfil all boxes!");
+                MessageBox.Show("Please fulfill all boxes!");
             }
         }
 
@@ -92,8 +130,8 @@ namespace TalabatServices
                         if (!row.IsNewRow)
                         {
                             string insertQuery = @"
-                    INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
-                    VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
+                                INSERT INTO Payment (U_ID, W_ID, S_ID, Req_ID, Item_Name, Quantity, Item_Cost) 
+                                VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Item_Name, @Quantity, @Item_Cost)";
 
                             using (SqlCommand command = new SqlCommand(insertQuery, connection))
                             {
@@ -122,7 +160,7 @@ namespace TalabatServices
                 }
 
                 this.Hide();
-                CheckOut Co = new CheckOut(RequestID,1);
+                CheckOut Co = new CheckOut(RequestID, 1);
                 Co.Show();
             }
             catch (Exception ex)

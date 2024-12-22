@@ -269,7 +269,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(914, 533);
-            ControlBox = false;
             Controls.Add(button10);
             Controls.Add(button9);
             Controls.Add(button8);
@@ -293,7 +292,6 @@
             Name = "Login";
             RightToLeftLayout = true;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Login";
             Load += Login_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
