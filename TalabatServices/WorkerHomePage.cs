@@ -11,23 +11,38 @@ using System.Windows.Forms;
 
 namespace TalabatServices
 {
-    //FormNum7
     public partial class WorkerHomePage : Form
     {
         private int WorkerID; // Worker ID to identify the logged-in worker
+        private System.Windows.Forms.Timer ordersRefreshTimer;
 
         public WorkerHomePage(int workerID)
         {
             InitializeComponent();
-            
+
             WorkerID = workerID;
 
+
+            ordersRefreshTimer = new System.Windows.Forms.Timer();
+            ordersRefreshTimer.Interval = 30000; // Refresh every 30 seconds
+            ordersRefreshTimer.Tick += OrdersRefreshTimer_Tick;
         }
 
         private void WorkerHomePage_Load(object sender, EventArgs e)
         {
             LoadWorkerInfo();
             LoadDistricts();
+
+            // Start the timer
+            ordersRefreshTimer.Start();
+        }
+
+        private void OrdersRefreshTimer_Tick(object sender, EventArgs e)
+        {
+            if (District_cb.SelectedItem != null)
+            {
+                LoadOrders(District_cb.SelectedItem.ToString());
+            }
         }
 
         private void LoadWorkerInfo()
@@ -57,9 +72,6 @@ namespace TalabatServices
 
                                 WorkerName_lbl.Text = workerName;
                                 WorkerRating_lbl.Text = $"Rating: {workerRate}";
-
-                                // Debugging message
-                                MessageBox.Show($"Loaded: {workerName}, {workerRate}");
                             }
                             else
                             {
@@ -134,7 +146,7 @@ namespace TalabatServices
                             adapter.Fill(ordersTable);
 
                             dataGridView_Orders.DataSource = ordersTable;
-                            AddAcceptButtonColumn(); //button to accept or not
+                            AddAcceptButtonColumn();
                         }
                     }
                 }
@@ -181,16 +193,12 @@ namespace TalabatServices
 
                             command.ExecuteNonQuery();
 
-                            // Show success message
                             MessageBox.Show("Order accepted successfully!");
 
-                            // Hide current form
                             this.Hide();
                             WorkerAcceptedRequest WAR = new WorkerAcceptedRequest(selectedOrderId);
                             WAR.Show();
                         }
-
-                        // Reload the orders
                     }
                 }
                 catch (Exception ex)
@@ -206,7 +214,6 @@ namespace TalabatServices
             ProfileSettings PS = new ProfileSettings(WorkerID, 1);
             PS.Show();
         }
-
 
     }
 }
