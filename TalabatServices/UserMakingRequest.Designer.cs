@@ -35,10 +35,6 @@
             makrequest = new Button();
             description = new TextBox();
             label2 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            endate = new Label();
-            startdate = new Label();
-            dateTimePicker2 = new DateTimePicker();
             SuspendLayout();
             // 
             // chooseservice
@@ -51,7 +47,8 @@
             chooseservice.Size = new Size(274, 28);
             chooseservice.TabIndex = 0;
             chooseservice.Text = "what service do you need ";
-            chooseservice.SelectedIndexChanged += chooseservice_SelectedIndexChanged;
+            chooseservice.SelectedIndexChanged += makrequest_Click;
+
             // 
             // back
             // 
@@ -107,41 +104,6 @@
             label2.TabIndex = 7;
             label2.Text = "choose the best match based on your prefernces and budget";
             // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.Location = new Point(549, 154);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(250, 27);
-            dateTimePicker1.TabIndex = 8;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // endate
-            // 
-            endate.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            endate.ForeColor = Color.FromArgb(41, 128, 185);
-            endate.Location = new Point(626, 197);
-            endate.Name = "endate";
-            endate.Size = new Size(110, 29);
-            endate.TabIndex = 9;
-            endate.Text = "end date";
-            // 
-            // startdate
-            // 
-            startdate.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            startdate.ForeColor = Color.FromArgb(41, 128, 185);
-            startdate.Location = new Point(617, 108);
-            startdate.Name = "startdate";
-            startdate.Size = new Size(110, 27);
-            startdate.TabIndex = 10;
-            startdate.Text = "start date";
-            // 
-            // dateTimePicker2
-            // 
-            dateTimePicker2.Location = new Point(549, 238);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(250, 27);
-            dateTimePicker2.TabIndex = 11;
-            // 
             // UserMakingRequest
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -151,10 +113,6 @@
             BackgroundImage = Properties.Resources.Proj_pic;
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(800, 450);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(startdate);
-            Controls.Add(endate);
-            Controls.Add(dateTimePicker1);
             Controls.Add(label2);
             Controls.Add(description);
             Controls.Add(makrequest);
@@ -180,9 +138,5 @@
         private Button makrequest;
         private TextBox description;
         private Label label2;
-        private DateTimePicker dateTimePicker1;
-        private Label endate;
-        private Label startdate;
-        private DateTimePicker dateTimePicker2;
     }
 }

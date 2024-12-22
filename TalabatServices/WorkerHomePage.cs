@@ -194,8 +194,13 @@ namespace TalabatServices
         private void setting_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings(WorkerID,1);
+            ProfileSettings PS = new ProfileSettings(WorkerID, 1);
             PS.Show();
+        }
+
+        private void WorkerHomePage_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

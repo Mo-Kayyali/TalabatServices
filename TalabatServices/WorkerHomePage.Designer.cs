@@ -40,24 +40,24 @@
             // WorkerName_lbl
             // 
             WorkerName_lbl.AutoSize = true;
-            WorkerName_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
+            WorkerName_lbl.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             WorkerName_lbl.ForeColor = Color.FromArgb(41, 128, 185);
             WorkerName_lbl.Location = new Point(26, 25);
             WorkerName_lbl.Margin = new Padding(2, 0, 2, 0);
             WorkerName_lbl.Name = "WorkerName_lbl";
-            WorkerName_lbl.Size = new Size(217, 33);
+            WorkerName_lbl.Size = new Size(189, 32);
             WorkerName_lbl.TabIndex = 7;
             WorkerName_lbl.Text = "WorkerName";
             // 
             // WorkerRating_lbl
             // 
             WorkerRating_lbl.AutoSize = true;
-            WorkerRating_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
+            WorkerRating_lbl.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             WorkerRating_lbl.ForeColor = Color.FromArgb(41, 128, 185);
             WorkerRating_lbl.Location = new Point(272, 25);
             WorkerRating_lbl.Margin = new Padding(2, 0, 2, 0);
             WorkerRating_lbl.Name = "WorkerRating_lbl";
-            WorkerRating_lbl.Size = new Size(122, 33);
+            WorkerRating_lbl.Size = new Size(103, 32);
             WorkerRating_lbl.TabIndex = 8;
             WorkerRating_lbl.Text = "Rating";
             // 
@@ -84,12 +84,12 @@
             // District_lbl
             // 
             District_lbl.AutoSize = true;
-            District_lbl.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
+            District_lbl.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             District_lbl.ForeColor = Color.FromArgb(41, 128, 185);
             District_lbl.Location = new Point(439, 151);
             District_lbl.Margin = new Padding(2, 0, 2, 0);
             District_lbl.Name = "District_lbl";
-            District_lbl.Size = new Size(167, 33);
+            District_lbl.Size = new Size(126, 32);
             District_lbl.TabIndex = 11;
             District_lbl.Text = "District: ";
             // 
@@ -122,6 +122,7 @@
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "WorkerHomePage";
+            Load += WorkerHomePage_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).EndInit();
             ResumeLayout(false);
             PerformLayout();
