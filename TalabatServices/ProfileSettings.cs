@@ -35,7 +35,7 @@ namespace TalabatServices
             if (Flag0user1worker==0) // user is clicking
             {
                 this.Hide();
-                UserHomePage UHP = new UserHomePage();
+                UserHomePage UHP = new UserHomePage(1);
                 UHP.Show();
             }
             else // worker is clicking
@@ -384,58 +384,58 @@ namespace TalabatServices
             }
 
 
-            if (User_Checkbox.Checked)
-            {
-                using (SqlConnection conn = new SqlConnection(Connection_String))
-                {
-                    // Open connection
-                    conn.Open();
+            //if (User_Checkbox.Checked)
+            //{
+            //    using (SqlConnection conn = new SqlConnection(Connection_String))
+            //    {
+            //        // Open connection
+            //        conn.Open();
 
-                    // Create command OF Change Email
-                    using (SqlCommand command = new SqlCommand(Change_EmailSQL, conn))
-                    {
-                        // Add parameters
-                        command.Parameters.AddWithValue("@Phone", Add_Phone);
+            //        // Create command OF Change Email
+            //        using (SqlCommand command = new SqlCommand(Change_EmailSQL, conn))
+            //        {
+            //            // Add parameters
+            //            command.Parameters.AddWithValue("@Phone", Add_Phone);
 
-                        // Execute command
-                        int rowsAffected = command.ExecuteNonQuery();
+            //            // Execute command
+            //            int rowsAffected = command.ExecuteNonQuery();
 
-                        // Feedback to user
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Update successful!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No rows updated. Check your condition.");
-                        }
-                    }
-                }
-            }
+            //            // Feedback to user
+            //            if (rowsAffected > 0)
+            //            {
+            //                MessageBox.Show("Update successful!");
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("No rows updated. Check your condition.");
+            //            }
+            //        }
+            //    }
+            //}
 
-            if (checkBox2.Checked)
-            {
-                using (SqlConnection conn = new SqlConnection(Connection_String))
-                {
-                    // Open connection
-                    conn.Open();
+            //if (checkBox2.Checked)
+            //{
+            //    using (SqlConnection conn = new SqlConnection(Connection_String))
+            //    {
+            //        // Open connection
+            //        conn.Open();
 
-                    // Create command OF Change Email
-                    using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
-                    {
+            //        // Create command OF Change Email
+            //        using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
+            //        {
 
-                        using (SqlDataReader reader =cmd.ExecuteReader() )
-                        {
-                            while (reader.Read())
-                            {
-                                Phone_Combo.Items.Add(reader["@Phone"].ToString());
-                            }
-                        }
+            //            using (SqlDataReader reader =cmd.ExecuteReader() )
+            //            {
+            //                while (reader.Read())
+            //                {
+            //                    Phone_Combo.Items.Add(reader["@Phone"].ToString());
+            //                }
+            //            }
                       
-                    }
-                }
+            //        }
+            //    }
 
-            }
+            //}
 
 
 
