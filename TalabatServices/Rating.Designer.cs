@@ -64,6 +64,7 @@
             Comment_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Comment_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             Comment_Textbox.Location = new Point(200, 70);
+            Comment_Textbox.MaxLength = 500;
             Comment_Textbox.Multiline = true;
             Comment_Textbox.Name = "Comment_Textbox";
             Comment_Textbox.Size = new Size(540, 118);
