@@ -186,7 +186,7 @@ namespace TalabatServices
 
             // Get W_ID and S_ID from the Req_ID table
             int W_ID = 0, S_ID = 0;
-            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";  // Update this with your connection string
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"; // Update this with your connection string
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();

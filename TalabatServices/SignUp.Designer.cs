@@ -440,7 +440,6 @@
             Controls.Add(label1);
             Controls.Add(Password_Textbox);
             Controls.Add(Email_Textbox);
-            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "SignUp";
             StartPosition = FormStartPosition.CenterScreen;

@@ -110,7 +110,6 @@
             Controls.Add(button2);
             Controls.Add(label2);
             Controls.Add(dataGridView1);
-            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "CheckOut";
             StartPosition = FormStartPosition.CenterScreen;

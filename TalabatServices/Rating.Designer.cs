@@ -203,7 +203,6 @@
             Controls.Add(pictureBox2);
             Controls.Add(Comment_Textbox);
             Controls.Add(pictureBox1);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "Rating";
             Text = "Rating";
             Load += Rating_Load;

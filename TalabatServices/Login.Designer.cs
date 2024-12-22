@@ -289,7 +289,6 @@
             Controls.Add(Password_Textbox);
             Controls.Add(Email_Textbox);
             Controls.Add(Login_Button);
-            FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             Name = "Login";
             RightToLeftLayout = true;
