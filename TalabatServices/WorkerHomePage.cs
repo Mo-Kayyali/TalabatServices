@@ -24,7 +24,7 @@ namespace TalabatServices
 
 
             ordersRefreshTimer = new System.Windows.Forms.Timer();
-            ordersRefreshTimer.Interval = 30000; // Refresh every 30 seconds
+            ordersRefreshTimer.Interval = 5000; // Refresh every 30 seconds
             ordersRefreshTimer.Tick += OrdersRefreshTimer_Tick;
         }
 
