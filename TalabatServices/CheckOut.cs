@@ -15,10 +15,12 @@ namespace TalabatServices
     public partial class CheckOut : Form
     {
         private int Requestid;
-        public CheckOut(int Req_ID)
+        private int Flag0User1Worker;
+        public CheckOut(int Req_ID, int FlagUserWorker)
         {
             InitializeComponent();
             Requestid = Req_ID;
+            Flag0User1Worker = FlagUserWorker;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,6 +74,65 @@ namespace TalabatServices
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int userOrWorkerId = 0;
+
+            // Define the connection string
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+            // Retrieve U_ID or W_ID based on the flag
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                if (Flag0User1Worker == 0) // If flag is 0, retrieve U_ID
+                {
+                    string query = "SELECT U_ID FROM Request WHERE Req_ID = @Req_ID";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@Req_ID", Requestid);
+
+                    var result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        userOrWorkerId = Convert.ToInt32(result);
+                    }
+                }
+                else if (Flag0User1Worker == 1) // If flag is 1, retrieve W_ID
+                {
+                    string query = "SELECT W_ID FROM Request WHERE Req_ID = @Req_ID";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@Req_ID", Requestid);
+
+                    var result = cmd.ExecuteScalar();
+                    if (result != DBNull.Value)
+                    {
+                        userOrWorkerId = Convert.ToInt32(result);
+                    }
+                }
+
+                connection.Close();
+            }
+
+            // Show the appropriate form based on the flag
+            if (Flag0User1Worker == 0 && userOrWorkerId > 0) // For user
+            {
+                this.Hide();
+                UserHomePage UHP = new UserHomePage(userOrWorkerId);
+                UHP.Show();
+            }
+            else if (Flag0User1Worker == 1 && userOrWorkerId > 0) // For worker
+            {
+                this.Hide();
+                WorkerHomePage WHP = new WorkerHomePage(userOrWorkerId);
+                WHP.Show();
+            }
+            else
+            {
+                MessageBox.Show("Error: Unable to retrieve User/Worker ID.");
+            }
         }
     }
 }
