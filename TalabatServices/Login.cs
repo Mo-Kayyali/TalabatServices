@@ -63,7 +63,7 @@ namespace TalabatServices
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings(0);
+            ProfileSettings PS = new ProfileSettings(7,0);
             PS.Show();
         }
 

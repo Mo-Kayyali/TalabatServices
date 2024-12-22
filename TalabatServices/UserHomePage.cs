@@ -11,11 +11,15 @@ using System.Data.SqlClient;
 
 namespace TalabatServices
 {
+    
     public partial class UserHomePage : Form
     {
+        private int userID;
+
         public UserHomePage(int U_ID)
         {
             InitializeComponent();
+            userID = U_ID;
         }
 
         private void UserHomePage_Load(object sender, EventArgs e)
@@ -39,7 +43,7 @@ namespace TalabatServices
         private void setting_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings(0);
+            ProfileSettings PS = new ProfileSettings(userID,0);
             PS.Show();
         }
     }
