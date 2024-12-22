@@ -113,6 +113,7 @@
             Login_Button.TabIndex = 9;
             Login_Button.Text = "Update Settings";
             Login_Button.UseVisualStyleBackColor = false;
+            Login_Button.Click += Login_Button_Click;
             // 
             // button2
             // 
