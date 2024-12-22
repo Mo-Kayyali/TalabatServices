@@ -19,7 +19,9 @@ namespace TalabatServices
         public WorkerHomePage(int workerID)
         {
             InitializeComponent();
+            
             WorkerID = workerID;
+
         }
 
         private void WorkerHomePage_Load(object sender, EventArgs e)
@@ -118,9 +120,9 @@ namespace TalabatServices
                     connection.Open();
 
                     string query = @"
-                        SELECT Req_ID, Description, Start_Date, End_Date, Status
-                        FROM Request
-                        WHERE District = @District AND Status = 'Pending'";
+                        SELECT R.Req_ID, R.Description, R.Start_Date, R.Status
+                        FROM Request R, User_Addresses UA
+                        WHERE UA.District = @District AND UA.CurrentlySelected = 1 and UA.U_Id = R.U_ID And R.Status = 'Pending'";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -179,9 +181,16 @@ namespace TalabatServices
 
                             command.ExecuteNonQuery();
 
+                            // Show success message
                             MessageBox.Show("Order accepted successfully!");
-                            LoadOrders(District_cb.SelectedItem.ToString());
+
+                            // Hide current form
+                            this.Hide();
+                            WorkerAcceptedRequest WAR = new WorkerAcceptedRequest(selectedOrderId);
+                            WAR.Show();
                         }
+
+                        // Reload the orders
                     }
                 }
                 catch (Exception ex)

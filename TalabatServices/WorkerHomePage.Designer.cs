@@ -65,28 +65,32 @@
             // 
             dataGridView_Orders.AllowUserToOrderColumns = true;
             dataGridView_Orders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView_Orders.Location = new Point(390, 198);
+            dataGridView_Orders.Location = new Point(11, 198);
             dataGridView_Orders.Margin = new Padding(2);
             dataGridView_Orders.Name = "dataGridView_Orders";
             dataGridView_Orders.RowHeadersWidth = 62;
-            dataGridView_Orders.Size = new Size(499, 338);
+            dataGridView_Orders.Size = new Size(878, 338);
             dataGridView_Orders.TabIndex = 9;
+            dataGridView_Orders.CellContentClick += dataGridViewOrders_CellContentClick;
             // 
             // District_cb
             // 
+            District_cb.BackColor = SystemColors.ButtonFace;
+            District_cb.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             District_cb.FormattingEnabled = true;
-            District_cb.Location = new Point(695, 151);
+            District_cb.Location = new Point(197, 103);
             District_cb.Margin = new Padding(2);
             District_cb.Name = "District_cb";
-            District_cb.Size = new Size(146, 28);
+            District_cb.Size = new Size(197, 36);
             District_cb.TabIndex = 10;
+            District_cb.SelectedIndexChanged += District_cb_SelectedIndexChanged;
             // 
             // District_lbl
             // 
             District_lbl.AutoSize = true;
             District_lbl.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold);
             District_lbl.ForeColor = Color.FromArgb(41, 128, 185);
-            District_lbl.Location = new Point(439, 151);
+            District_lbl.Location = new Point(26, 103);
             District_lbl.Margin = new Padding(2, 0, 2, 0);
             District_lbl.Name = "District_lbl";
             District_lbl.Size = new Size(126, 32);
@@ -96,6 +100,7 @@
             // setting
             // 
             setting.BackColor = Color.FromArgb(41, 128, 185);
+            setting.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             setting.Location = new Point(795, 12);
             setting.Name = "setting";
             setting.Size = new Size(94, 43);
@@ -122,7 +127,11 @@
             Name = "WorkerHomePage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "WorkerHomePage";
-            Load += WorkerHomePage_Load_1;
+
+            
+
+            Load += WorkerHomePage_Load;
+          
             ((System.ComponentModel.ISupportInitialize)dataGridView_Orders).EndInit();
             ResumeLayout(false);
             PerformLayout();

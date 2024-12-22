@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
+using System.Data.SqlClient;  // Add this for SQL operations
 using System.Windows.Forms;
 
 namespace TalabatServices
@@ -6,15 +8,19 @@ namespace TalabatServices
     //FormNum6
     public partial class Rating : Form
     {
+        private int userID;
+        private int requestID;
         public Boolean FlagClick1 = false;
         public Boolean FlagClick2 = false;
         public Boolean FlagClick3 = false;
         public Boolean FlagClick4 = false;
         public Boolean FlagClick5 = false;
 
-        public Rating(int Req_ID)
+        public Rating(int Req_ID, int U_ID)
         {
             InitializeComponent();
+            userID = U_ID;
+            requestID = Req_ID;
 
             // Initialize PictureBox properties
             pictureBox1.Image = Properties.Resources.NotStar;
@@ -154,6 +160,72 @@ namespace TalabatServices
         private void Rating_Load(object sender, EventArgs e)
         {
             // Any initialization code
+        }
+
+        private void Skip_Button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserHomePage UHP = new UserHomePage(userID);
+            UHP.Show();
+        }
+
+        private void Sumbit_Button_Click(object sender, EventArgs e)
+        {
+            if (!FlagClick1 && !FlagClick2 && !FlagClick3 && !FlagClick4 && !FlagClick5)
+            {
+                MessageBox.Show("Please select a rating before submitting.");
+                return;
+            }
+
+            int rate = 0;
+            if (FlagClick1) rate++;
+            if (FlagClick2) rate++;
+            if (FlagClick3) rate++;
+            if (FlagClick4) rate++;
+            if (FlagClick5) rate++;
+
+            // Get W_ID and S_ID from the Req_ID table
+            int W_ID = 0, S_ID = 0;
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";  // Update this with your connection string
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT W_ID, S_ID FROM Request WHERE Req_ID = @Req_ID";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Req_ID", requestID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            W_ID = reader.GetInt32(0);  // W_ID
+                            S_ID = reader.GetInt32(1);  // S_ID
+                        }
+                    }
+                }
+            }
+
+            // Insert into Rate table
+            string insertQuery = "INSERT INTO Rate (U_ID, W_ID, S_ID, Req_ID, Rate, Comment) VALUES (@U_ID, @W_ID, @S_ID, @Req_ID, @Rate, @Comment)";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                {
+                    cmd.Parameters.AddWithValue("@U_ID", userID);
+                    cmd.Parameters.AddWithValue("@W_ID", W_ID);
+                    cmd.Parameters.AddWithValue("@S_ID", S_ID);
+                    cmd.Parameters.AddWithValue("@Req_ID", requestID);
+                    cmd.Parameters.AddWithValue("@Rate", rate);
+                    cmd.Parameters.AddWithValue("@Comment", Comment_Textbox.Text);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            MessageBox.Show("Thank you for your feedback!");
+            this.Hide();
+            UserHomePage UHP = new UserHomePage(userID);
+            UHP.Show();
         }
     }
 }
