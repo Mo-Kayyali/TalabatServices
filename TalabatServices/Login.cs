@@ -47,7 +47,7 @@ namespace TalabatServices
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            WorkerAcceptedRequest WR = new WorkerAcceptedRequest(1);
+            WorkerAcceptedRequest WR = new WorkerAcceptedRequest(10);
             WR.Show();
         }
 
