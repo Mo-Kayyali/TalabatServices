@@ -79,9 +79,9 @@
             setting.BackColor = Color.FromArgb(41, 128, 185);
             setting.Font = new Font("Century Gothic", 12F, FontStyle.Bold);
             setting.ForeColor = Color.White;
-            setting.Location = new Point(894, 9);
+            setting.Location = new Point(889, 9);
             setting.Name = "setting";
-            setting.Size = new Size(94, 63);
+            setting.Size = new Size(108, 63);
             setting.TabIndex = 3;
             setting.Text = "Settings";
             setting.UseVisualStyleBackColor = false;
@@ -92,7 +92,7 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Location = new Point(32, 460);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(112, 30);
+            linkLabel1.Size = new Size(89, 23);
             linkLabel1.TabIndex = 4;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "contact us";
@@ -102,14 +102,14 @@
             linkLabel2.AutoSize = true;
             linkLabel2.Location = new Point(142, 460);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(99, 30);
+            linkLabel2.Size = new Size(79, 23);
             linkLabel2.TabIndex = 5;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "follow us";
             // 
             // UserHomePage
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Proj_pic;

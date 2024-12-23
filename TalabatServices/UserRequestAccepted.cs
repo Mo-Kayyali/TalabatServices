@@ -96,7 +96,7 @@ namespace TalabatServices
                             statusCheckTimer.Stop();
 
                             // Close the current form
-                            this.Close();
+                            this.Hide();
 
                             // Open the Checkout form
                             CheckOut checkoutForm = new CheckOut(reqId, 0);
