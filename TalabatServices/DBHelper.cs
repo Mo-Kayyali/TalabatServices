@@ -13,7 +13,7 @@ namespace TalabatServices
         {
             // Update the "Form_Num" column in the database for the logged-in user/worker
             string tableName = isWorker ? "Workers" : "Users";
-            string query = $"UPDATE {tableName} SET Form_Num = @formName WHERE ID = @userId";
+            string query = $"UPDATE {tableName} SET Form_Num = @formName WHERE U_ID = @userId";
 
             // Execute the query (use a parameterized query to avoid SQL injection)
             using (SqlConnection connection = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
@@ -29,9 +29,9 @@ namespace TalabatServices
         public static string GetLastFormState(string userId, bool isWorker)
         {
             string tableName = isWorker ? "Workers" : "Users";
-            string query = $"SELECT Form_Num FROM {tableName} WHERE ID = @userId";
+            string query = $"SELECT Form_Num FROM {tableName} WHERE U_ID = @userId";
 
-            using (SqlConnection connection = new SqlConnection("your_connection_string"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@userId", userId);
