@@ -176,10 +176,11 @@ namespace TalabatServices
                         int userID = (int)SCM.ExecuteScalar();
 
                         // Insert into User_Phones table
-                        string userqueryinsert2 = @"insert into User_Phones(U_ID,Phone) values(@U_ID,@PhoneNumber)";
+                        string userqueryinsert2 = @"insert into User_Phones(U_ID,Phone,CurrentlySelected) values(@U_ID,@PhoneNumber,@One)";
                         SCM = new SqlCommand(userqueryinsert2, conn);
                         SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         SCM.Parameters.AddWithValue("@U_ID", userID);
+                        SCM.Parameters.AddWithValue("@One", "1");
                         SCM.ExecuteNonQuery();
 
                         if (!String.IsNullOrEmpty(Phonenumber2_Textbox.Text))
@@ -192,8 +193,8 @@ namespace TalabatServices
                         }
 
                         // Insert into User_Addresses table
-                        string userqueryinsert3 = @"insert into User_Addresses(U_ID,Street_Name, Building_No, Apartment_No, District, Floor_No) 
-                                    values(@U_ID,@District2_StreetName, @Building, @Apartment, @District, @Floor)";
+                        string userqueryinsert3 = @"insert into User_Addresses(U_ID,Street_Name, Building_No, Apartment_No, District, Floor_No,CurrentlySelected) 
+                                    values(@U_ID,@District2_StreetName, @Building, @Apartment, @District, @Floor,@One)";
                         SCM = new SqlCommand(userqueryinsert3, conn);
                         SCM.Parameters.AddWithValue("@U_ID", userID);
                         SCM.Parameters.AddWithValue("@District2_StreetName", District2_StreetName);
@@ -201,6 +202,7 @@ namespace TalabatServices
                         SCM.Parameters.AddWithValue("@Apartment", Apartment);
                         SCM.Parameters.AddWithValue("@District", District);
                         SCM.Parameters.AddWithValue("@Floor", Floor);
+                        SCM.Parameters.AddWithValue("@One", "1");
                         SCM.ExecuteNonQuery();
 
 
@@ -296,10 +298,11 @@ namespace TalabatServices
                         int workerId = (int)SCM.ExecuteScalar();
 
                         // Now insert into Worker_Phones table
-                        string workerqueryinsert2 = @"INSERT INTO Worker_Phones (W_ID,Phone) VALUES (@W_ID,@PhoneNumber)";
+                        string workerqueryinsert2 = @"INSERT INTO Worker_Phones (W_ID,Phone,CurrentlySelected) VALUES (@W_ID,@PhoneNumber,@One)";
                         SCM = new SqlCommand(workerqueryinsert2, conn);
                         SCM.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
                         SCM.Parameters.AddWithValue("@W_ID", workerId);
+                        SCM.Parameters.AddWithValue("@One", "1");
                         SCM.ExecuteNonQuery();
 
                         if (!String.IsNullOrEmpty(Phonenumber2_Textbox.Text))
@@ -313,11 +316,12 @@ namespace TalabatServices
 
                         // Insert into Worker_Districts table using the captured W_ID
                         string workerqueryinsert3 = @"
-            INSERT INTO Worker_Districts (W_ID, District) 
-            VALUES (@W_ID, @District)";
+            INSERT INTO Worker_Districts (W_ID, District,CurrentlySelected) 
+            VALUES (@W_ID, @District,@One)";
                         SCM = new SqlCommand(workerqueryinsert3, conn);
                         SCM.Parameters.AddWithValue("@W_ID", workerId); // Use the captured W_ID
                         SCM.Parameters.AddWithValue("@District", District);
+                        SCM.Parameters.AddWithValue("@One", "1");
                         SCM.ExecuteNonQuery();
 
 

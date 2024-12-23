@@ -125,6 +125,68 @@ namespace TalabatServices
 
         private void District_cb_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+
+
+
+            if (District_cb.SelectedItem != null)
+            {
+                string selectedDistrict = District_cb.SelectedItem.ToString(); // Get the selected district from ComboBox
+
+                // Connection string
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                // SQL query to update the old district with CurrentlySelected = 0
+                string updateOldDistrictQuery = @"
+            UPDATE Worker_Districts
+            SET CurrentlySelected = 0
+            WHERE W_ID = @WorkerID AND CurrentlySelected = 1";
+
+                // SQL query to update the selected district with CurrentlySelected = 1
+                string updateNewDistrictQuery = @"
+            UPDATE Worker_Districts
+            SET CurrentlySelected = 1
+            WHERE W_ID = @WorkerID AND District = @District";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        // Open the connection
+                        conn.Open();
+
+                        using (SqlCommand cmd = new SqlCommand())
+                        {
+                            cmd.Connection = conn;
+
+                            // First, update the old district
+                            cmd.CommandText = updateOldDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", WorkerID); // Replace `id` with the actual Worker ID variable
+                            cmd.ExecuteNonQuery(); // Execute the update for the old district
+
+                            // Second, update the new selected district
+                            cmd.CommandText = updateNewDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", WorkerID); // Replace `id` with the actual Worker ID variable
+                            cmd.Parameters.AddWithValue("@District", selectedDistrict); // Use the selected district
+                            cmd.ExecuteNonQuery(); // Execute the update for the new selected district
+                        }
+
+                        // Optionally, display a message or update the UI to reflect the change
+                        MessageBox.Show($"District changed to {selectedDistrict}.");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any errors
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
+                }
+            }
+
+
+
+
             LoadOrders(District_cb.SelectedItem.ToString());
         }
 
