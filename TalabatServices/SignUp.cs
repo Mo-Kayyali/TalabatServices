@@ -10,13 +10,15 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TalabatServices
 {
     //FormNum0
     public partial class SignUp : Form
     {
-        
+        bool isWorker;
+
         public SignUp()
         {
             InitializeComponent();
@@ -29,7 +31,6 @@ namespace TalabatServices
         private void SignUp_Load(object sender, EventArgs e)
         {
             LoadServices();
-
             label3.Hide();
             label4.Hide();
             label5.Hide();
@@ -76,6 +77,7 @@ namespace TalabatServices
 
             if (User_Checkbox.Checked)
             {
+                isWorker = false;
                 if (string.IsNullOrEmpty(Name_Textbox.Text))
                 {
                     MessageBox.Show("Please Enter Name");
@@ -205,6 +207,8 @@ namespace TalabatServices
                         MessageBox.Show("Account Created Successfully!");
                         this.Hide();
                         Login LG = new Login();
+                        FormStateMgr.SwitchToForm(this, LG, userID.ToString(), isWorker);
+
                         LG.Show();
                     }
                     catch (Exception ex)
@@ -213,8 +217,10 @@ namespace TalabatServices
                     }
                 }
 
-            }else if (Worker_Checkbox.Checked)
+            }
+            else if (Worker_Checkbox.Checked)
             {
+                isWorker = true;
                 if (string.IsNullOrEmpty(Name_Textbox.Text))
                 {
                     MessageBox.Show("Please Enter Name");
@@ -329,6 +335,7 @@ namespace TalabatServices
                         MessageBox.Show("Account Created Successfully!");
                         this.Hide();
                         Login LG = new Login();
+                        FormStateMgr.SwitchToForm(this, LG, workerId.ToString(), isWorker);
                         LG.Show();
                     }
                     catch (Exception ex)
@@ -337,14 +344,6 @@ namespace TalabatServices
                     }
                 }
             }
-             
-
-            
-
-
-
-            
-
         }
 
 
@@ -360,7 +359,7 @@ namespace TalabatServices
                     string query = "SELECT Name FROM Services";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        
+
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -381,6 +380,7 @@ namespace TalabatServices
         {
             if (User_Checkbox.Checked)
             {
+                isWorker = false;
                 Worker_Checkbox.Checked = false;
                 label3.Show();
                 label4.Show();
@@ -410,6 +410,7 @@ namespace TalabatServices
             }
             else
             {
+                isWorker = true;
                 label3.Hide();
                 label4.Hide();
                 label5.Hide();
@@ -441,6 +442,7 @@ namespace TalabatServices
         {
             if (Worker_Checkbox.Checked)
             {
+                isWorker = true;
                 User_Checkbox.Checked = false;
                 label3.Show();
                 label4.Show();
@@ -469,6 +471,7 @@ namespace TalabatServices
             }
             else
             {
+                isWorker = false;
                 label3.Hide();
                 label4.Hide();
                 label5.Hide();
@@ -503,5 +506,8 @@ namespace TalabatServices
             log.Show();
         }
 
+        private void SignUp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+        }
     }
 }

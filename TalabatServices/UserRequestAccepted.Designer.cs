@@ -46,7 +46,7 @@
             label1.Location = new Point(13, 124);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(93, 32);
+            label1.Size = new Size(108, 38);
             label1.TabIndex = 0;
             label1.Text = "Name";
             // 
@@ -58,7 +58,7 @@
             label2.Location = new Point(67, 27);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(323, 39);
+            label2.Size = new Size(377, 46);
             label2.TabIndex = 2;
             label2.Text = "Worker Information";
             // 
@@ -70,7 +70,7 @@
             label3.Location = new Point(13, 214);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(102, 32);
+            label3.Size = new Size(116, 38);
             label3.TabIndex = 3;
             label3.Text = "Phone";
             // 
@@ -82,7 +82,7 @@
             phone.Margin = new Padding(4);
             phone.Name = "phone";
             phone.ReadOnly = true;
-            phone.Size = new Size(277, 34);
+            phone.Size = new Size(277, 39);
             phone.TabIndex = 4;
             // 
             // label4
@@ -93,7 +93,7 @@
             label4.Location = new Point(13, 307);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(103, 32);
+            label4.Size = new Size(117, 38);
             label4.TabIndex = 5;
             label4.Text = "Rating";
             // 
@@ -105,7 +105,7 @@
             rating.Margin = new Padding(4);
             rating.Name = "rating";
             rating.ReadOnly = true;
-            rating.Size = new Size(277, 34);
+            rating.Size = new Size(277, 39);
             rating.TabIndex = 6;
             // 
             // name
@@ -116,12 +116,12 @@
             name.Margin = new Padding(4);
             name.Name = "name";
             name.ReadOnly = true;
-            name.Size = new Size(277, 34);
+            name.Size = new Size(277, 39);
             name.TabIndex = 1;
             // 
             // UserRequestAccepted
             // 
-            AutoScaleDimensions = new SizeF(12F, 28F);
+            AutoScaleDimensions = new SizeF(14F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
@@ -139,6 +139,7 @@
             MaximizeBox = false;
             Name = "UserRequestAccepted";
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosed += UserRequestAccepted_FormClosed;
             Load += UserRequestAccepted_Load;
             ResumeLayout(false);
             PerformLayout();

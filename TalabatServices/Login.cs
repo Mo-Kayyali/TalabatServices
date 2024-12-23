@@ -125,9 +125,10 @@ namespace TalabatServices
                     {
                         int U_ID = Convert.ToInt32(userId);
                         MessageBox.Show("Login Successful as User!");
-                        this.Hide();
-                        UserHomePage userHome = new UserHomePage(U_ID);
-                        userHome.Show();
+
+                        // Retrieve the last saved form for the user
+                        string lastFormName = FormStateMgr.LoadLastForm(U_ID.ToString(), false);
+                        NavigateToForm(lastFormName, U_ID, false);
                         return;
                     }
 
@@ -143,9 +144,10 @@ namespace TalabatServices
                     {
                         int W_ID = Convert.ToInt32(workerId);
                         MessageBox.Show("Login Successful as Worker!");
-                        this.Hide();
-                        WorkerHomePage workerHome = new WorkerHomePage(W_ID);
-                        workerHome.Show();
+
+                        // Retrieve the last saved form for the worker
+                        string lastFormName = FormStateMgr.LoadLastForm(W_ID.ToString(), true);
+                        NavigateToForm(lastFormName, W_ID, true);
                         return;
                     }
 
@@ -156,8 +158,54 @@ namespace TalabatServices
                     MessageBox.Show($"Error: {ex.Message}");
                 }
             }
-
-
         }
+        private void NavigateToForm(string formName, int id, bool isWorker)
+        {
+            Form formToOpen;
+
+            switch (formName)
+            {
+                case nameof(UserHomePage):
+                    formToOpen = new UserHomePage(id);
+                    break;
+
+                case nameof(WorkerHomePage):
+                    formToOpen = new WorkerHomePage(id);
+                    break;
+
+                case nameof(UserRequestAccepted):
+                    formToOpen = new UserRequestAccepted(id);
+                    break;
+
+                case nameof(WorkerAcceptedRequest):
+                    formToOpen = new WorkerAcceptedRequest(id);
+                    break;
+
+                case nameof(CheckOut):
+                    formToOpen = new CheckOut(id, 0); // Adjust parameters if necessary
+                    break;
+
+                case nameof(ProfileSettings):
+                    formToOpen = new ProfileSettings(id, 0); // Adjust parameters if necessary
+                    break;
+
+                case nameof(AddingItemsToCart):
+                    formToOpen = new AddingItemsToCart(id);
+                    break;
+
+                case nameof(UserMakingRequest):
+                    formToOpen = new UserMakingRequest(id);
+                    break;
+
+                default:
+                    // Default to home page if no form is saved
+                    formToOpen = isWorker ? new WorkerHomePage(id) : new UserHomePage(id);
+                    break;
+            }
+
+            this.Hide();
+            formToOpen.Show();
+        }
+
     }
 }

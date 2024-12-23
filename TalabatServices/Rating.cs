@@ -171,6 +171,7 @@ namespace TalabatServices
         {
             this.Hide();
             UserHomePage UHP = new UserHomePage(userID);
+            FormStateMgr.SwitchToForm(this, UHP, userID.ToString(), false);
             UHP.Show();
         }
 
@@ -230,6 +231,7 @@ namespace TalabatServices
             MessageBox.Show("Thank you for your feedback!");
             this.Hide();
             UserHomePage UHP = new UserHomePage(userID);
+            FormStateMgr.SwitchToForm(this, UHP, userID.ToString(), false);
             UHP.Show();
         }
     }

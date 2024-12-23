@@ -92,7 +92,7 @@
             linkLabel1.AutoSize = true;
             linkLabel1.Location = new Point(32, 460);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(89, 23);
+            linkLabel1.Size = new Size(112, 30);
             linkLabel1.TabIndex = 4;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "contact us";
@@ -102,14 +102,14 @@
             linkLabel2.AutoSize = true;
             linkLabel2.Location = new Point(142, 460);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(79, 23);
+            linkLabel2.Size = new Size(99, 30);
             linkLabel2.TabIndex = 5;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "follow us";
             // 
             // UserHomePage
             // 
-            AutoScaleDimensions = new SizeF(10F, 23F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.Proj_pic;
@@ -126,6 +126,7 @@
             MaximizeBox = false;
             Name = "UserHomePage";
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosed += UserHomePage_FormClosed;
             Load += UserHomePage_Load;
             ResumeLayout(false);
             PerformLayout();

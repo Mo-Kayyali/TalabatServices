@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace TalabatServices
             this.FormClosing += new FormClosingEventHandler(Login_FormClosing);
         }
 
-        
+
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -162,11 +163,18 @@ namespace TalabatServices
                 this.Hide();
                 CheckOut Co = new CheckOut(RequestID, 1);
                 Co.Show();
+                FormStateMgr.SwitchToForm(this, Co, CurrentUserID.ToString(), true); 
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Oops!: {ex.Message}");
             }
+        }
+
+        private void AddingItemsToCart_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, CurrentUserID.ToString(), true);
         }
     }
 }
