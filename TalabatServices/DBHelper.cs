@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TalabatServices
 {
@@ -11,9 +7,9 @@ namespace TalabatServices
     {
         public static void SaveFormState(string userId, bool isWorker, string formName)
         {
-            // Update the "Form_Num" column in the database for the logged-in user/worker
             string tableName = isWorker ? "Workers" : "Users";
-            string query = $"UPDATE {tableName} SET Form_Num = @formName WHERE U_ID = @userId";
+            string idColumn = isWorker ? "W_ID" : "U_ID"; // Dynamically set the ID column based on user/worker
+            string query = $"UPDATE {tableName} SET Form_Num = @formName WHERE {idColumn} = @userId";
 
             // Execute the query (use a parameterized query to avoid SQL injection)
             using (SqlConnection connection = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
@@ -29,7 +25,8 @@ namespace TalabatServices
         public static string GetLastFormState(string userId, bool isWorker)
         {
             string tableName = isWorker ? "Workers" : "Users";
-            string query = $"SELECT Form_Num FROM {tableName} WHERE U_ID = @userId";
+            string idColumn = isWorker ? "W_ID" : "U_ID"; // Dynamically set the ID column based on user/worker
+            string query = $"SELECT Form_Num FROM {tableName} WHERE {idColumn} = @userId";
 
             using (SqlConnection connection = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
             {
@@ -41,5 +38,4 @@ namespace TalabatServices
             }
         }
     }
-
 }
