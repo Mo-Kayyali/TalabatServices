@@ -91,7 +91,7 @@ namespace TalabatServices
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             AddingItemsToCart AITC = new AddingItemsToCart(RequestID);
             FormStateMgr.SwitchToForm(this, AITC, UserID.ToString(), true);
             AITC.Show();
