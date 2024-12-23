@@ -1,4 +1,5 @@
 ﻿using Azure.Core;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace TalabatServices
         private int U_ID;
         private int Requestid;
         private int Flag0User1Worker;
+        bool isWorker;
         public CheckOut(int Req_ID, int FlagUserWorker)
         {
             InitializeComponent();
@@ -93,6 +95,7 @@ namespace TalabatServices
 
                 if (Flag0User1Worker == 0) // If flag is 0, retrieve U_ID
                 {
+                    isWorker = false;
                     string query = "SELECT U_ID FROM Request WHERE Req_ID = @Req_ID";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@Req_ID", Requestid);
@@ -105,6 +108,7 @@ namespace TalabatServices
                 }
                 else if (Flag0User1Worker == 1) // If flag is 1, retrieve W_ID
                 {
+                    isWorker = true;
                     string query = "SELECT W_ID FROM Request WHERE Req_ID = @Req_ID";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@Req_ID", Requestid);
@@ -122,7 +126,7 @@ namespace TalabatServices
             // Show the appropriate form based on the flag
             if (Flag0User1Worker == 0 && userOrWorkerId > 0) // For user
             {
-                
+
 
                 string connectionString1 = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"; // Update this with your connection string
                 using (SqlConnection conn1 = new SqlConnection(connectionString1))
@@ -136,7 +140,7 @@ namespace TalabatServices
                         {
                             if (reader.Read())
                             {
-                                U_ID = reader.GetInt32(0); 
+                                U_ID = reader.GetInt32(0);
                             }
                         }
                     }
@@ -144,19 +148,26 @@ namespace TalabatServices
 
 
                 this.Hide();
-                Rating rate = new Rating(Requestid,U_ID);
+                Rating rate = new Rating(Requestid, U_ID);
+                FormStateMgr.SwitchToForm(this, rate, U_ID.ToString(), isWorker);
                 rate.Show();
             }
             else if (Flag0User1Worker == 1 && userOrWorkerId > 0) // For worker
             {
                 this.Hide();
                 WorkerHomePage WHP = new WorkerHomePage(userOrWorkerId);
+                FormStateMgr.SwitchToForm(this, WHP, U_ID.ToString(), isWorker);
                 WHP.Show();
             }
             else
             {
                 MessageBox.Show("Error: Unable to retrieve User/Worker ID.");
             }
+        }
+
+        private void CheckOut_FormClosed(object sender, FormClosedEventArgs e)
+        {
+                FormStateMgr.SaveCurrentForm(this.Name, U_ID.ToString(), isWorker);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -98,7 +99,7 @@ namespace TalabatServices
                             this.Close();
 
                             // Open the Checkout form
-                            CheckOut checkoutForm = new CheckOut(reqId,0);
+                            CheckOut checkoutForm = new CheckOut(reqId, 0);
                             checkoutForm.Show();
                         }
                     }
@@ -110,6 +111,29 @@ namespace TalabatServices
             }
         }
 
+        private void UserRequestAccepted_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string query = "SELECT U_ID FROM Requests WHERE Req_ID = @RequestId";
 
+            using (SqlConnection connection = new SqlConnection(constring))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@RequestId", reqId);
+
+                connection.Open();
+                var userId = command.ExecuteScalar(); 
+
+                if (userId != DBNull.Value)
+                {
+                    FormStateMgr.SaveCurrentForm(this.Name, userId.ToString(), false);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to save the current form state.");
+                }
+            }
+
+            
+        }
     }
 }

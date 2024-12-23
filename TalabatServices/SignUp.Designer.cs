@@ -65,9 +65,10 @@
             Create_Account_Button.FlatStyle = FlatStyle.Flat;
             Create_Account_Button.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Create_Account_Button.ForeColor = Color.White;
-            Create_Account_Button.Location = new Point(738, 616);
+            Create_Account_Button.Location = new Point(922, 770);
+            Create_Account_Button.Margin = new Padding(4, 4, 4, 4);
             Create_Account_Button.Name = "Create_Account_Button";
-            Create_Account_Button.Size = new Size(183, 58);
+            Create_Account_Button.Size = new Size(229, 72);
             Create_Account_Button.TabIndex = 18;
             Create_Account_Button.Text = "Create Account";
             Create_Account_Button.UseVisualStyleBackColor = false;
@@ -78,9 +79,10 @@
             label5.AutoSize = true;
             label5.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.FromArgb(41, 128, 185);
-            label5.Location = new Point(234, 249);
+            label5.Location = new Point(292, 311);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(187, 33);
+            label5.Size = new Size(215, 39);
             label5.TabIndex = 17;
             label5.Text = "PASSWORD :";
             // 
@@ -89,9 +91,10 @@
             label4.AutoSize = true;
             label4.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.FromArgb(41, 128, 185);
-            label4.Location = new Point(302, 191);
+            label4.Location = new Point(378, 239);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(119, 33);
+            label4.Size = new Size(139, 39);
             label4.TabIndex = 16;
             label4.Text = "Email :";
             // 
@@ -100,9 +103,10 @@
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.FromArgb(41, 128, 185);
-            label1.Location = new Point(398, 9);
+            label1.Location = new Point(498, 11);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(824, 40);
+            label1.Size = new Size(953, 47);
             label1.TabIndex = 15;
             label1.Text = "Welcome To Talabat Services Signup Panel";
             // 
@@ -111,10 +115,11 @@
             Password_Textbox.BackColor = SystemColors.ButtonFace;
             Password_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Password_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Password_Textbox.Location = new Point(427, 250);
+            Password_Textbox.Location = new Point(534, 312);
+            Password_Textbox.Margin = new Padding(4, 4, 4, 4);
             Password_Textbox.MaxLength = 50;
             Password_Textbox.Name = "Password_Textbox";
-            Password_Textbox.Size = new Size(376, 34);
+            Password_Textbox.Size = new Size(470, 39);
             Password_Textbox.TabIndex = 3;
             Password_Textbox.UseSystemPasswordChar = true;
             // 
@@ -123,10 +128,11 @@
             Email_Textbox.BackColor = SystemColors.ButtonFace;
             Email_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Email_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Email_Textbox.Location = new Point(427, 190);
+            Email_Textbox.Location = new Point(534, 238);
+            Email_Textbox.Margin = new Padding(4, 4, 4, 4);
             Email_Textbox.MaxLength = 50;
             Email_Textbox.Name = "Email_Textbox";
-            Email_Textbox.Size = new Size(376, 34);
+            Email_Textbox.Size = new Size(470, 39);
             Email_Textbox.TabIndex = 2;
             // 
             // User_Checkbox
@@ -134,9 +140,10 @@
             User_Checkbox.AutoSize = true;
             User_Checkbox.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             User_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
-            User_Checkbox.Location = new Point(427, 64);
+            User_Checkbox.Location = new Point(534, 80);
+            User_Checkbox.Margin = new Padding(4, 4, 4, 4);
             User_Checkbox.Name = "User_Checkbox";
-            User_Checkbox.Size = new Size(112, 37);
+            User_Checkbox.Size = new Size(129, 43);
             User_Checkbox.TabIndex = 22;
             User_Checkbox.Text = "User";
             User_Checkbox.UseVisualStyleBackColor = true;
@@ -146,9 +153,10 @@
             label2.AutoSize = true;
             label2.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.FromArgb(41, 128, 185);
-            label2.Location = new Point(231, 68);
+            label2.Location = new Point(289, 85);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(190, 33);
+            label2.Size = new Size(218, 39);
             label2.TabIndex = 24;
             label2.Text = "Sign Up As :";
             // 
@@ -157,9 +165,10 @@
             Worker_Checkbox.AutoSize = true;
             Worker_Checkbox.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             Worker_Checkbox.ForeColor = Color.FromArgb(41, 128, 185);
-            Worker_Checkbox.Location = new Point(642, 64);
+            Worker_Checkbox.Location = new Point(802, 80);
+            Worker_Checkbox.Margin = new Padding(4, 4, 4, 4);
             Worker_Checkbox.Name = "Worker_Checkbox";
-            Worker_Checkbox.Size = new Size(161, 37);
+            Worker_Checkbox.Size = new Size(186, 43);
             Worker_Checkbox.TabIndex = 25;
             Worker_Checkbox.Text = "Worker";
             Worker_Checkbox.UseVisualStyleBackColor = true;
@@ -169,9 +178,10 @@
             label3.AutoSize = true;
             label3.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.FromArgb(41, 128, 185);
-            label3.Location = new Point(310, 130);
+            label3.Location = new Point(388, 162);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(111, 33);
+            label3.Size = new Size(129, 39);
             label3.TabIndex = 27;
             label3.Text = "Name :";
             // 
@@ -180,10 +190,11 @@
             Name_Textbox.BackColor = SystemColors.ButtonFace;
             Name_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Name_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Name_Textbox.Location = new Point(427, 130);
+            Name_Textbox.Location = new Point(534, 162);
+            Name_Textbox.Margin = new Padding(4, 4, 4, 4);
             Name_Textbox.MaxLength = 50;
             Name_Textbox.Name = "Name_Textbox";
-            Name_Textbox.Size = new Size(376, 34);
+            Name_Textbox.Size = new Size(470, 39);
             Name_Textbox.TabIndex = 1;
             // 
             // label6
@@ -191,9 +202,10 @@
             label6.AutoSize = true;
             label6.Font = new Font("Stencil", 15.5F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.FromArgb(41, 128, 185);
-            label6.Location = new Point(-4, 365);
+            label6.Location = new Point(-5, 456);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(425, 31);
+            label6.Size = new Size(506, 37);
             label6.TabIndex = 29;
             label6.Text = "Phone Number 2 (Optional ):";
             // 
@@ -202,10 +214,11 @@
             Phonenumber2_Textbox.BackColor = SystemColors.ButtonFace;
             Phonenumber2_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Phonenumber2_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Phonenumber2_Textbox.Location = new Point(427, 365);
+            Phonenumber2_Textbox.Location = new Point(534, 456);
+            Phonenumber2_Textbox.Margin = new Padding(4, 4, 4, 4);
             Phonenumber2_Textbox.MaxLength = 15;
             Phonenumber2_Textbox.Name = "Phonenumber2_Textbox";
-            Phonenumber2_Textbox.Size = new Size(376, 34);
+            Phonenumber2_Textbox.Size = new Size(470, 39);
             Phonenumber2_Textbox.TabIndex = 5;
             // 
             // label7
@@ -213,9 +226,10 @@
             label7.AutoSize = true;
             label7.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(41, 128, 185);
-            label7.Location = new Point(162, 307);
+            label7.Location = new Point(202, 384);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(259, 33);
+            label7.Size = new Size(300, 39);
             label7.TabIndex = 31;
             label7.Text = "Phone Number :";
             // 
@@ -224,10 +238,11 @@
             Phonenumber_Textbox.BackColor = SystemColors.ButtonFace;
             Phonenumber_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Phonenumber_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Phonenumber_Textbox.Location = new Point(427, 307);
+            Phonenumber_Textbox.Location = new Point(534, 384);
+            Phonenumber_Textbox.Margin = new Padding(4, 4, 4, 4);
             Phonenumber_Textbox.MaxLength = 15;
             Phonenumber_Textbox.Name = "Phonenumber_Textbox";
-            Phonenumber_Textbox.Size = new Size(376, 34);
+            Phonenumber_Textbox.Size = new Size(470, 39);
             Phonenumber_Textbox.TabIndex = 4;
             // 
             // label8
@@ -235,9 +250,10 @@
             label8.AutoSize = true;
             label8.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.FromArgb(41, 128, 185);
-            label8.Location = new Point(924, 369);
+            label8.Location = new Point(1155, 461);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(252, 33);
+            label8.Size = new Size(292, 39);
             label8.TabIndex = 33;
             label8.Text = "Apartment No :";
             // 
@@ -246,10 +262,11 @@
             Apartment_Textbox.BackColor = SystemColors.ButtonFace;
             Apartment_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Apartment_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Apartment_Textbox.Location = new Point(1182, 369);
+            Apartment_Textbox.Location = new Point(1478, 461);
+            Apartment_Textbox.Margin = new Padding(4, 4, 4, 4);
             Apartment_Textbox.MaxLength = 4;
             Apartment_Textbox.Name = "Apartment_Textbox";
-            Apartment_Textbox.Size = new Size(376, 34);
+            Apartment_Textbox.Size = new Size(470, 39);
             Apartment_Textbox.TabIndex = 10;
             // 
             // label9
@@ -257,9 +274,10 @@
             label9.AutoSize = true;
             label9.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.FromArgb(41, 128, 185);
-            label9.Location = new Point(1009, 308);
+            label9.Location = new Point(1261, 385);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(164, 33);
+            label9.Size = new Size(190, 39);
             label9.TabIndex = 35;
             label9.Text = "Floor No:";
             // 
@@ -268,10 +286,11 @@
             Floor_Textbox.BackColor = SystemColors.ButtonFace;
             Floor_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Floor_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Floor_Textbox.Location = new Point(1182, 308);
+            Floor_Textbox.Location = new Point(1478, 385);
+            Floor_Textbox.Margin = new Padding(4, 4, 4, 4);
             Floor_Textbox.MaxLength = 4;
             Floor_Textbox.Name = "Floor_Textbox";
-            Floor_Textbox.Size = new Size(376, 34);
+            Floor_Textbox.Size = new Size(470, 39);
             Floor_Textbox.TabIndex = 9;
             // 
             // label10
@@ -279,9 +298,10 @@
             label10.AutoSize = true;
             label10.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.FromArgb(41, 128, 185);
-            label10.Location = new Point(959, 248);
+            label10.Location = new Point(1199, 310);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(217, 33);
+            label10.Size = new Size(251, 39);
             label10.TabIndex = 37;
             label10.Text = "Building No :";
             // 
@@ -290,10 +310,11 @@
             Building_Textbox.BackColor = SystemColors.ButtonFace;
             Building_Textbox.BorderStyle = BorderStyle.FixedSingle;
             Building_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Building_Textbox.Location = new Point(1182, 248);
+            Building_Textbox.Location = new Point(1478, 310);
+            Building_Textbox.Margin = new Padding(4, 4, 4, 4);
             Building_Textbox.MaxLength = 4;
             Building_Textbox.Name = "Building_Textbox";
-            Building_Textbox.Size = new Size(376, 34);
+            Building_Textbox.Size = new Size(470, 39);
             Building_Textbox.TabIndex = 8;
             // 
             // label11
@@ -301,9 +322,10 @@
             label11.AutoSize = true;
             label11.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.FromArgb(41, 128, 185);
-            label11.Location = new Point(949, 188);
+            label11.Location = new Point(1186, 235);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(227, 33);
+            label11.Size = new Size(263, 39);
             label11.TabIndex = 39;
             label11.Text = "Street Name :";
             // 
@@ -312,10 +334,11 @@
             District2_StreetName_Textbox.BackColor = SystemColors.ButtonFace;
             District2_StreetName_Textbox.BorderStyle = BorderStyle.FixedSingle;
             District2_StreetName_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            District2_StreetName_Textbox.Location = new Point(1182, 188);
+            District2_StreetName_Textbox.Location = new Point(1478, 235);
+            District2_StreetName_Textbox.Margin = new Padding(4, 4, 4, 4);
             District2_StreetName_Textbox.MaxLength = 50;
             District2_StreetName_Textbox.Name = "District2_StreetName_Textbox";
-            District2_StreetName_Textbox.Size = new Size(376, 34);
+            District2_StreetName_Textbox.Size = new Size(470, 39);
             District2_StreetName_Textbox.TabIndex = 7;
             // 
             // label12
@@ -323,9 +346,10 @@
             label12.AutoSize = true;
             label12.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label12.ForeColor = Color.FromArgb(41, 128, 185);
-            label12.Location = new Point(1009, 128);
+            label12.Location = new Point(1261, 160);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(167, 33);
+            label12.Size = new Size(193, 39);
             label12.TabIndex = 41;
             label12.Text = "District :";
             // 
@@ -334,10 +358,11 @@
             District_Textbox.BackColor = SystemColors.ButtonFace;
             District_Textbox.BorderStyle = BorderStyle.FixedSingle;
             District_Textbox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            District_Textbox.Location = new Point(1182, 128);
+            District_Textbox.Location = new Point(1478, 160);
+            District_Textbox.Margin = new Padding(4, 4, 4, 4);
             District_Textbox.MaxLength = 50;
             District_Textbox.Name = "District_Textbox";
-            District_Textbox.Size = new Size(376, 34);
+            District_Textbox.Size = new Size(470, 39);
             District_Textbox.TabIndex = 6;
             // 
             // Service_Combobox
@@ -346,9 +371,10 @@
             Service_Combobox.Font = new Font("Stencil", 16.2F, FontStyle.Bold);
             Service_Combobox.ForeColor = SystemColors.WindowText;
             Service_Combobox.FormattingEnabled = true;
-            Service_Combobox.Location = new Point(427, 426);
+            Service_Combobox.Location = new Point(534, 532);
+            Service_Combobox.Margin = new Padding(4, 4, 4, 4);
             Service_Combobox.Name = "Service_Combobox";
-            Service_Combobox.Size = new Size(376, 40);
+            Service_Combobox.Size = new Size(469, 46);
             Service_Combobox.TabIndex = 11;
             // 
             // label13
@@ -356,9 +382,10 @@
             label13.AutoSize = true;
             label13.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label13.ForeColor = Color.FromArgb(41, 128, 185);
-            label13.Location = new Point(189, 429);
+            label13.Location = new Point(236, 536);
+            label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(232, 33);
+            label13.Size = new Size(269, 39);
             label13.TabIndex = 43;
             label13.Text = "Service Type :";
             // 
@@ -367,9 +394,10 @@
             label14.AutoSize = true;
             label14.Font = new Font("Stencil", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label14.ForeColor = Color.FromArgb(41, 128, 185);
-            label14.Location = new Point(809, 188);
+            label14.Location = new Point(1011, 235);
+            label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(367, 33);
+            label14.Size = new Size(425, 39);
             label14.TabIndex = 45;
             label14.Text = "District 2 (Optional) :";
             // 
@@ -379,9 +407,10 @@
             Login_Button.FlatStyle = FlatStyle.Flat;
             Login_Button.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Login_Button.ForeColor = Color.White;
-            Login_Button.Location = new Point(12, 616);
+            Login_Button.Location = new Point(15, 770);
+            Login_Button.Margin = new Padding(4, 4, 4, 4);
             Login_Button.Name = "Login_Button";
-            Login_Button.Size = new Size(183, 58);
+            Login_Button.Size = new Size(229, 72);
             Login_Button.TabIndex = 46;
             Login_Button.Text = "Back To Login";
             Login_Button.UseVisualStyleBackColor = false;
@@ -389,11 +418,11 @@
             // 
             // SignUp
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1570, 686);
+            ClientSize = new Size(1924, 858);
             Controls.Add(Login_Button);
             Controls.Add(label14);
             Controls.Add(label13);
@@ -423,9 +452,11 @@
             Controls.Add(label1);
             Controls.Add(Password_Textbox);
             Controls.Add(Email_Textbox);
+            Margin = new Padding(4, 4, 4, 4);
             MaximizeBox = false;
             Name = "SignUp";
             StartPosition = FormStartPosition.CenterScreen;
+            FormClosed += SignUp_FormClosed;
             Load += SignUp_Load;
             ResumeLayout(false);
             PerformLayout();

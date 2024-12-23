@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Data;
 using System.Data.SqlClient; 
 using System.Windows.Forms;
@@ -28,14 +29,14 @@ namespace TalabatServices
         {
             try
             {
-                
+
                 string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    
+
                     string query = @"
                         SELECT 
                         u.Name AS UserName, 
@@ -63,9 +64,9 @@ namespace TalabatServices
                             {
                                 // Populate form fields
                                 Name_tb.Text = reader["UserName"].ToString();
-                                Phone_tb.Text = reader["UserPhone"]?.ToString(); 
+                                Phone_tb.Text = reader["UserPhone"]?.ToString();
                                 Service_tb.Text = reader["ServiceName"].ToString();
-                                Addr_tb.Text = reader["Address"]?.ToString(); 
+                                Addr_tb.Text = reader["Address"]?.ToString();
                                 Description_tb.Text = reader["Description"].ToString();
 
                                 // Store IDs for later use
@@ -92,7 +93,13 @@ namespace TalabatServices
         {
             this.Close();
             AddingItemsToCart AITC = new AddingItemsToCart(RequestID);
+            FormStateMgr.SwitchToForm(this, AITC, UserID.ToString(), true);
             AITC.Show();
+        }
+
+        private void WorkerAcceptedRequest_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, UserID.ToString(), true);
         }
     }
 }

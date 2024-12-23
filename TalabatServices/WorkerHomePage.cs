@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -202,6 +203,8 @@ namespace TalabatServices
 
                             this.Hide();
                             WorkerAcceptedRequest WAR = new WorkerAcceptedRequest(selectedOrderId);
+                            FormStateMgr.SwitchToForm(this, WAR, WorkerID.ToString(), true);
+
                             WAR.Show();
                         }
                     }
@@ -217,8 +220,13 @@ namespace TalabatServices
         {
             this.Hide();
             ProfileSettings PS = new ProfileSettings(WorkerID, 1);
+            FormStateMgr.SwitchToForm(this, PS, WorkerID.ToString(), true);
             PS.Show();
         }
 
+        private void WorkerHomePage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, WorkerID.ToString(), true);
+        }
     }
 }

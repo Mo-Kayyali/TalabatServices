@@ -38,6 +38,7 @@ namespace TalabatServices
     {
         private int Flag0user1worker;
         private int id;
+        bool isWorker;
 
         public ProfileSettings(int ID, int FlagUserWorker)
         {
@@ -55,14 +56,18 @@ namespace TalabatServices
         {
             if (Flag0user1worker == 0) // user is clicking
             {
+                isWorker = false;
                 this.Hide();
                 UserHomePage UHP = new UserHomePage(id);
+                FormStateMgr.SwitchToForm(this, UHP, id.ToString(), isWorker);
                 UHP.Show();
             }
             else // worker is clicking
             {
+                isWorker = true;
                 this.Hide();
                 WorkerHomePage workerHomePage = new WorkerHomePage(id);
+                FormStateMgr.SwitchToForm(this, workerHomePage, id.ToString(), isWorker);
                 workerHomePage.Show();
             }
 
@@ -1169,6 +1174,11 @@ namespace TalabatServices
                 MessageBox.Show("There are Error In Connection");
             }
 
+        }
+
+        private void ProfileSettings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, id.ToString(), isWorker);
         }
     }
 }

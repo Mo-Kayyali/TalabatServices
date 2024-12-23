@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -176,6 +177,8 @@ namespace TalabatServices
         {
             this.Hide();
             UserRequestAccepted acceptedForm = new UserRequestAccepted(lastRequestId);
+            FormStateMgr.SwitchToForm(this, acceptedForm, u_id.ToString(), false);
+
             acceptedForm.Show();
         }
 
@@ -184,7 +187,13 @@ namespace TalabatServices
             statusCheckTimer.Stop();
             this.Hide();
             UserHomePage homePage = new UserHomePage(u_id);
+            FormStateMgr.SwitchToForm(this, homePage,u_id.ToString(), false);
             homePage.Show();
+        }
+
+        private void UserMakingRequest_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, u_id.ToString(), false);
         }
     }
 }

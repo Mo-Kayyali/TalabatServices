@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace TalabatServices
 {
@@ -39,17 +40,25 @@ namespace TalabatServices
 
         private void button1_Click(object sender, EventArgs e)
         {
-         //SqlConnection conn = new SqlConnection();
+            //SqlConnection conn = new SqlConnection();
             this.Hide();
             UserMakingRequest UMR = new UserMakingRequest(userID);
+            FormStateMgr.SwitchToForm(this, UMR, userID, false);
+
             UMR.Show();
         }
 
         private void setting_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings(userID,0);
+            ProfileSettings PS = new ProfileSettings(userID, 0);
+            FormStateMgr.SwitchToForm(this, PS, userID, false);
             PS.Show();
+        }
+
+        private void UserHomePage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FormStateMgr.SaveCurrentForm(this.Name, userID.ToString(), false);
         }
     }
 }
