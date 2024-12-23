@@ -43,7 +43,7 @@ namespace TalabatServices
             //SqlConnection conn = new SqlConnection();
             this.Hide();
             UserMakingRequest UMR = new UserMakingRequest(userID);
-            FormStateMgr.SwitchToForm(this, UMR, userID, false);
+            FormStateMgr.SwitchToForm(this, UMR, userID.ToString(), false);
 
             UMR.Show();
         }
@@ -52,7 +52,7 @@ namespace TalabatServices
         {
             this.Hide();
             ProfileSettings PS = new ProfileSettings(userID, 0);
-            FormStateMgr.SwitchToForm(this, PS, userID, false);
+            FormStateMgr.SwitchToForm(this, PS, userID.ToString(), false);
             PS.Show();
         }
 
