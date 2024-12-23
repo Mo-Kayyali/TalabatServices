@@ -39,6 +39,8 @@ namespace TalabatServices
         private int Flag0user1worker;
         private int id;
         bool isWorker;
+         private string Connection_String =
+            @"Data Source=DESKTOP-LCU6BMB;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
 
         public ProfileSettings(int ID, int FlagUserWorker)
         {
@@ -143,6 +145,22 @@ namespace TalabatServices
 
         private void UserEdit_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            if (Flag0user1worker == 0)
+            {
+                using (SqlConnection conn = new SqlConnection(Connection_String))
+                {
+                    conn.Open();
+                    LoadUsersPhoneNumbersIntoCompoBox(conn);
+                }
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(Connection_String))
+                {
+                    conn.Open();
+                    LoadWorkersPhoneNumbersIntoCompoBox(conn);
+                }
+            }
             if (UserEdit_Checkbox.Checked)
             {
                 UserAdd_Checkbox.Checked = false;
@@ -159,6 +177,24 @@ namespace TalabatServices
 
         private void UserDel_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+
+            if (Flag0user1worker == 0)
+            {
+                using (SqlConnection conn = new SqlConnection(Connection_String))
+                {
+                    conn.Open();
+                    LoadUsersPhoneNumbersIntoCompoBox(conn);
+                }
+            }
+            else
+            {
+                using (SqlConnection conn = new SqlConnection(Connection_String))
+                {
+                    conn.Open();
+                    LoadWorkersPhoneNumbersIntoCompoBox(conn);
+                }
+            }
+
             if (UserDel_Checkbox.Checked)
             {
                 UserAdd_Checkbox.Checked = false;
@@ -189,6 +225,12 @@ namespace TalabatServices
 
         private void DistrictEdit_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(Connection_String))
+            {
+                conn.Open();
+                LoadDistrictIntoCompoBox(conn);
+            }
+
             if (DistrictEdit_Checkbox.Checked)
             {
                 DistrictAdd_Checkbox.Checked = false;
@@ -206,6 +248,11 @@ namespace TalabatServices
 
         private void DistrictDel_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(Connection_String))
+            {
+                conn.Open();
+                LoadDistrictIntoCompoBox(conn);
+            }
             if (DistrictDel_Checkbox.Checked)
             {
                 DistrictEdit_Checkbox.Checked = false;
@@ -310,8 +357,7 @@ namespace TalabatServices
         }
 
 
-        private string Connection_String =
-            @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+       
 
         private void Login_Button_Click(object sender, EventArgs e)
         {
@@ -521,7 +567,8 @@ namespace TalabatServices
 
                             if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
                             {
-                                LoadUsersPhoneNumbersIntoCompoBox(conn);
+                               
+                               
                                 string Old_PhoneNumber = Phone_Combo.SelectedItem.ToString();
                                 string New_PhoneNumber = Phone_Text.Text;
 
@@ -529,6 +576,11 @@ namespace TalabatServices
 
                             }
                         }
+
+
+
+
+
 
                         if (AddressDel_Checkbox.Checked)
                         {
@@ -917,7 +969,7 @@ namespace TalabatServices
                         {
                             string Add_PhoneSql = @"INSERT INTO Worker_Phones (W_ID,Phone) VALUES (@id,@PhoneNumber)";
 
-                            if (Phone_Text.Text.All(char.IsDigit) && string.IsNullOrEmpty(Phone_Text.Text))
+                            if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
                             {
                                 string PhoneNumber = Phone_Text.Text;
                                 using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
@@ -943,12 +995,13 @@ namespace TalabatServices
                             else
                             {
                                 MessageBox.Show("Please Enter A Phone Number Just As Digit");
+                                return;
                             }
                         }
 
                         if (UserDel_Checkbox.Checked)
                         {
-                            LoadWorkersPhoneNumbersIntoCompoBox(conn);
+                            
 
                             if (Phone_Combo.SelectedItem != null)
                             {
@@ -968,6 +1021,38 @@ namespace TalabatServices
 
                                 UpdateWorkersPhoneNumber(Old_PhoneNumber, New_PhoneNumber, conn);
 
+                            }
+                        }
+                        if (DistrictAdd_Checkbox.Checked)
+                        {
+                            string Add_PhoneSql = @"INSERT INTO Worker_Districts (W_ID,District) VALUES (@id,@District)";
+
+                            if (!string.IsNullOrEmpty(District_Text.Text))
+                            {
+                                string District = District_Text.Text;
+                                using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
+                                {
+                                    // Add parameters
+                                    command.Parameters.AddWithValue("@District", District);
+                                    command.Parameters.AddWithValue("@id", id);
+
+                                    // Execute command
+                                    int rowsAffected = command.ExecuteNonQuery();
+
+
+                                    if (rowsAffected > 0)
+                                    {
+                                        //MessageBox.Show("Update successful!");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No rows updated. Check your condition.");
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Enter The District!?");
                             }
                         }
 
@@ -998,18 +1083,20 @@ namespace TalabatServices
         private void LoadWorkersPhoneNumbersIntoCompoBox(SqlConnection conn)
         {
 
-            string PhoneNumbersSql = @"Select Phone From Worker_Phones";
-            using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
+            string query = @"select Phone
+                            from Worker_Phones
+                            where W_ID = @Worker_id";
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
+                cmd.Parameters.AddWithValue("@Worker_id", id);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                Phone_Combo.Items.Clear();
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        Phone_Combo.Items.Add(reader["Phone"].ToString());
-                    }
+                    Phone_Combo.Items.Add(reader["Phone"].ToString());
                 }
-
             }
 
         }
@@ -1018,19 +1105,23 @@ namespace TalabatServices
         {
             try
             {
-                string PhoneNumbersSql = @"Select Phone From User_Phones";
-                using (SqlCommand cmd = new SqlCommand(PhoneNumbersSql, conn))
-                {
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    string query = @"SELECT Phone
+                                     FROM User_Phones
+                                      WHERE U_ID = @User_id";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@User_id", id);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        Phone_Combo.Items.Clear();
                         while (reader.Read())
                         {
                             Phone_Combo.Items.Add(reader["Phone"].ToString());
                         }
                     }
-
-                }
+                
             }
             catch (Exception ex)
             {
@@ -1042,18 +1133,19 @@ namespace TalabatServices
         private void LoadDistrictIntoCompoBox(SqlConnection conn)
         {
 
-            string DistrictSql = @"Select District From User_Addresses";
-            using (SqlCommand cmd = new SqlCommand(DistrictSql, conn))
+            string query = @"select District
+                                from Worker_Districts
+                                where W_ID = @WorkerID";
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
+                cmd.Parameters.AddWithValue("@WorkerID", id);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                District_Combo.Items.Clear();
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        Address_Combo.Items.Add(reader["District"].ToString());
-                    }
+                    District_Combo.Items.Add(reader["District"].ToString());
                 }
-
             }
 
         }
@@ -1089,21 +1181,16 @@ namespace TalabatServices
         {
 
 
-            string DeletePhoneSql = @"Delete From Worker_Phones Where Phone =@phoneNumber ";
+            string query = @"Delete From Worker_Phones Where Phone =@phoneNumber ";
 
 
 
-            SqlCommand command = new SqlCommand(DeletePhoneSql, conn);
+            SqlCommand command = new SqlCommand(query, conn);
             command.Parameters.AddWithValue("@phoneNumber", phoneNumber);
 
             try
             {
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    //MessageBox.Show("Delete Successfully");
-                    Phone_Combo.Items.Remove(phoneNumber);
-                }
+               command.ExecuteNonQuery();
 
             }
             catch (Exception ex)
@@ -1120,21 +1207,15 @@ namespace TalabatServices
 
 
             SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
-            command.Parameters.AddWithValue("@NewPhoenNumber", newPhoneNumber);
+            command.Parameters.AddWithValue("@NewPhoneNumber", newPhoneNumber);
             command.Parameters.AddWithValue("@oldPhoneNumber", oldPhoneNumber);
 
 
             try
             {
 
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    // MessageBox.Show("Updated Successfully");
-
-
-                    Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
-                }
+                command.ExecuteNonQuery();
+ 
 
             }
             catch (Exception ex)
