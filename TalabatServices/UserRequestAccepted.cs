@@ -113,7 +113,7 @@ namespace TalabatServices
 
         private void UserRequestAccepted_FormClosed(object sender, FormClosedEventArgs e)
         {
-            string query = "SELECT U_ID FROM Requests WHERE Req_ID = @RequestId";
+            string query = "SELECT U_ID FROM Request WHERE Req_ID = @RequestId";
 
             using (SqlConnection connection = new SqlConnection(constring))
             {
