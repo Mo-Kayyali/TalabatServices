@@ -40,7 +40,7 @@ namespace TalabatServices
         private int id;
         bool isWorker;
          private string Connection_String =
-            @"Data Source=DESKTOP-LCU6BMB;Initial Catalog=TalabatServices;Integrated Security=True;Trust Server Certificate=True";
+            @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
 
         public ProfileSettings(int ID, int FlagUserWorker)
         {
@@ -302,6 +302,11 @@ namespace TalabatServices
 
         private void AddressEdit_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(Connection_String))
+            {
+                conn.Open();
+                LoadAddressIntoComboBox(conn);
+            }
             if (AddressEdit_Checkbox.Checked)
             {
                 AddressAdd_Checkbox.Checked = false;
@@ -340,6 +345,11 @@ namespace TalabatServices
 
         private void AddressDel_Checkbox_CheckedChanged(object sender, EventArgs e)
         {
+            using (SqlConnection conn = new SqlConnection(Connection_String))
+            {
+                conn.Open();
+                LoadAddressIntoComboBox(conn);
+            }
             if (AddressDel_Checkbox.Checked)
             {
                 AddressAdd_Checkbox.Checked = false;
@@ -553,7 +563,6 @@ namespace TalabatServices
 
                         if (UserDel_Checkbox.Checked)
                         {
-                            LoadUsersPhoneNumbersIntoCompoBox(conn);
 
                             if (Phone_Combo.SelectedItem != null)
                             {
@@ -584,31 +593,44 @@ namespace TalabatServices
 
                         if (AddressDel_Checkbox.Checked)
                         {
-                            LoadDistrictIntoCompoBox(conn);
-
-                            if (Address_Combo.SelectedItem != null)
+                            if (AddressDel_Checkbox.Checked)
                             {
-                                string Selected_District = Address_Combo.SelectedItem.ToString();
-                                string Delete_District_Sql =
-                                    @"Delete from User_Addresses Where District = @Selected_District";
-                                using (SqlCommand cmd = new SqlCommand(Delete_District_Sql, conn))
+
+                                string selectedAddress = Address_Combo.SelectedItem.ToString();
+
+                                // Split the selected address into individual components (assuming space is the separator)
+                                string[] addressParts = selectedAddress.Split(' ');
+
+                                if (addressParts.Length == 5)
                                 {
-                                    cmd.Parameters.AddWithValue("@Selected_District", Selected_District);
+                                    string district = addressParts[0];
+                                    string streetName = addressParts[1];
+                                    string buildingNo = addressParts[2];
+                                    string apartmentNo = addressParts[3];
+                                    string floorNo = addressParts[4];
 
-                                    try
+                                    // SQL query to delete the record based on the primary key columns
+                                    string query = @"DELETE FROM User_Addresses
+                                                     WHERE Street_Name = @StreetName
+                                                      AND Building_No = @BuildingNo
+                                                        AND Apartment_No = @ApartmentNo
+                                                          AND District = @District and U_ID = @id";
+
+                                    using (SqlCommand cmd = new SqlCommand(query, conn))
                                     {
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Delete Successfully");
-                                            Phone_Combo.Items.Remove(Selected_District);
-                                        }
+                                        cmd.Parameters.AddWithValue("@StreetName", streetName);
+                                        cmd.Parameters.AddWithValue("@BuildingNo", buildingNo);
+                                        cmd.Parameters.AddWithValue("@ApartmentNo", apartmentNo);
+                                        cmd.Parameters.AddWithValue("@District", district); // Assuming District is still required for better precision
+                                        cmd.Parameters.AddWithValue("@id", id);
+
+                                        cmd.ExecuteNonQuery();
 
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection4");
-                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid address format.");
                                 }
                             }
                         }
@@ -659,156 +681,68 @@ namespace TalabatServices
                             {
                                 MessageBox.Show("Please Check Your Info");
                             }
-
-
                         }
-
                         if (AddressEdit_Checkbox.Checked)
                         {
-                            string Old_District = Address_Combo.SelectedItem.ToString();
-                            string District_text = AddDistrict_Text.Text;
-                            string streetText = Street_Text.Text;
-                            string buildingtext = Building_Text.Text;
-                            string Apartment_text = Apartment_Text.Text;
-                            string Floor_text = Floor_Text.Text;
-                            // Queries Of Edit District
-                            string District_Sql =
-                                @"Update User_Addresses set District =@District Where District =@Old_District";
-                            string Street_Sql =
-                                @"Update User_Addresses set Street_Name =@Street_Name Where District =@Old_District";
-                            string Building_Sql =
-                                @"Update User_Addresses set Building_No =@Building_No Where District =@Old_District";
-                            string Apartment_Sql =
-                                @"Update User_Addresses set Apartment_No =@Apartment_No Where District =@Old_District";
-                            string Floor_Sql =
-                                @"Update User_Addresses set Floor_No =@Floor_No Where District =@Old_District";
+                            string district = AddDistrict_Text.Text;
+                            string streetName = Street_Text.Text;
+                            string buildingNo = Building_Text.Text;
+                            string apartmentNo = Apartment_Text.Text;
+                            string floorNo = Floor_Text.Text;
 
-                            LoadDistrictIntoCompoBox(conn);
-
-
-
-                            if (!string.IsNullOrEmpty(Street_Text.Text))
+                            // Validate the fields to ensure all are filled and the numeric fields are valid
+                            if (!string.IsNullOrEmpty(district) && !string.IsNullOrEmpty(streetName) &&
+                                !string.IsNullOrEmpty(buildingNo) && !string.IsNullOrEmpty(apartmentNo) &&
+                                !string.IsNullOrEmpty(floorNo) && buildingNo.All(char.IsDigit) &&
+                                apartmentNo.All(char.IsDigit) && floorNo.All(char.IsDigit))
                             {
-                                using (SqlCommand cmd = new SqlCommand(Street_Sql, conn))
+                                // SQL query to update the address based on the primary key columns
+                                string updateQuery = @"UPDATE User_Addresses
+                                                   SET Street_Name = @StreetName,
+                                                       Building_No = @BuildingNo,
+                                                       Apartment_No = @ApartmentNo,
+                                                       Floor_No = @FloorNo,
+                                                       District = @District
+                                                   WHERE Street_Name = @OldStreetName
+                                                     AND Building_No = @OldBuildingNo
+                                                     AND Apartment_No = @OldApartmentNo
+                                                     AND U_ID = @id";
+
+                                // Get the original address from ComboBox to use as the condition
+                                string selectedAddress = Address_Combo.SelectedItem.ToString();
+                                string[] addressParts = selectedAddress.Split(' ');
+                                if (addressParts.Length == 5)
                                 {
-                                    cmd.Parameters.AddWithValue("@Street_Name", streetText);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
+                                    string oldStreetName = addressParts[1];
+                                    string oldBuildingNo = addressParts[2];
+                                    string oldApartmentNo = addressParts[3];
+
+                                    using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                                     {
+                                        cmd.Parameters.AddWithValue("@StreetName", streetName);
+                                        cmd.Parameters.AddWithValue("@BuildingNo", buildingNo);
+                                        cmd.Parameters.AddWithValue("@ApartmentNo", apartmentNo);
+                                        cmd.Parameters.AddWithValue("@FloorNo", floorNo);
+                                        cmd.Parameters.AddWithValue("@District", district);
+                                        cmd.Parameters.AddWithValue("@OldStreetName", oldStreetName);
+                                        cmd.Parameters.AddWithValue("@OldBuildingNo", oldBuildingNo);
+                                        cmd.Parameters.AddWithValue("@OldApartmentNo", oldApartmentNo);
+                                        cmd.Parameters.AddWithValue("@id", id); // The User_ID
 
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Updated Successfully");
-
-                                        }
-
+                                        cmd.ExecuteNonQuery();
                                     }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection6");
-                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid address format.");
                                 }
                             }
-
-                            if (!string.IsNullOrEmpty(Building_Text.Text) && Building_Text.Text.All(char.IsDigit))
+                            else
                             {
-                                using (SqlCommand cmd = new SqlCommand(Building_Sql, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Building_No", buildingtext);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
-                                    {
-
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Updated Successfully");
-
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection7");
-                                    }
-                                }
-                            }
-
-                            if (!string.IsNullOrEmpty(Apartment_Text.Text) && Apartment_Text.Text.All(char.IsDigit))
-                            {
-                                using (SqlCommand cmd = new SqlCommand(Apartment_Sql, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Apartment_No", Apartment_text);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
-                                    {
-
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Updated Successfully");
-
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection8");
-                                    }
-                                }
-                            }
-
-                            if (!string.IsNullOrEmpty(Floor_Text.Text) && Floor_Text.Text.All(char.IsDigit))
-                            {
-                                using (SqlCommand cmd = new SqlCommand(Floor_Sql, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@Floor_No", Floor_text);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
-                                    {
-
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Updated Successfully");
-
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection9");
-                                    }
-                                }
-                            }
-
-                            if (!string.IsNullOrEmpty(AddDistrict_Text.Text))
-                            {
-                                using (SqlCommand cmd = new SqlCommand(District_Sql, conn))
-                                {
-                                    cmd.Parameters.AddWithValue("@District", District_text);
-                                    cmd.Parameters.AddWithValue("@Old_District", Old_District);
-                                    try
-                                    {
-
-                                        int rowsAffected = cmd.ExecuteNonQuery();
-                                        if (rowsAffected > 0)
-                                        {
-                                            //MessageBox.Show("Updated Successfully");
-
-
-                                            Address_Combo.Items[Address_Combo.SelectedIndex] = District_text;
-                                        }
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        MessageBox.Show("There are Error In Connection5");
-                                    }
-                                }
+                                MessageBox.Show("Please check your input. All fields are required and numeric fields must contain numbers.");
                             }
                         }
+
 
 
                     }
@@ -816,6 +750,8 @@ namespace TalabatServices
                 catch (Exception exception)
                 {
                     MessageBox.Show("There Are Error In Connection10");
+
+
 
                 }
 
@@ -1015,22 +951,20 @@ namespace TalabatServices
 
                             if (Phone_Text.Text.All(char.IsDigit) && !string.IsNullOrEmpty(Phone_Text.Text))
                             {
-                                LoadWorkersPhoneNumbersIntoCompoBox(conn);
                                 string Old_PhoneNumber = Phone_Combo.SelectedItem.ToString();
                                 string New_PhoneNumber = Phone_Text.Text;
-
                                 UpdateWorkersPhoneNumber(Old_PhoneNumber, New_PhoneNumber, conn);
 
                             }
                         }
                         if (DistrictAdd_Checkbox.Checked)
                         {
-                            string Add_PhoneSql = @"INSERT INTO Worker_Districts (W_ID,District) VALUES (@id,@District)";
+                            string query = @"INSERT INTO Worker_Districts (W_ID,District) VALUES (@id,@District)";
 
                             if (!string.IsNullOrEmpty(District_Text.Text))
                             {
                                 string District = District_Text.Text;
-                                using (SqlCommand command = new SqlCommand(Add_PhoneSql, conn))
+                                using (SqlCommand command = new SqlCommand(query, conn))
                                 {
                                     // Add parameters
                                     command.Parameters.AddWithValue("@District", District);
@@ -1053,6 +987,24 @@ namespace TalabatServices
                             else
                             {
                                 MessageBox.Show("Enter The District!?");
+                            }
+                        }
+                        if (DistrictEdit_Checkbox.Checked)
+                        {
+                            if (!string.IsNullOrEmpty(District_Text.Text))
+                            {
+                                string Old_District = District_Combo.SelectedItem.ToString();
+                                string New_District = District_Text.Text;
+                                UpdateWorkersDistrict(Old_District, New_District, conn);
+
+                            }
+                        }
+                        if (DistrictDel_Checkbox.Checked)
+                        {
+                            if (District_Combo.SelectedItem != null)
+                            {
+                                string District = District_Combo.SelectedItem.ToString();
+                                DistrictDelete(District, conn);
                             }
                         }
 
@@ -1078,8 +1030,44 @@ namespace TalabatServices
 
 
 
+        private void DistrictDelete(string district,SqlConnection conn)
+        {
+            string query = @"delete from Worker_Districts where W_ID=@WorkerID and District = @District";
+
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@WorkerID", id);
+            command.Parameters.AddWithValue("@District",district);
+
+            try
+            {
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There are Error In Connection");
+            }
+        }
+        private void UpdateWorkersDistrict(string Old_District, string New_District, SqlConnection conn)
+        {
+            string query = @"update Worker_Districts set District = @NewDistrict where District = @OldDistrict";
 
 
+
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@NewDistrict", New_District);
+            command.Parameters.AddWithValue("@OldDistrict", Old_District);
+            try
+            {
+
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There are Error In Connection");
+            }
+        }
         private void LoadWorkersPhoneNumbersIntoCompoBox(SqlConnection conn)
         {
 
@@ -1129,7 +1117,25 @@ namespace TalabatServices
             }
 
         }
+        private void LoadAddressIntoComboBox(SqlConnection conn)
+        {
+            string query = @"SELECT CONCAT(District, ' ', Street_Name, ' ', Building_No, ' ', Apartment_No, ' ', Floor_No) AS FullAddress
+             FROM User_Addresses
+             WHERE U_ID = @UserId";
 
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@UserId", id);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                Address_Combo.Items.Clear();
+                while (reader.Read())
+                {
+                    // Add the concatenated address to the ComboBox
+                    Address_Combo.Items.Add(reader["FullAddress"].ToString());
+                }
+            }
+        }
         private void LoadDistrictIntoCompoBox(SqlConnection conn)
         {
 
@@ -1228,26 +1234,19 @@ namespace TalabatServices
         private void UpdateWorkersPhoneNumber(string oldPhoneNumber, string newPhoneNumber, SqlConnection conn)
         {
 
-            string Edit_Phone_Sql = @"Update Worker_Phones set Phone =@NewPhoneNumber Where Phone =@oldPhoneNumber ";
+            string query = @"Update Worker_Phones set Phone =@NewPhoneNumber Where Phone =@oldPhoneNumber ";
 
 
 
-            SqlCommand command = new SqlCommand(Edit_Phone_Sql, conn);
-            command.Parameters.AddWithValue("@NewPhoenNumber", newPhoneNumber);
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@NewPhoneNumber", newPhoneNumber);
             command.Parameters.AddWithValue("@oldPhoneNumber", oldPhoneNumber);
 
 
             try
             {
 
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    // MessageBox.Show("Updated Successfully");
-
-
-                    Phone_Combo.Items[Phone_Combo.SelectedIndex] = newPhoneNumber;
-                }
+              command.ExecuteNonQuery();
 
             }
             catch (Exception ex)

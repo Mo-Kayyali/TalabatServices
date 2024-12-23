@@ -16,7 +16,7 @@ namespace TalabatServices
             string query = $"UPDATE {tableName} SET Form_Num = @formName WHERE ID = @userId";
 
             // Execute the query (use a parameterized query to avoid SQL injection)
-            using (SqlConnection connection = new SqlConnection("your_connection_string"))
+            using (SqlConnection connection = new SqlConnection(@"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"))
             {
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@formName", formName);
