@@ -98,7 +98,7 @@
             Login_Button.Location = new Point(1259, 587);
             Login_Button.Name = "Login_Button";
             Login_Button.Size = new Size(169, 70);
-            Login_Button.TabIndex = 9;
+            Login_Button.TabIndex = 12;
             Login_Button.Text = "Update Settings";
             Login_Button.UseVisualStyleBackColor = false;
             Login_Button.Click += Login_Button_Click;

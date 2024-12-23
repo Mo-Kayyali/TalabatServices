@@ -90,22 +90,22 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(32, 460);
+            linkLabel1.Location = new Point(12, 486);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(89, 23);
+            linkLabel1.Size = new Size(94, 23);
             linkLabel1.TabIndex = 4;
             linkLabel1.TabStop = true;
-            linkLabel1.Text = "contact us";
+            linkLabel1.Text = "Contact Us";
             // 
             // linkLabel2
             // 
             linkLabel2.AutoSize = true;
-            linkLabel2.Location = new Point(142, 460);
+            linkLabel2.Location = new Point(12, 463);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(79, 23);
+            linkLabel2.Size = new Size(84, 23);
             linkLabel2.TabIndex = 5;
             linkLabel2.TabStop = true;
-            linkLabel2.Text = "follow us";
+            linkLabel2.Text = "Follow Us";
             // 
             // UserHomePage
             // 
