@@ -55,14 +55,14 @@ namespace TalabatServices
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CheckOut CO = new CheckOut(7,0);
+            CheckOut CO = new CheckOut(2,1);
             CO.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ProfileSettings PS = new ProfileSettings(2,1);
+            ProfileSettings PS = new ProfileSettings(7,0);
             PS.Show();
         }
 
