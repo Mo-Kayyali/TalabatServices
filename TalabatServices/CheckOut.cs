@@ -146,7 +146,7 @@ namespace TalabatServices
                     }
                 }
 
-
+                MessageBox.Show("Redirecting You To FeedBack Page");
                 this.Hide();
                 Rating rate = new Rating(Requestid, U_ID);
                 FormStateMgr.SwitchToForm(this, rate, U_ID.ToString(), isWorker);
