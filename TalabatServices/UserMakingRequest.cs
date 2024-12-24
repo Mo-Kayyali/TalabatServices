@@ -36,6 +36,10 @@ namespace TalabatServices
 
             // Load available services into the combo box
             LoadServiceNames();
+            LoadPhones();
+            LoadAddress();
+
+            
         }
 
         private void LoadServiceNames()
@@ -187,13 +191,202 @@ namespace TalabatServices
             statusCheckTimer.Stop();
             this.Hide();
             UserHomePage homePage = new UserHomePage(u_id);
-            FormStateMgr.SwitchToForm(this, homePage,u_id.ToString(), false);
+            FormStateMgr.SwitchToForm(this, homePage, u_id.ToString(), false);
             homePage.Show();
         }
 
         private void UserMakingRequest_FormClosed(object sender, FormClosedEventArgs e)
         {
             FormStateMgr.SaveCurrentForm(this.Name, u_id.ToString(), false);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem != null)
+            {
+                string selectedDistrict = comboBox2.SelectedItem.ToString(); // Get the selected district from ComboBox
+
+                // Connection string
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+                // SQL query to update the old district with CurrentlySelected = 0
+                string updateOldDistrictQuery = @"
+            UPDATE User_Phones
+            SET CurrentlySelected = 0
+            WHERE U_ID = @WorkerID AND CurrentlySelected = 1";
+
+                // SQL query to update the selected district with CurrentlySelected = 1
+                string updateNewDistrictQuery = @"
+            UPDATE User_Phones
+            SET CurrentlySelected = 1
+            WHERE U_ID = @WorkerID AND Phone = @Phone";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        // Open the connection
+                        conn.Open();
+
+                        using (SqlCommand cmd = new SqlCommand())
+                        {
+                            cmd.Connection = conn;
+
+                            // First, update the old district
+                            cmd.CommandText = updateOldDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", u_id); // Replace `id` with the actual Worker ID variable
+                            cmd.ExecuteNonQuery(); // Execute the update for the old district
+
+                            // Second, update the new selected district
+                            cmd.CommandText = updateNewDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", u_id); // Replace `id` with the actual Worker ID variable
+                            cmd.Parameters.AddWithValue("@Phone", selectedDistrict); // Use the selected district
+                            cmd.ExecuteNonQuery(); // Execute the update for the new selected district
+                        }
+
+                        // Optionally, display a message or update the UI to reflect the change
+                        MessageBox.Show($"Phone changed to {selectedDistrict}.");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any errors
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
+                }
+            }
+        }
+
+        private void AddressBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedAddress = AddressBox.SelectedItem.ToString();
+
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+            // Split the selected address into individual components (assuming space is the separator)
+            string[] addressParts = selectedAddress.Split(' ');
+
+            if (addressParts.Length == 5)
+            {
+                string district = addressParts[0];
+                string streetName = addressParts[1];
+                string buildingNo = addressParts[2];
+                string apartmentNo = addressParts[3];
+                string floorNo = addressParts[4];
+
+                string updateOldDistrictQuery = @"
+            UPDATE User_Addresses
+            SET CurrentlySelected = 0
+            WHERE U_ID = @WorkerID AND CurrentlySelected = 1";
+
+                // SQL query to update the selected district with CurrentlySelected = 1
+                string updateNewDistrictQuery = @"
+            UPDATE User_Addresses
+            SET CurrentlySelected = 1
+            WHERE U_ID = @WorkerID AND Street_Name = @StreetName
+                                                      AND Building_No = @BuildingNo
+                                                        AND Apartment_No = @ApartmentNo
+                                                          AND District = @District";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        // Open the connection
+                        conn.Open();
+
+                        using (SqlCommand cmd = new SqlCommand())
+                        {
+                            cmd.Connection = conn;
+
+                            // First, update the old district
+                            cmd.CommandText = updateOldDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", u_id); // Replace `id` with the actual Worker ID variable
+                            cmd.ExecuteNonQuery(); // Execute the update for the old district
+
+                            // Second, update the new selected district
+                            cmd.CommandText = updateNewDistrictQuery;
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@WorkerID", u_id); // Replace `id` with the actual Worker ID variable
+                            cmd.Parameters.AddWithValue("@StreetName", streetName);
+                            cmd.Parameters.AddWithValue("@BuildingNo", buildingNo);
+                            cmd.Parameters.AddWithValue("@ApartmentNo", apartmentNo);
+                            cmd.Parameters.AddWithValue("@District", district); // Use the selected district
+                            cmd.ExecuteNonQuery(); // Execute the update for the new selected district
+                        }
+
+                        // Optionally, display a message or update the UI to reflect the change
+                        MessageBox.Show($"Address changed.");
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any errors
+                        MessageBox.Show($"Error: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid address format.");
+            }
+        }
+
+        private void LoadPhones()
+        {
+            try
+            {
+                string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT Phone FROM User_Phones WHERE U_ID = @WorkerID";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@WorkerID", u_id);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                comboBox2.Items.Add(reader["Phone"].ToString());
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading Phones: {ex.Message}");
+            }
+        }
+
+        private void LoadAddress()
+        {
+            string query = @"SELECT CONCAT(District, ' ', Street_Name, ' ', Building_No, ' ', Apartment_No, ' ', Floor_No) AS FullAddress
+             FROM User_Addresses
+             WHERE U_ID = @UserId";
+
+            string connectionString = @"Data Source=KAYYALIS-LAPTOP;Initial Catalog=TalabatServices;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@UserId", u_id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    AddressBox.Items.Clear();
+                    while (reader.Read())
+                    {
+                        // Add the concatenated address to the ComboBox
+                        AddressBox.Items.Add(reader["FullAddress"].ToString());
+                    }
+                }
+            }
         }
     }
 }

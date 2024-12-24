@@ -125,7 +125,7 @@ namespace TalabatServices
                 }
 
 
-                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) || !Phonenumber_Textbox.Text.All(char.IsDigit))
+                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) && !Phonenumber_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter a valid Phone Number.");
                     return;
@@ -254,7 +254,7 @@ namespace TalabatServices
                 }
 
 
-                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) || !Phonenumber_Textbox.Text.All(char.IsDigit))
+                if (string.IsNullOrWhiteSpace(Phonenumber_Textbox.Text) && !Phonenumber_Textbox.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("Please enter a valid Phone Number.");
                     return;
