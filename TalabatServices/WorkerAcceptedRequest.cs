@@ -38,21 +38,21 @@ namespace TalabatServices
 
 
                     string query = @"
-                        SELECT 
-                        u.Name AS UserName, 
-                        p.Phone AS UserPhone,
-                        s.Name AS ServiceName, 
-                        CONCAT(a.Street_Name,  a.Building_No,  a.Apartment_No) AS Address,
-                        r.Description, 
-                        r.U_ID, 
-                        r.W_ID, 
-                        r.S_ID
-                    FROM Request r
-                    INNER JOIN Users u ON r.U_ID = u.U_ID
-                    LEFT JOIN User_Phones p ON u.U_ID = p.U_ID AND p.CurrentlySelected = 1
-                    LEFT JOIN User_Addresses a ON u.U_ID = a.U_ID AND a.CurrentlySelected = 1
-                    INNER JOIN Services s ON r.S_ID = s.S_ID
-                    WHERE r.Req_ID = @ReqID";
+                            SELECT 
+    u.Name AS UserName, 
+    p.Phone AS UserPhone,
+    s.Name AS ServiceName, 
+    CONCAT(a.District,' ',a.Street_Name,' ',  a.Building_No,' ',a.Floor_No ,  ' ', a.Apartment_No) AS Address,
+    r.Description, 
+    r.U_ID, 
+    r.W_ID, 
+    r.S_ID
+FROM Request r
+INNER JOIN Users u ON r.U_ID = u.U_ID
+LEFT JOIN User_Phones p ON u.U_ID = p.U_ID AND p.CurrentlySelected = 1
+LEFT JOIN User_Addresses a ON u.U_ID = a.U_ID AND a.CurrentlySelected = 1
+INNER JOIN Services s ON r.S_ID = s.S_ID
+WHERE r.Req_ID = @ReqID";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
