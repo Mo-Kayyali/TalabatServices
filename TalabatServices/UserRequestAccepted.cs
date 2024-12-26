@@ -94,7 +94,7 @@ namespace TalabatServices
                         {
                             // Stop the timer
                             statusCheckTimer.Stop();
-                            MessageBox.Show("Your Request Has Finished Redirecting You To Checkout");
+
                             // Close the current form
                             this.Hide();
 
